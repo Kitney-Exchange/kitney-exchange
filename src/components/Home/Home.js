@@ -13,8 +13,8 @@ class Home extends Component {
           <div className="banner-img">
             <img
               id="banner-img"
-              src="http://ukhealthcare.net/wp-content/uploads/2018/04/living-kidney-donor.jpg"
-              // src="https://images.unsplash.com/photo-15331"
+              // src="http://ukhealthcare.net/wp-content/uploads/2018/04/living-kidney-donor.jpg"
+              src="https://images.unsplash.com/photo-1526362706459-9547a97978e8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7a70dc1a66b385fb1dad3a1c0380ee42&auto=format&fit=crop&w=1351&q=80"
               alt="banner img"
               style={{
                 height: "80vh",
@@ -26,7 +26,7 @@ class Home extends Component {
 
           <div className="banner-content">
             <div className="banner-center">
-              <div className="banner-header">Kitney Exchange</div>
+              <div className="banner-header">KITNEY EXCHANGE</div>
               <div className="banner-texttitle">Connect</div>
               <div className="banner-text">
                 A Local, Safe, and Refined Platform

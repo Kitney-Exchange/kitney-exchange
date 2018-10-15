@@ -51,36 +51,37 @@
 }
 
 .banner-header {
-  font-size: 90px;
-  letter-spacing: 2px;
+  font-size: 70px;
+
   /* padding: 70px; */
   margin: 40px;
-  color: rgb(35, 111, 72);
+  color: white;
+  font-family: "Roboto", sans-serif;
 }
 
 .banner-texttitle {
   font-size: 35px;
-  color: rgb(35, 111, 72);
+  color: white;
   padding-bottom: 20px;
 }
 
 .banner-text {
   font-size: 25px;
-  color: rgb(35, 111, 72);
+  color: white;
   margin-bottom: 120px;
 }
 
 .signup-button {
   font-size: 30px;
-  color: rgb(35, 111, 72);
+  color: white;
 }
 .login-button {
   font-size: 30px;
-  color: rgb(35, 111, 72);
+  color: white;
 }
 
 .aboutus-title {
-  color: rgb(35, 111, 72);
+  color: white;
   text-align: center;
   margin-top: 50px;
   font-size: 40px;
@@ -88,9 +89,9 @@
 .aboutus-text {
   width: 400px;
   margin-left: 80px;
-  color: rgb(35, 111, 72);
+  color: white;
 }
 #aboutus-text {
   font-size: 25px;
-  color: rgb(35, 111, 72);
+  color: white;
 }
