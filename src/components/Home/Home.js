@@ -6,7 +6,7 @@ class Home extends Component {
     return (
       <div className="homepage">
         <div className="banner-top">
-          <div className="banner-title">Matching organs. Saving lives.</div>
+          <div className="banner-title">Matching kidneys. Saving lives.</div>
           {/* <div className="banner-login">Login</div> */}
         </div>
         <div className="banner">
@@ -14,6 +14,7 @@ class Home extends Component {
             <img
               id="banner-img"
               src="http://ukhealthcare.net/wp-content/uploads/2018/04/living-kidney-donor.jpg"
+              // src="https://images.unsplash.com/photo-15331"
               alt="banner img"
               style={{
                 height: "80vh",
