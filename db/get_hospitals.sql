@@ -1,0 +1,1 @@
+SELECT * FROM hospital ORDER BY hospital_id;
