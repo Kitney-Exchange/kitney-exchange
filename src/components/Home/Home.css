@@ -1,0 +1,96 @@
+.homepage {
+  /* height: 100vh; */
+  background-color: #b9decc;
+  display: flex;
+  flex-direction: column;
+}
+
+.banner {
+  display: flex;
+  flex-direction: column;
+}
+
+.banner-img {
+  display: flex;
+  position: relative;
+}
+
+.banner-content {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 100%;
+}
+.banner-top {
+  width: 100%;
+  display: flex;
+
+  justify-content: center;
+
+  height: 80px;
+}
+
+.banner-center {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  margin-top: 80px;
+  height: 100%;
+}
+
+.banner-title {
+  font-size: 20px;
+  color: rgb(35, 111, 72);
+}
+
+.banner-login {
+  font-size: 20px;
+  color: rgb(35, 111, 72);
+}
+
+.banner-header {
+  font-size: 90px;
+  letter-spacing: 2px;
+  /* padding: 70px; */
+  margin: 40px;
+  color: rgb(35, 111, 72);
+}
+
+.banner-texttitle {
+  font-size: 35px;
+  color: rgb(35, 111, 72);
+  padding-bottom: 20px;
+}
+
+.banner-text {
+  font-size: 25px;
+  color: rgb(35, 111, 72);
+  margin-bottom: 120px;
+}
+
+.signup-button {
+  font-size: 30px;
+  color: rgb(35, 111, 72);
+}
+.login-button {
+  font-size: 30px;
+  color: rgb(35, 111, 72);
+}
+
+.aboutus-title {
+  color: rgb(35, 111, 72);
+  text-align: center;
+  margin-top: 50px;
+  font-size: 40px;
+}
+.aboutus-text {
+  width: 400px;
+  margin-left: 80px;
+  color: rgb(35, 111, 72);
+}
+#aboutus-text {
+  font-size: 25px;
+  color: rgb(35, 111, 72);
+}

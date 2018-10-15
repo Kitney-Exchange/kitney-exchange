@@ -7,11 +7,11 @@ import routes from "./routes";
 class App extends Component {
   render() {
     return (
-      <Provider store={store}>
-        <HashRouter>
-          <div className="App">{routes}</div>
-        </HashRouter>
-      </Provider>
+      // <Provider store={store}>
+      <HashRouter>
+        <div className="App">{routes}</div>
+      </HashRouter>
+      // </Provider>
     );
   }
 }
