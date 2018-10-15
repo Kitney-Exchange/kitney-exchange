@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MapContainer  from './MapContainer';
-import { Marker } from 'google-maps-react'
+import { Marker } from 'google-maps-react';
 
 class AutoCompleteMap extends Component {
   constructor(props) {

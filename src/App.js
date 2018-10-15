@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import routes from "./routes";
 import MapContainer from "./components/googleMapTest/MapContainer";
-import { transporter } from "./components/nodeMailerTests/NodeMailer";
+// import { transporter } from "./components/nodeMailerTests/NodeMailer";
 class App extends Component {
   render() {
     return (
@@ -13,7 +13,7 @@ class App extends Component {
           <div className="App">
             {routes}
             <MapContainer />
-            {transporter}
+            {/* {transporter} */}
           </div>
         </HashRouter>
       </Provider>
