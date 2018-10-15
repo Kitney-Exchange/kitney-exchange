@@ -11,7 +11,6 @@ class AutoCompleteMap extends Component {
      this.renderAutoComplete = this.renderAutoComplete.bind(this);
   }
 
-
   componentDidMount() {
     this.renderAutoComplete();
   }
@@ -51,13 +50,11 @@ class AutoCompleteMap extends Component {
     });
   }
 
-
   render() { 
-  
-  
+    
     return ( 
         <div style={ { marginLeft: '500px', border: '1px solid red' } } >
-          <div >
+          <div>
             <form onSubmit={ this.onSubmit }>
               <input
                 placeholder="Enter a location"

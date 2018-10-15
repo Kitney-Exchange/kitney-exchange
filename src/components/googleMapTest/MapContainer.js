@@ -3,7 +3,7 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import AutoCompleteMap from './AutoCompleteMap';
 
 const GOOGLE_MAP_KEY = process.env.REACT_APP_GOOGLE_MAP_KEY
-console.log(GOOGLE_MAP_KEY);
+
 class MapContainer extends Component {
   constructor(props){
     super(props)

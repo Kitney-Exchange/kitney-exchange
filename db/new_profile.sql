@@ -1,0 +1,20 @@
+INSERT INTO profile 
+(hospital_1, 
+hospital_2, 
+hospital_3, 
+recipient_name, 
+recipient_dob, 
+recipient_age, 
+recipient_weight, 
+recipeint_height,
+recipient_history, 
+recipient_dialysis, 
+recipient_blood_type, 
+donor_name,
+donor_dob, 
+donor_age,
+donor_weight,
+donor_height,
+donor_history,
+donor_blood_type)
+VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18);
