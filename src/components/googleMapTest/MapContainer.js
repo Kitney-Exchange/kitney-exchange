@@ -19,7 +19,7 @@ class MapContainer extends Component {
 
   componentDidMount() {
     this.props.getHospitals();
-    this.gimmeName();
+    // this.gimmeName();
   }
 
   handleOnMarkerClick(props, marker, e) {
@@ -41,20 +41,20 @@ class MapContainer extends Component {
     }
   }
 
-  gimmeName = () => {
-    setTimeout(() => {
-      if (this.props.hospitals[0]) {
-        return this.setState({
-          hospital_name: this.props.hospitals[0].hospital_name,
-          hospital_address: this.props.hospitals[0].hospital_address
-        });
-        // return this.props.hospitals["'0'"].hospital_name;
-      } else {
-        this.setState({ hospital_name: "Hospital Name here" });
-      }
-      // console.log("hospital1", hospital1[0].hospital_name);
-    }, 2000);
-  };
+  // gimmeName = () => {
+  //   setTimeout(() => {
+  //     if (this.props.hospitals[0]) {
+  //       return this.setState({
+  //         hospital_name: this.props.hospitals[0].hospital_name,
+  //         hospital_address: this.props.hospitals[0].hospital_address
+  //       });
+  //       // return this.props.hospitals["'0'"].hospital_name;
+  //     } else {
+  //       this.setState({ hospital_name: "Hospital Name here" });
+  //     }
+  //     // console.log("hospital1", hospital1[0].hospital_name);
+  //   }, 2000);
+  // };
 
   render() {
     const style = {
