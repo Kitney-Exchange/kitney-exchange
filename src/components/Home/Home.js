@@ -160,6 +160,7 @@ class Home extends Component {
               <UncontrolledCarousel
                 keyboard={false}
                 pause={false}
+                autoplay={false}
                 ride="carousel"
                 interval="4000"
                 slide={true}
