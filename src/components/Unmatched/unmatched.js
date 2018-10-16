@@ -7,11 +7,11 @@ import axios from 'axios';
 
 
 class UnmatchedPage extends Component {
-
-
+    
 componentDidMount(){
     this.props.getProfiles();
-    this.props.getMatched();
+    
+
 }
 
 renderEditable = (cellInfo) => {
@@ -32,7 +32,7 @@ renderEditable = (cellInfo) => {
 }
 
 render() {
-    console.log(this.props)
+    console.log(this.state)
     if (this.props.profile)
     var data = this.props.profile;
 

@@ -5,13 +5,52 @@ import {connect} from 'react-redux';
 
 class MatchedPage extends Component {
 
+    constructor(){
+        super();
+        this.state={
+            profiles: [],
+            matched: []
+        }
+    }
+
     componentDidMount(){
         this.props.getMatched()
         this.props.getProfiles()
+    setTimeout(()=> 
+    this.setState({profiles: this.props.profile,
+                    matched: this.props.matched}), 2000)
     }
 
+matchedProfiles = (idsArr) => {
+
+    var newArr = [];
+    var newStr = this.props.matched[0].profile_ids.split(',')
+
+    for (let i = 0; i < idsArr.length; i++){
+        console.log(idsArr[i].pair_id, idsArr.length, Number(newStr[0]))
+    if (idsArr[i].pair_id === Number(newStr[0])) {
+        newArr.push(idsArr[i].recipient_name, idsArr[i].donor_name)
+    }
+    else if (idsArr[i].pair_id === Number(newStr[1])) {
+        newArr.push(idsArr[i].recipient_name, idsArr[i].donor_name)
+    }
+    else if (idsArr[i].pair_id === Number(newStr[2])) {
+        newArr.push(idsArr[i].recipient_name, idsArr[i].donor_name)
+    }
+    else if (idsArr[i].pair_id === Number(newStr[3])) {
+        newArr.push(idsArr[i].recipient_name, idsArr[i].donor_name)
+    }
+    else if (idsArr[i].pair_id === Number(newStr[4])) {
+        newArr.push(idsArr[i].recipient_name, idsArr[i].donor_name)
+    }
+    else {
+    return newArr};
+}
+
+}
 
 render() {
+    setTimeout(()=> console.log(this.matchedProfiles(this.state.profiles)), 2000)
 if (this.props.matched)
 var data = this.props.matched
 return (
