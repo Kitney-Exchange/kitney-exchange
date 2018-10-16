@@ -1,19 +1,13 @@
-// import react from "react";
-// import "./Home.css";
+import React, { Component } from "react";
+import "./Navbar.css";
 
-// const Home = () => {
-//   return (
-//     <div className="homepage">
-//       <div className="banner">
-//         <div className="banner-img" />
-//         <div className="banner-text" />
-//       </div>
-//       <div className="aboutus">
-//         <div className="aboutus-img" />
-//         <div className="aboutus-text" />
-//       </div>
-//     </div>
-//   );
-// };
+class Navbar extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return <div className="form-navbar">Navbar</div>;
+  }
+}
 
-// export default Home;
+export default Navbar;

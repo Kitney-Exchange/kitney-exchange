@@ -23,7 +23,7 @@ class MapContainer extends Component {
 
   componentDidMount() {
     this.props.getHospitals();
-    this.gimmeName();
+    // this.gimmeName();
   }
 
   handleOnMarkerClick(props, marker, e) {
