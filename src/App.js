@@ -12,7 +12,7 @@ class App extends Component {
         <HashRouter>
           <div className="App">
             {routes}
-            {/* <MapContainer /> */}
+            <MapContainer />
             {/* {transporter} */}
           </div>
         </HashRouter>

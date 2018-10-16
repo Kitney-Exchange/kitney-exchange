@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import AutoCompleteMap from "./AutoCompleteMap";
+import { getHospitals } from "../../dux/reducer";
 
 const GOOGLE_MAP_KEY = process.env.REACT_APP_GOOGLE_MAP_KEY;
 
@@ -15,10 +17,15 @@ class MapContainer extends Component {
     this.handleOnMarkerClick = this.handleOnMarkerClick.bind(this);
   }
 
+  componentDidMount() {
+    this.props.getHospitals();
+    this.gimmeName();
+  }
+
   handleOnMarkerClick(props, marker, e) {
-    console.log("props", props);
-    console.log("marker", marker);
-    console.log("e", e);
+    // console.log("props", props);
+    // console.log("marker", marker);
+    // console.log("e", e);
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
@@ -33,6 +40,21 @@ class MapContainer extends Component {
       this.setState({ showingInfoWindow: false, activeMarker: null });
     }
   }
+
+  gimmeName = () => {
+    setTimeout(() => {
+      if (this.props.hospitals[0]) {
+        return this.setState({
+          hospital_name: this.props.hospitals[0].hospital_name,
+          hospital_address: this.props.hospitals[0].hospital_address
+        });
+        // return this.props.hospitals["'0'"].hospital_name;
+      } else {
+        this.setState({ hospital_name: "Hospital Name here" });
+      }
+      // console.log("hospital1", hospital1[0].hospital_name);
+    }, 2000);
+  };
 
   render() {
     const style = {
@@ -54,7 +76,7 @@ class MapContainer extends Component {
           <Marker
             onClick={this.handleOnMarkerClick}
             title={"The marker`s title will appear as a tooltip."}
-            name={"Dallas Area1"}
+            name={this.state.hospital_name}
             position={{ lat: 32.7773293, lng: -96.7963455 }}
           />
 
@@ -81,4 +103,11 @@ class MapContainer extends Component {
   }
 }
 
-export default GoogleApiWrapper({ apiKey: `${GOOGLE_MAP_KEY}` })(MapContainer);
+const mapStateToProps = state => ({
+  ...state
+});
+
+export default connect(
+  mapStateToProps,
+  { getHospitals }
+)(GoogleApiWrapper({ apiKey: `${GOOGLE_MAP_KEY}` })(MapContainer));
