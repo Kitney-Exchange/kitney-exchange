@@ -12,7 +12,11 @@ class MapContainer extends Component {
     this.state = {
       showingInfoWindow: false,
       activeMarker: {},
-      selectedPlace: {}
+      selectedPlace: {},
+      hospitalName: [],
+      positionLat: [],
+      positionLong: [],
+      style: { width: "50%", height: "50%" }
     };
     this.handleOnMarkerClick = this.handleOnMarkerClick.bind(this);
   }
@@ -41,50 +45,55 @@ class MapContainer extends Component {
     }
   }
 
-  // gimmeName = () => {
-  //   setTimeout(() => {
-  //     if (this.props.hospitals[0]) {
-  //       return this.setState({
-  //         hospital_name: this.props.hospitals[0].hospital_name,
-  //         hospital_address: this.props.hospitals[0].hospital_address
-  //       });
-  //       // return this.props.hospitals["'0'"].hospital_name;
-  //     } else {
-  //       this.setState({ hospital_name: "Hospital Name here" });
-  //     }
-  //     // console.log("hospital1", hospital1[0].hospital_name);
-  //   }, 2000);
-  // };
+  gimmeName = () => {
+    // let { hospitalName, positionLat, positionLong } = this.state;
+    setTimeout( () => {
+      console.log('this.props.hospitals', this.props.hospitals)
+      if (this.props.hospitals) {
+        this.props.hospitals.map((value, index) => {
+          console.log('VALUE: ', value)
+          this.state.hospitalName.push(value.hospital_name) 
+          this.state.positionLat.push(value.lat)
+          this.state.positionLong.push(value.long)
+        })
+      }
+    }, 1000);
+  }
 
   render() {
-    const style = {
-      width: "50%",
-      height: "50%"
-    };
+    console.log('position', this.state.hospitalName[0])
+
 
     return (
       <div>
         <p>Map 1 this will show location and marker tootip hospital info </p>
-
+      
         <Map
-          google={this.props.google}
-          onClick={() => this.handleOnMapClicked()}
-          zoom={14}
-          style={style}
-          initialCenter={{ lat: 32.7773293, lng: -96.7963455 }} // <- INTI START POINT OF MAP LOCATION VIEW
+          google={ this.props.google }
+          onClick={ () => this.handleOnMapClicked() }
+          zoom={ 14 }
+          style={ this.state.style }
+          initialCenter={ { lat: 32.7773293, lng: -96.7963455 } } // <- INTI START POINT OF MAP LOCATION VIEW
         >
           <Marker
-            onClick={this.handleOnMarkerClick}
-            title={"The marker`s title will appear as a tooltip."}
-            name={this.state.hospital_name}
-            position={{ lat: 32.7773293, lng: -96.7963455 }}
+            onClick={ this.handleOnMarkerClick }
+            title={ this.state.hospitalName[0] }
+            name={ this.state.hospitalName[0] }
+            position={ {lat: `${this.state.positionLat[0]}`, lng: `${this.state.positionLong[0]}`} }
           />
 
           <Marker
-            onClick={this.handleOnMarkerClick}
-            title={"The marker`s title will appear as a tooltip."}
-            name={"Dallas Area2"}
-            position={{ lat: 32.5773293, lng: -96.7963455 }}
+            onClick={ this.handleOnMarkerClick }
+            title={ this.state.hospitalName[1] }
+            name={ this.state.hospitalName[1] }
+            position={ { lat: 32.8131059,  lng: -96.7963455 } }
+          />
+
+          <Marker
+            onClick={ this.handleOnMarkerClick }
+            title={ this.state.hospitalName[2] }
+            name={ this.state.hospitalName[2] }
+            position={ { lat: 32.81255950000001, lng: -96.83564209999997 } }
           />
 
           <InfoWindow
