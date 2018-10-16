@@ -24,10 +24,28 @@
 .banner-top {
   width: 100%;
   display: flex;
-
+  /* background-color: white; */
   justify-content: center;
-
+  justify-content: space-evenly;
+  border-bottom: solid 7px white;
   height: 80px;
+}
+
+.nav-link {
+  margin: auto;
+  display: flex;
+  color: white;
+  font-family: "Lato", sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.8px;
+}
+.banner-title {
+  font-size: 30px;
+  color: rgb(47, 127, 85);
+  /* letter-spacing: 0.5px; */
+  font-weight: bold;
+  font-family: "Lato", sans-serif;
+  margin-top: 20px;
 }
 
 .banner-center {
@@ -40,11 +58,6 @@
   height: 100%;
 }
 
-.banner-title {
-  font-size: 20px;
-  color: rgb(35, 111, 72);
-}
-
 .banner-login {
   font-size: 20px;
   color: rgb(35, 111, 72);
@@ -52,46 +65,162 @@
 
 .banner-header {
   font-size: 70px;
-
-  /* padding: 70px; */
-  margin: 40px;
+  margin-top: 15px;
+  margin-bottom: 20px;
   color: white;
-  font-family: "Roboto", sans-serif;
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  letter-spacing: 3px;
 }
 
 .banner-texttitle {
-  font-size: 35px;
+  font-size: 30px;
   color: white;
   padding-bottom: 20px;
+  font-family: "Montserrat", sans-serif;
 }
 
 .banner-text {
-  font-size: 25px;
+  font-size: 20px;
   color: white;
-  margin-bottom: 120px;
+  margin-bottom: 80px;
+  font-family: "Montserrat", sans-serif;
 }
 
 .signup-button {
-  font-size: 30px;
+  font-size: 27px;
   color: white;
+  font-family: "Montserrat", sans-serif;
 }
 .login-button {
-  font-size: 30px;
+  font-size: 27px;
   color: white;
+  font-family: "Montserrat", sans-serif;
 }
 
 .aboutus-title {
-  color: white;
+  color: rgb(248, 202, 179);
+  padding: 10px;
   text-align: center;
-  margin-top: 50px;
-  font-size: 40px;
+  margin-top: 70px;
+  padding-bottom: 20px;
+  font-size: 50px;
+  font-family: "Lato", sans-serif;
+  letter-spacing: 1px;
+}
+
+.aboutus-img {
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
 }
 .aboutus-text {
-  width: 400px;
-  margin-left: 80px;
-  color: white;
+  width: 600px;
+  margin: auto;
+  line-height: 32px;
+  /* padding: 20px; */
 }
 #aboutus-text {
-  font-size: 25px;
+  font-size: 20px;
+
+  letter-spacing: 0.5px;
+  font-weight: lighter;
+  color: rgb(0, 0, 0);
+  font-family: "Lato", sans-serif;
+}
+
+.banner-icon {
+  margin-bottom: 0px;
+}
+
+.mid-icon {
+  margin-bottom: 60px;
+}
+
+.aboutus {
+  background-color: white;
+  width: 80%;
+  margin: auto;
+  height: 700px;
+}
+
+.colorbox {
+  background-color: white;
+  height: 300px;
+  width: 80%;
+}
+
+.stories {
+  background-color: rgb(248, 202, 179);
+  width: 80%;
+  margin: auto;
+  display: flex;
+  height: 700px;
+}
+
+.box-right {
+  background-color: rgb(255, 228, 202);
+  width: 50%;
+  height: 700px;
+}
+
+.stories-text {
+  width: 300px;
+}
+
+.storiesbox-left {
+  margin: auto;
+  margin-left: 80px;
+  width: 500px;
+}
+
+.stories-title {
   color: white;
+
+  padding-bottom: 20px;
+  font-size: 40px;
+  font-family: "Lato", sans-serif;
+  letter-spacing: 1px;
+}
+
+.stories-text {
+  color: white;
+  font-family: "Lato", sans-serif;
+  font-size: 20px;
+}
+
+.success-text {
+  width: 600px;
+  margin: auto;
+  line-height: 32px;
+  margin-bottom: 100px;
+}
+
+.carousel-box {
+  width: 80%;
+  margin: auto;
+}
+
+.carousel-fade .carousel-item {
+  display: block;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.carousel-fade .carousel-item.active {
+  opacity: 1;
+  position: relative;
+}
+
+.carousel {
+  position: absolute;
+  width: 400px;
+  height: 300px;
+  margin-left: 15px;
+}
+
+.carousel,
+.carousel-inner,
+.carousel-item {
+  transition: opacity 1s ease-in-out;
 }

@@ -35,11 +35,11 @@
     "not op_mini all"
   ],
   "proxy": "http://localhost:3001",
- "nodemonConfig": {
-   "ignore": [
-     "test/*",
-     "docs/*"
-   ],
-   "delay": "4000"
- }
+  "nodemonConfig": {
+    "ignore": [
+      "test/*",
+      "docs/*"
+    ],
+    "delay": "4000"
+  }
 }
