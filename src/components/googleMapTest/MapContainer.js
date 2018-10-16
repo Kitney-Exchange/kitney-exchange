@@ -107,6 +107,7 @@ const mapStateToProps = state => ({
   ...state
 });
 
-export default connect(mapStateToProps, { getHospitals })(
-  GoogleApiWrapper({ apiKey: `${GOOGLE_MAP_KEY}` })(MapContainer)
-);
+export default connect(
+  mapStateToProps,
+  { getHospitals }
+)(GoogleApiWrapper({ apiKey: `${GOOGLE_MAP_KEY}` })(MapContainer));
