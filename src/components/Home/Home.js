@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import "./Home.css";
-import CarouselBox from "../Carousel/CarouselBox";
 import channel from "../../images/channel.png";
 import care from "../../images/care.png";
-import png from "../../images/png.png";
+import singleline from "../../images/singleline.png";
+import sun from "../../images/sun.png";
 import { UncontrolledCarousel } from "reactstrap";
+import { Link } from "react-router-dom";
 
+// images for carousel
 const items = [
   {
     src:
@@ -27,9 +29,8 @@ class Home extends Component {
       <div>
         <div className="homepage">
           <div className="banner-top">
-            {/* <div className="navbar-icon">
-            <img src="" />
-          </div> */}
+            {/* This will be parallax scrolling! :D 
+            it will also be a scrolling navbar as well, but only on home page */}
             <div className="nav-link">How It Works</div>
             <div className="nav-link">About</div>
             <div className="nav-link">Success Stories</div>
@@ -59,6 +60,7 @@ class Home extends Component {
                     <img src={channel} alt="icon" />
                   </div>
                 </div>
+                {/* must update name, and maybe banner text */}
                 <div className="banner-header">Kitney Exchange</div>
                 <div className="banner-texttitle">Connect</div>
                 <div className="banner-text">
@@ -66,7 +68,7 @@ class Home extends Component {
                 </div>
                 <div className="mid-icon">
                   <img
-                    src={png}
+                    src={singleline}
                     alt="line-icon"
                     style={{
                       height: "40px",
@@ -74,8 +76,10 @@ class Home extends Component {
                     }}
                   />
                 </div>
-                <div className="signup-button">Create Account</div>
-                <div className="login-button">Log In</div>
+                {/* <div className="signup-button">Create Account</div> */}
+                <Link id="link-dec" to="/register">
+                  <div className="login-button">Register Now</div>
+                </Link>
               </div>
             </div>
           </div>
@@ -131,7 +135,16 @@ class Home extends Component {
           </div>
           <div className="aboutus">
             <div className="aboutus-title">Success</div>
-            <div className="aboutus-img" />
+            <div className="sun-img">
+              <img
+                src={sun}
+                alt="hands-icon"
+                style={{
+                  width: "60px",
+                  height: "60px"
+                }}
+              />{" "}
+            </div>
             <div className="success-text">
               <p id="aboutus-text">
                 Carrots soybeans, owls duck raising or, cheep in plows. Turkey
@@ -142,6 +155,7 @@ class Home extends Component {
                 calf donkey duck.
               </p>
             </div>
+            {/* carousel imported from reactstrap, need to edit to manual slide, and fix position */}
             <div className="carousel">
               <UncontrolledCarousel
                 keyboard={false}

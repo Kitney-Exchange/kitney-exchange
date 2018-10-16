@@ -91,11 +91,32 @@
   font-size: 27px;
   color: white;
   font-family: "Montserrat", sans-serif;
+  padding-bottom: 10px;
 }
+.signup-button:hover {
+  color: rgb(248, 202, 179);
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+
 .login-button {
   font-size: 27px;
   color: white;
   font-family: "Montserrat", sans-serif;
+}
+
+.login-button:hover {
+  color: rgb(248, 202, 179);
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+
+#link-dec {
+  text-decoration: none;
 }
 
 .aboutus-title {
@@ -166,6 +187,7 @@
 
 .stories-text {
   width: 300px;
+  margin-left: 40px;
 }
 
 .storiesbox-left {
@@ -176,7 +198,7 @@
 
 .stories-title {
   color: white;
-
+  margin-left: 40px;
   padding-bottom: 20px;
   font-size: 40px;
   font-family: "Lato", sans-serif;
@@ -197,8 +219,8 @@
 }
 
 .carousel-box {
-  width: 80%;
-  margin: auto;
+  /* justify-content: center; */
+  /* margin: auto; */
 }
 
 .carousel-fade .carousel-item {
@@ -214,13 +236,22 @@
 
 .carousel {
   position: absolute;
-  width: 400px;
-  height: 300px;
+  /* width: 300px;
+  height: 200px; */
   margin-left: 15px;
 }
 
 .carousel,
 .carousel-inner,
 .carousel-item {
+  /* width: 600px;
+  height: 400px; */
   transition: opacity 1s ease-in-out;
+}
+
+.sun-img {
+  padding-top: 30px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: center;
 }
