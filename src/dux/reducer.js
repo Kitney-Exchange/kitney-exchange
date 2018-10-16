@@ -53,7 +53,7 @@ export const getMatched = () => {
   return {
     type: GET_MATCHED,
     payload: axios
-      .get("/api/hospitals")
+      .get("/api/matched")
       .then(response => {
         return response.data;
       })
