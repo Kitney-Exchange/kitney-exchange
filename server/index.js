@@ -3,14 +3,11 @@ const { json } = require("body-parser");
 const massive = require("massive");
 require("dotenv").config();
 const cors = require("cors");
-// const nodemailer = require('nodemailer');
+const { sendEmail } = require('./nodeMailerTests/NodeMailer');
 const { getProfiles, newProfile } = require("./controllers/profileController");
 const { getFiles, newFile } = require("./controllers/fileController");
 const { getMatched, newMatched } = require("./controllers/matchedController");
-const {
-  getHospitals,
-  newHospital
-} = require("./controllers/hospitalController");
+const { getHospitals, newHospital } = require("./controllers/hospitalController");
 
 //create server
 const app = express();
@@ -21,6 +18,9 @@ app.use(cors());
 massive({ connectionString: process.env.CONNECTION_STRING })
   .then(db => app.set("db", db))
   .catch(err => console.log(err));
+
+// ENDPOINT NODMAILER
+app.post("/api/post", sendEmail)
 
 // profile //
 app.get("/api/profile", getProfiles);
