@@ -10,17 +10,17 @@ class Register extends Component {
     this.state = {
       eligiblestatus: ""
     };
-    this.handleChange = this.handleChange.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(e) {
-    if (e === "no") {
-      this.setState({ eligiblestatus: "ineligible" });
-    }
-  }
+  // handleChange(e) {
+  //   if (e === "no") {
+  //     this.setState({ eligiblestatus: "ineligible" });
+  //   }
+  // }
 
   render() {
-    console.log(this.state);
+    console.log(this.response);
     return (
       <div className="register-page">
         <Navbar />
@@ -37,21 +37,29 @@ class Register extends Component {
             </p>
           </div>
           <div className="prelim-questions">
-            <div className="prelim1">
+            {/* <div className="prelim">
+              <form>
+                <input type="radio" name="yes" value="yes" />
+                Yes
+                <input type="radio" name="yes" value="no" />
+                No
+              </form>
+            </div> */}
+            <div className="prelim">
               <FormGroup
                 id="formgroup"
                 tag="fieldset"
-                onChange={e => this.handleChange(e)}
+                // onChange={e => this.handleChange(e)}
               >
                 <p>Have you been screened by the hospital?</p>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio1" /> Yes
+                    <Input type="radio" name="radio" value="yes" /> Yes
                   </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio1" /> No
+                    <Input type="radio" name="radio" value="no" /> No
                   </Label>
                 </FormGroup>
               </FormGroup>
@@ -69,12 +77,12 @@ class Register extends Component {
                 <br />
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio1" /> Yes
+                    <Input type="radio" name="radio1" value="yes" /> Yes
                   </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio1" /> No
+                    <Input type="radio" name="radio1" value="no" /> No
                   </Label>
                 </FormGroup>
               </FormGroup>
@@ -84,12 +92,12 @@ class Register extends Component {
                 <p>Have you ever had a heart attack?</p>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio1" /> Yes
+                    <Input type="radio" name="radio2" value="yes" /> Yes
                   </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio1" /> No
+                    <Input type="radio" name="radio2" value="no" /> No
                   </Label>
                 </FormGroup>
               </FormGroup>
@@ -99,12 +107,12 @@ class Register extends Component {
                 <p>Do you have diabetes or high blood sugar?</p>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio1" /> Yes
+                    <Input type="radio" name="radio3" value="yes" /> Yes
                   </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio1" /> No
+                    <Input type="radio" name="radio3" value="no" /> No
                   </Label>
                 </FormGroup>
               </FormGroup>
@@ -114,12 +122,12 @@ class Register extends Component {
                 <p>Have you ever been diagnosed with cancer?</p>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio1" /> Yes
+                    <Input type="radio" name="radio4" value="yes" /> Yes
                   </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio1" /> No
+                    <Input type="radio" name="radio4" value="no" /> No
                   </Label>
                 </FormGroup>
               </FormGroup>
@@ -129,12 +137,12 @@ class Register extends Component {
                 <p>Have you ever used tobacco products?</p>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio1" /> Yes
+                    <Input type="radio" name="radio5" value="yes" /> Yes
                   </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio1" /> No
+                    <Input type="radio" name="radio5" value="no" /> No
                   </Label>
                 </FormGroup>
               </FormGroup>
@@ -144,27 +152,27 @@ class Register extends Component {
                 <p>Have you ever been diagnosed with kidney stones?</p>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio1" /> Yes
+                    <Input type="radio" name="radio6" value="yes" /> Yes
                   </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio1" /> No
+                    <Input type="radio" name="radio6" value="no" /> No
                   </Label>
                 </FormGroup>
               </FormGroup>
             </div>
             <div className="prelim7">
               <FormGroup id="formgroup" tag="fieldset">
-                <p>Have you ever been pregnant?</p>
+                <p>Are you pregnant?</p>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio1" /> Yes
+                    <Input type="radio" name="radio7" value="yes" /> Yes
                   </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio1" /> No
+                    <Input type="radio" name="radio7" value="no" /> No
                   </Label>
                 </FormGroup>
               </FormGroup>
@@ -174,12 +182,12 @@ class Register extends Component {
                 <p>Do you have a history of HIV?</p>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio1" /> Yes
+                    <Input type="radio" name="radio8" value="yes" /> Yes
                   </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio1" /> No
+                    <Input type="radio" name="radio8" value="no" /> No
                   </Label>
                 </FormGroup>
               </FormGroup>
