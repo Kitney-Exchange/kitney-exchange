@@ -1,0 +1,1 @@
+DELETE FROM profile WHERE pair_id = $1;
