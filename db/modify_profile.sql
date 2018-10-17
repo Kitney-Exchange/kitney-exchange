@@ -1,0 +1,20 @@
+UPDATE profile SET
+hospital_1 = $1, 
+hospital_2 = $2, 
+hospital_3 = $3, 
+recipient_name = $4, 
+recipient_dob = $5, 
+recipient_age = $6, 
+recipient_weight = $7, 
+recipeint_height = $8,
+recipient_history = $9, 
+recipient_dialysis = $10, 
+recipient_blood_type = $11, 
+donor_name = $12,
+donor_dob = $13, 
+donor_age = $14,
+donor_weight = $15,
+donor_height = $16,
+donor_history = $17,
+donor_blood_type = $18
+WHERE pair_id = $19;
