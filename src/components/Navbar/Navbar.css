@@ -1,0 +1,26 @@
+.form-navbar {
+  background-color: #98e7c1;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-content: flex-start;
+
+  height: 90px;
+}
+
+.home-link {
+  /* margin: auto; */
+  display: flex;
+  margin-top: 30px;
+  margin-left: 30px;
+  color: white;
+  font-family: "Lato", sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.8px;
+}
+
+.nav-homelink {
+  color: white;
+  letter-spacing: 1px;
+}
