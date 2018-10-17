@@ -14,6 +14,6 @@ export default (
     <Route path="/unmatched" component={Unmatched} />
     <Route path="/matched" component={MatchedPage} />
     <Route path="/RecipientForm" component={RecipientForm} />
-    <Route path="DonorForm" component={DonorForm} />
+    <Route path="/DonorForm" component={DonorForm} />
   </Switch>
 );

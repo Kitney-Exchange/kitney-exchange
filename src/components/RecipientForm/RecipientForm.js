@@ -13,14 +13,22 @@ class RecipientForm extends Component {
   render() {
     return (
       <div>
-        <Navbar />
-        <Firebase />
-        <MapContainer />
-        <Link to="/DonorForm">
-          <Button outline color="success">
-            Next
-          </Button>
-        </Link>
+        <div className="donorform">
+          <Navbar />
+          <div className="formbox">
+            <div className="information-box">Welcome</div>
+
+            <div className="form-question1" />
+          </div>
+
+          {/* <Firebase />
+        <MapContainer /> */}
+          <Link to="/DonorForm">
+            <Button outline color="success">
+              Next
+            </Button>
+          </Link>
+        </div>
       </div>
     );
   }

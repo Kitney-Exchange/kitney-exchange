@@ -11,10 +11,16 @@ class DonorForm extends Component {
   //donor will fill information
   render() {
     return (
-      <div>
+      <div className="donorform">
         <Navbar />
-        <Firebase />
-        <MapContainer />
+        <div className="formbox">
+          <div className="information-box">Welcome</div>
+
+          <div className="form-question1" />
+        </div>
+
+        {/* <Firebase />
+        <MapContainer /> */}
       </div>
     );
   }
