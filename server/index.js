@@ -4,10 +4,10 @@ const massive = require("massive");
 require("dotenv").config();
 const cors = require("cors");
 const { sendEmail } = require('./nodeMailerTests/NodeMailer');
-const { getProfiles, newProfile } = require("./controllers/profileController");
+const { getProfiles, newProfile, modifyProfile, deleteProfile } = require("./controllers/profileController");
 const { getFiles, newFile } = require("./controllers/fileController");
 const { getMatched, newMatched } = require("./controllers/matchedController");
-const { getHospitals, newHospital } = require("./controllers/hospitalController");
+const { getHospitals, newHospital, modifyHospital, deleteHospital } = require("./controllers/hospitalController");
 
 //create server
 const app = express();
@@ -25,6 +25,8 @@ app.post("/api/post", sendEmail)
 // profile //
 app.get("/api/profile", getProfiles);
 app.post("/api/profile", newProfile);
+app.put("/api/profile", modifyProfile);
+app.delete("/api/profile/:pair_id", deleteProfile)
 
 // files //
 app.get("/api/files", getFiles);
@@ -37,6 +39,8 @@ app.post("/api/matched", newMatched);
 // hospitals info //
 app.get("/api/hospitals", getHospitals);
 app.post("/api/hospitals", newHospital);
+app.put("/api/hospitals", modifyHospital);
+app.delete("/api/hospitals/:hospital_id", deleteHospital);
 
 // port set and listen //
 const port = 3001;

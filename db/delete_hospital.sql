@@ -1,0 +1,1 @@
+DELETE FROM hospitals WHERE hospital_id = $1;
