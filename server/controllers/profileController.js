@@ -25,7 +25,9 @@ module.exports = {
             req.body.donor_weight,
             req.body.donor_height,
             req.body.donor_history,
-            req.body.donor_blood_type])
+            req.body.donor_blood_type,
+            req.body.donor_email,
+            req.body.recipient_email])
         .then(response => res.status(200).send('Profile created!'))
         .catch(response => res.status(500).send('Error has occurred'))
     },
@@ -49,7 +51,9 @@ module.exports = {
             req.body.donor_height,
             req.body.donor_history,
             req.body.donor_blood_type,
-            req.body.pair_id])
+            req.body.pair_id,
+            req.body.donor_email,
+            req.body.recipient_email])
             .then(response => res.status(200).send('Profile Updated!'))
             .catch(response => res.status(500).send('An error has occurred'))
     },
