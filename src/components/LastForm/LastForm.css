@@ -1,0 +1,9 @@
+.lastform {
+  display: flex;
+  flex-direction: column;
+}
+
+.formbox {
+  display: flex;
+  flex-direction: column;
+}
