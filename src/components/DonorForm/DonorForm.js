@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from 'axios';
 
 import {
   Button,
@@ -26,13 +27,40 @@ class DonorForm extends Component {
       d_height: "",
       d_histody: "",
       d_blood_type: "",
-      d_dialysis: ""
     };
+  }
+
+  handleSubmit = () => {
+    const {recipient} = this.props.location.state;
+    console.log(recipient)
+    axios.post("/api/profile", {
+      hospital_1: null, 
+hospital_2: null, 
+hospital_3: null, 
+recipient_name: recipient.r_name, 
+recipient_dob: recipient.r_dob, 
+recipient_age: recipient.r_age, 
+recipient_weight: recipient.r_weight, 
+recipient_height: recipient.r_height,
+recipient_history: recipient.r_history, 
+recipient_dialysis: recipient.r_dialysis, 
+recipient_blood_type: recipient.r_blood_type,
+donor_name: this.state.d_name,
+donor_dob: this.state.d_dob, 
+donor_age: this.state.d_age,
+donor_weight: this.state.d_weight,
+donor_height: this.state.d_height,
+donor_history: this.state.d_history,
+donor_blood_type: this.state.d_blood_type,
+donor_email: recipient.r_email,
+recipient_email: this.state.d_email
+    })
   }
 
   //donor will fill information
   render() {
     console.log(this.state);
+    console.log(this.props.location.state);
     return (
       <div className="donorform">
         <Navbar />
@@ -153,31 +181,15 @@ class DonorForm extends Component {
                     }
                   />
                 </Col>
-              </FormGroup>
-              <FormGroup row>
-                <Label for="q9" sm={2}>
-                  Years of Dialysis Treatment
-                </Label>
-                <Col sm={8}>
-                  <Input
-                    type="dialysis"
-                    name="dialysis"
-                    id="dialysisinput"
-                    placeholder=""
-                    onChange={e =>
-                      this.setState({ d_dialysis: e.target.value })
-                    }
-                  />
-                </Col>
-              </FormGroup>
+                </FormGroup>
             </Form>
           </div>
           <div className="donor-button">
             <Link to="/Form">
               <Button
-              // onClick={e => {
-              //   this.addPair();
-              // }}
+              onClick={e => {
+                this.handleSubmit();
+              }}
               >
                 Next
               </Button>
