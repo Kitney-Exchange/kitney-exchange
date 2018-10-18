@@ -100,6 +100,7 @@ class MapContainer extends Component {
           >
             <div>
               <h1>{this.state.selectedPlace.name}</h1>
+              <button>Is this real life?</button>
             </div>
           </InfoWindow>
 

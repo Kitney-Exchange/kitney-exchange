@@ -137,7 +137,7 @@ class DonorForm extends Component {
                     type="height"
                     name="height"
                     id="heightinput"
-                    placeholder=""
+                    placeholder="example: 5ft10in"
                     onChange={e => this.setState({ d_height: e.target.value })}
                   />
                 </Col>
