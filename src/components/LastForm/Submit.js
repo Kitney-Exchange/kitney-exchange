@@ -8,7 +8,7 @@ class Submit extends Component {
 
   addPair() {}
   render() {
-    console.log(this.props);
+    console.log(this.props.location.state);
     return (
       <div>
         <Navbar />
