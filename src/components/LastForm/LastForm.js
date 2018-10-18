@@ -16,6 +16,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import "./LastForm.css";
+import {connect} from 'react-redux';
+import {getHospitals} from '../../dux/reducer';
 
 class LastForm extends Component {
   constructor(props) {
@@ -27,7 +29,12 @@ class LastForm extends Component {
     };
   }
 
+  componentDidMount(){
+    this.props.getHospitals();
+  }
+
   render() {
+    console.log(this.props.location.state)
     return (
       <div className="lastform">
         <Navbar />
@@ -58,4 +65,8 @@ class LastForm extends Component {
     );
   }
 }
-export default LastForm;
+
+const mapStateToProps = (state) => {
+  return {...state}
+}
+export default connect(mapStateToProps, {getHospitals})(LastForm);

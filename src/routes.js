@@ -9,9 +9,11 @@ import DonorForm from "./components/DonorForm/DonorForm";
 import LastForm from "./components/LastForm/LastForm";
 import Sorry from "./components/Register/Sorry";
 import Submit from "./components/LastForm/Submit";
+import Hospitals from './components/Hospitals/Hospitals';
 
 export default (
   <Switch>
+    <Route path="/hospitals" component={Hospitals}/>
     <Route exact path="/" component={Home} />
     <Route path="/register" component={Register} />
     <Route path="/unmatched" component={Unmatched} />

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from 'axios';
 import {
   Button,
   Label,
@@ -17,7 +18,6 @@ class RecipientForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pair: [],
       r_name: "",
       r_email: "",
       r_dob: "",
@@ -25,7 +25,8 @@ class RecipientForm extends Component {
       r_weight: "",
       r_height: "",
       r_history: "",
-      r_blood_type: ""
+      r_blood_type: "",
+      r_dialysis: ""
     };
   }
 
@@ -184,15 +185,27 @@ class RecipientForm extends Component {
                     />
                   </Col>
                 </FormGroup>
+              <FormGroup row>
+                <Label for="q9" sm={2}>
+                  Years of Dialysis Treatment
+                </Label>
+                <Col sm={8}>
+                  <Input
+                    type="dialysis"
+                    name="dialysis"
+                    id="dialysisinput"
+                    placeholder=""
+                    onChange={e =>
+                      this.setState({ r_dialysis: e.target.value })
+                    }
+                  />
+                </Col>
+              </FormGroup>
               </Form>
             </div>
             <div className="recipient-button">
-              <Link to="/DonorForm">
-                <Button
-                // onClick={e => {
-                //   this.addPair();
-                // }}
-                >
+              <Link to={{ pathname: "/DonorForm", state: {recipient: this.state}}}>
+                <Button>
                   Next
                 </Button>
               </Link>
