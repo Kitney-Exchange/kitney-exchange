@@ -29,13 +29,13 @@ class Firebase extends Component {
       .child(filename)
       .getDownloadURL()
       .then(url => this.setState({ fileURL: url }))
-      // .then(() => {
-      //   axios.post("/api/files", { url: this.state.fileURL });
-      // });
+      .then(() => {
+        axios.post("/api/files", { pair_id: this.props.pair_id, file_url: this.state.fileURL });
+      });
   };
 
   render() {
-    console.log(this.state);
+    console.log(this.state, this.props.pair_id);
     return (
       <div>
         <form>
