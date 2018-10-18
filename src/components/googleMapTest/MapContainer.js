@@ -44,62 +44,62 @@ class MapContainer extends Component {
 
   // LOOP THROUGH HOSPITAL DATA AND STORE LOCAL STATE TO DISPLAY INFO
   gimmeName = () => {
-    setTimeout( () => {
+    setTimeout(() => {
       // console.log('this.props.hospitals', this.props.hospitals)
-      let positionLat = []
+      let positionLat = [];
       if (this.props.hospitals) {
         this.props.hospitals.map((value, index) => {
           // console.log('VALUE: ', value)
-          this.state.hospitalName.push(value.hospital_name) 
-          positionLat.push(value.lat) 
-          this.state.positionLong.push(value.long)
-        })
-        this.setState({ positionLat: positionLat })
+          this.state.hospitalName.push(value.hospital_name);
+          positionLat.push(value.lat);
+          this.state.positionLong.push(value.long);
+        });
+        this.setState({ positionLat: positionLat });
       }
     }, 1000);
-  }
+  };
 
   render() {
-    let { positionLat, positionLong } = this.state
+    let { positionLat, positionLong } = this.state;
 
     return (
       <div>
-        <p>Map 1 this will show location and marker tootip hospital info </p>
+        {/* <p>Map 1 this will show location and marker tootip hospital info </p> */}
 
         <Map
-          google={ this.props.google }
-          onClick={ () => this.handleOnMapClicked() }
-          zoom={ 10 }
-          style={ this.state.style }
-          initialCenter={ { lat: 32.7773293, lng: -96.7963455 } } // <- INTI START POINT OF MAP LOCATION VIEW
+          google={this.props.google}
+          onClick={() => this.handleOnMapClicked()}
+          zoom={10}
+          style={this.state.style}
+          initialCenter={{ lat: 32.7773293, lng: -96.7963455 }} // <- INTI START POINT OF MAP LOCATION VIEW
         >
           <Marker
-            onClick={ this.handleOnMarkerClick }
-            title={ this.state.hospitalName[0] }
-            name={ this.state.hospitalName[0] }
-            position={ {lat: `${ positionLat[0] }`, lng: `${ positionLong[0] }`} }
+            onClick={this.handleOnMarkerClick}
+            title={this.state.hospitalName[0]}
+            name={this.state.hospitalName[0]}
+            position={{ lat: `${positionLat[0]}`, lng: `${positionLong[0]}` }}
           />
 
           <Marker
-            onClick={ this.handleOnMarkerClick }
-            title={ this.state.hospitalName[1] }
-            name={ this.state.hospitalName[1] }
-            position={ { lat:`${ positionLat[1] }`,  lng: `${ positionLong[1] }` } }
+            onClick={this.handleOnMarkerClick}
+            title={this.state.hospitalName[1]}
+            name={this.state.hospitalName[1]}
+            position={{ lat: `${positionLat[1]}`, lng: `${positionLong[1]}` }}
           />
 
           <Marker
-            onClick={ this.handleOnMarkerClick }
-            title={ this.state.hospitalName[2] }
-            name={ this.state.hospitalName[2] }
-            position={ { lat: `${ positionLat[2] }`, lng: `${ positionLong[2] }` } }
+            onClick={this.handleOnMarkerClick}
+            title={this.state.hospitalName[2]}
+            name={this.state.hospitalName[2]}
+            position={{ lat: `${positionLat[2]}`, lng: `${positionLong[2]}` }}
           />
 
           <InfoWindow
-            marker={ this.state.activeMarker }
-            visible={ this.state.showingInfoWindow }
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}
           >
             <div>
-              <h1>{ this.state.selectedPlace.name }</h1>
+              <h1>{this.state.selectedPlace.name}</h1>
             </div>
           </InfoWindow>
 

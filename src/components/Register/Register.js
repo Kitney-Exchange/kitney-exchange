@@ -2,25 +2,52 @@ import React, { Component } from "react";
 import Navbar from "../Navbar/Navbar";
 import { Button, FormGroup, Label, Input } from "reactstrap";
 import "./Register.css";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+
 
 class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      eligiblestatus: ""
+      screened: false,
+      kidney: false,
+      heartAttack: false,
+      bloodSugar: false,
+      cancer: false,
+      tobacco: false,
+      kidneyStones: false,
+      pregnant: false,
+      HIV: false,
+      accepted: ''
     };
-    // this.handleChange = this.handleChange.bind(this);
   }
 
-  // handleChange(e) {
-  //   if (e === "no") {
-  //     this.setState({ eligiblestatus: "ineligible" });
-  //   }
-  // }
+  componentDidUpdate = (prevProps, prevState) => {
+    if (this.state.accepted === 'true'){
+      return null
+    }
+    if (this.state !== prevState){
+    return this.isAccepted();}
+  }
+
+  handleChange = (e, val) => {
+    console.log(e)
+      this.setState({[e]: val});
+  }
+
+  isAccepted = () => {
+    console.log(Object.values(this.state)[0])
+    for (let i = 0; i < 9; i++)
+      if (Object.values(this.state)[i] === true){
+        console.log('hi buddy')
+        return this.setState({accepted: 'true'})
+      }
+    else { this.setState({accepted: ''})}
+    
+  }
 
   render() {
-    console.log(this.response);
+    console.log(this.state)
     return (
       <div className="register-page">
         <Navbar />
@@ -54,12 +81,12 @@ class Register extends Component {
                 <p>Have you been screened by the hospital?</p>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio" value="yes" /> Yes
+                    <Input type="radio" name="radio" value="screened" onClick={(e) => this.handleChange(e.target.value, false)}/> Yes
                   </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio" value="no" /> No
+                    <Input type="radio" name="radio" value="screened" onClick={(e) => this.handleChange(e.target.value, true)}/> No
                   </Label>
                 </FormGroup>
               </FormGroup>
@@ -77,12 +104,12 @@ class Register extends Component {
                 <br />
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio1" value="yes" /> Yes
+                    <Input type="radio" name="radio1" value="kidney" onClick={(e) => this.handleChange(e.target.value, true)} /> Yes
                   </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio1" value="no" /> No
+                    <Input type="radio" name="radio1" value="kidney" onClick={(e) => this.handleChange(e.target.value, false)} /> No
                   </Label>
                 </FormGroup>
               </FormGroup>
@@ -92,12 +119,12 @@ class Register extends Component {
                 <p>Have you ever had a heart attack?</p>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio2" value="yes" /> Yes
+                    <Input type="radio" name="radio2" value="heartAttack" onClick={(e) => this.handleChange(e.target.value, true)} /> Yes
                   </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio2" value="no" /> No
+                    <Input type="radio" name="radio2" value="heartAttack" onClick={(e) => this.handleChange(e.target.value, false)}  /> No
                   </Label>
                 </FormGroup>
               </FormGroup>
@@ -107,12 +134,12 @@ class Register extends Component {
                 <p>Do you have diabetes or high blood sugar?</p>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio3" value="yes" /> Yes
+                    <Input type="radio" name="radio3" value="bloodSugar" onClick={(e) => this.handleChange(e.target.value, true)} /> Yes
                   </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio3" value="no" /> No
+                    <Input type="radio" name="radio3" value="bloodSugar" onClick={(e) => this.handleChange(e.target.value, false)} /> No
                   </Label>
                 </FormGroup>
               </FormGroup>
@@ -122,12 +149,12 @@ class Register extends Component {
                 <p>Have you ever been diagnosed with cancer?</p>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio4" value="yes" /> Yes
+                    <Input type="radio" name="radio4" value="cancer" onClick={(e) => this.handleChange(e.target.value, true)}  /> Yes
                   </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio4" value="no" /> No
+                    <Input type="radio" name="radio4" value="cancer" onClick={(e) => this.handleChange(e.target.value, false)}  /> No
                   </Label>
                 </FormGroup>
               </FormGroup>
@@ -137,12 +164,12 @@ class Register extends Component {
                 <p>Have you ever used tobacco products?</p>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio5" value="yes" /> Yes
+                    <Input type="radio" name="radio5" value="tobacco" onClick={(e) => this.handleChange(e.target.value, true)}  /> Yes
                   </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio5" value="no" /> No
+                    <Input type="radio" name="radio5" value="tobacco" onClick={(e) => this.handleChange(e.target.value, false)}  /> No
                   </Label>
                 </FormGroup>
               </FormGroup>
@@ -152,12 +179,12 @@ class Register extends Component {
                 <p>Have you ever been diagnosed with kidney stones?</p>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio6" value="yes" /> Yes
+                    <Input type="radio" name="radio6" value="kidneyStones" onClick={(e) => this.handleChange(e.target.value, true)}  /> Yes
                   </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio6" value="no" /> No
+                    <Input type="radio" name="radio6" value="kidneyStones" onClick={(e) => this.handleChange(e.target.value, false)}  /> No
                   </Label>
                 </FormGroup>
               </FormGroup>
@@ -167,12 +194,12 @@ class Register extends Component {
                 <p>Are you pregnant?</p>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio7" value="yes" /> Yes
+                    <Input type="radio" name="radio7" value="pregnant" onClick={(e) => this.handleChange(e.target.value, true)}  /> Yes
                   </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio7" value="no" /> No
+                    <Input type="radio" name="radio7" value="pregnant" onClick={(e) => this.handleChange(e.target.value, false)}  /> No
                   </Label>
                 </FormGroup>
               </FormGroup>
@@ -182,23 +209,25 @@ class Register extends Component {
                 <p>Do you have a history of HIV?</p>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio8" value="yes" /> Yes
+                    <Input type="radio" name="radio8" value="HIV" onClick={(e) => this.handleChange(e.target.value, true)} /> Yes
                   </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="radio" name="radio8" value="no" /> No
+                    <Input type="radio" name="radio8" value="HIV" onClick={(e) => this.handleChange(e.target.value, false)} /> No
                   </Label>
                 </FormGroup>
               </FormGroup>
             </div>
           </div>
         </div>
-        <Link to="/RecipientForm">
-          <Button outline color="success">
+        <center onClick={()=> this.isAccepted()}>
+        <Link to={`/RegisterSubmit/:${this.state.accepted}`}>
+            <Button outline color="success">
             Submit
           </Button>
-        </Link>
+        </Link><br/>
+        </center>
       </div>
     );
   }
