@@ -7,10 +7,11 @@ module.exports = {
     },
     newProfile: (req, res, next) => {
         const db = req.app.get('db')
+        console.log(req.body)
         db.new_profile(
-            [req.body.hospital1, 
-            req.body.hospital2,
-            req.body.hospital3,
+            [req.body.hospital_1, 
+            req.body.hospital_2,
+            req.body.hospital_3,
             req.body.recipient_name,
             req.body.recipient_dob,
             req.body.recipient_age,
@@ -28,8 +29,8 @@ module.exports = {
             req.body.donor_blood_type,
             req.body.donor_email,
             req.body.recipient_email])
-        .then(response => res.status(200).send('Profile created!'))
-        .catch(response => res.status(500).send('Error has occurred'))
+        .then(response => res.status(200).send(response))
+        .catch(response => res.status(500).send(response))
     },
     modifyProfile: (req, res, next) => {
         const db = req.app.get('db');
