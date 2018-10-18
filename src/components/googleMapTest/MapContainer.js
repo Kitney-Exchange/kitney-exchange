@@ -38,7 +38,8 @@ class MapContainer extends Component {
     return this.props.hospitals.map((e, i) => {
       setTimeout(()=> localStorage.setItem('hospital_id', this.props.hospitals[i].hospital_id), 2000)
       return <Marker
-          onClick= {()=> {this.handleOnMarkerClick(this.props, this.marker, e); setTimeout(()=> localStorage.setItem('hospital_id', this.props.hospitals[i].hospital_id), 2000)}}
+          value={e.hospital_id}
+          onClick= {this.handleOnMarkerClick}
           title= {e.hospital_name}
           name= {e.hospital_name}
           position={{ lat: e.lat, lng: e.long }} />}
