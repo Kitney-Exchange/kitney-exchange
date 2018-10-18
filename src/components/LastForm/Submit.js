@@ -6,6 +6,7 @@ class Submit extends Component {
     super(props);
   }
 
+  addPair() {}
   render() {
     console.log(this.props);
     return (

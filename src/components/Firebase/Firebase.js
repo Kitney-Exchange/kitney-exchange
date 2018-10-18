@@ -28,10 +28,10 @@ class Firebase extends Component {
       .ref("images")
       .child(filename)
       .getDownloadURL()
-      .then(url => this.setState({ fileURL: url }))
-      .then(() => {
-        axios.post("/api/files", { url: this.state.fileURL });
-      });
+      .then(url => this.setState({ fileURL: url }));
+    // .then(() => {
+    //   axios.post("/api/files", { url: this.state.fileURL });
+    // });
   };
 
   render() {
