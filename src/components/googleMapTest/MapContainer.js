@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import AutoCompleteMap from "./AutoCompleteMap";
 import { getHospitals } from "../../dux/reducer";
+// import MarkerMap from './MarkerMap';
 
 const GOOGLE_MAP_KEY = process.env.REACT_APP_GOOGLE_MAP_KEY;
 
@@ -13,9 +14,6 @@ class MapContainer extends Component {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
-      hospitalName: [],
-      positionLat: [],
-      positionLong: [],
       style: { width: "40%", height: "40%" }
     };
     this.handleOnMarkerClick = this.handleOnMarkerClick.bind(this);
@@ -23,17 +21,31 @@ class MapContainer extends Component {
 
   componentDidMount() {
     this.props.getHospitals();
-    this.gimmeName();
   }
 
   handleOnMarkerClick(props, marker, e) {
-    // console.log("props", props);
+    console.log("props", props);
+    console.log("e:", e)
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true
     });
   }
+
+  // <Jordan> Creates Markers for the Google Maps display //
+  markerMap = () => {
+    return this.props.hospitals.map((e, i) => {
+      setTimeout(()=> localStorage.setItem('hospital_id', this.props.hospitals[i].hospital_id), 2000)
+      return <Marker
+          onClick= {()=> {this.handleOnMarkerClick(this.props, this.marker, e); setTimeout(()=> localStorage.setItem('hospital_id', this.props.hospitals[i].hospital_id), 2000)}}
+          title= {e.hospital_name}
+          name= {e.hospital_name}
+          position={{ lat: e.lat, lng: e.long }} />}
+      )
+      
+  }
+  // </Jordan> //
 
   handleOnMapClicked(props) {
     // console.log('props', props)
@@ -42,26 +54,7 @@ class MapContainer extends Component {
     }
   }
 
-  // LOOP THROUGH HOSPITAL DATA AND STORE LOCAL STATE TO DISPLAY INFO
-  gimmeName = () => {
-    setTimeout(() => {
-      // console.log('this.props.hospitals', this.props.hospitals)
-      let positionLat = [];
-      if (this.props.hospitals) {
-        this.props.hospitals.map((value, index) => {
-          // console.log('VALUE: ', value)
-          this.state.hospitalName.push(value.hospital_name);
-          positionLat.push(value.lat);
-          this.state.positionLong.push(value.long);
-        });
-        this.setState({ positionLat: positionLat });
-      }
-    }, 1000);
-  };
-
   render() {
-    let { positionLat, positionLong } = this.state;
-
     return (
       <div>
         {/* <p>Map 1 this will show location and marker tootip hospital info </p> */}
@@ -73,26 +66,7 @@ class MapContainer extends Component {
           style={this.state.style}
           initialCenter={{ lat: 32.7773293, lng: -96.7963455 }} // <- INTI START POINT OF MAP LOCATION VIEW
         >
-          <Marker
-            onClick={this.handleOnMarkerClick}
-            title={this.state.hospitalName[0]}
-            name={this.state.hospitalName[0]}
-            position={{ lat: `${positionLat[0]}`, lng: `${positionLong[0]}` }}
-          />
-
-          <Marker
-            onClick={this.handleOnMarkerClick}
-            title={this.state.hospitalName[1]}
-            name={this.state.hospitalName[1]}
-            position={{ lat: `${positionLat[1]}`, lng: `${positionLong[1]}` }}
-          />
-
-          <Marker
-            onClick={this.handleOnMarkerClick}
-            title={this.state.hospitalName[2]}
-            name={this.state.hospitalName[2]}
-            position={{ lat: `${positionLat[2]}`, lng: `${positionLong[2]}` }}
-          />
+          {this.markerMap()}
 
           <InfoWindow
             marker={this.state.activeMarker}
@@ -100,6 +74,7 @@ class MapContainer extends Component {
           >
             <div>
               <h1>{this.state.selectedPlace.name}</h1>
+              {/* <span>{this.props.hospital[0].hospital_address}</span> */}
               <button>Is this real life?</button>
             </div>
           </InfoWindow>
