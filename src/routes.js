@@ -6,7 +6,9 @@ import Unmatched from "./components/Unmatched/unmatched";
 import MatchedPage from "./components/Matched/matched";
 import RecipientForm from "./components/RecipientForm/RecipientForm";
 import DonorForm from "./components/DonorForm/DonorForm";
-import Sorry from './components/Register/Sorry';
+import LastForm from "./components/LastForm/LastForm";
+import Sorry from "./components/Register/Sorry";
+import Submit from "./components/LastForm/Submit";
 
 export default (
   <Switch>
@@ -16,13 +18,17 @@ export default (
     <Route path="/matched" component={MatchedPage} />
     <Route path="/RecipientForm" component={RecipientForm} />
     <Route path="/DonorForm" component={DonorForm} />
-    <Route path="/registerSubmit/:accepted" render={(props)=> (
-      props.match.params.accepted === ":true" ? (
-        console.log(props),
-        <Redirect to="/RecipientForm"/>
-      ) : (
-        <Sorry/>
-      )
-    )}/>
+    <Route path="/Form" component={LastForm} />
+    <Route path="/Submit" component={Submit} />
+    <Route
+      path="/registerSubmit/:accepted"
+      render={props =>
+        props.match.params.accepted === ":true" ? (
+          (console.log(props), <Redirect to="/RecipientForm" />)
+        ) : (
+          <Sorry />
+        )
+      }
+    />
   </Switch>
 );
