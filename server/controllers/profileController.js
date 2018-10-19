@@ -35,10 +35,12 @@ module.exports = {
   },
   modifyProfile: (req, res, next) => {
     const db = req.app.get("db");
+    console.log(req.body)
+
     db.modify_profile([
-      req.body.hospital1,
-      req.body.hospital2,
-      req.body.hospital3,
+      req.body.hospital_1,
+      req.body.hospital_2,
+      req.body.hospital_3,
       req.body.recipient_name,
       req.body.recipient_dob,
       req.body.recipient_age,
@@ -58,8 +60,8 @@ module.exports = {
       req.body.donor_email,
       req.body.recipient_email
     ])
-      .then(response => res.status(200).send("Profile Updated!"))
-      .catch(response => res.status(500).send("An error has occurred"));
+      .then(response => res.status(200).send(response))
+      .catch(response => res.status(500).send(console.log(response)));
   },
   deleteProfile: (req, res, next) => {
     const db = req.app.get("db");
