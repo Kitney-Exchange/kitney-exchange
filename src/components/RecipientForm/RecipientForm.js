@@ -1,16 +1,6 @@
 import React, { Component } from "react";
-import axios from 'axios';
-import {
-  Button,
-  Label,
-  Input,
-  Col,
-  Form,
-  FormGroup,
-  FormText,
-  Container,
-  Row
-} from "reactstrap";
+
+import { Button, Label, Input, Col, Form, FormGroup } from "reactstrap";
 import Navbar from "../Navbar/Navbar";
 import { Link } from "react-router-dom";
 
@@ -29,31 +19,6 @@ class RecipientForm extends Component {
       r_dialysis: ""
     };
   }
-
-  // addPair() {
-  //   let pairArray = this.state.pair;
-  //   pairArray.push({
-  //     r_name: this.state.r_name,
-  //     r_email: this.state.r_email,
-  //     r_dob: this.state.r_dob,
-  //     r_age: this.state.r_age,
-  //     r_weight: this.state.r_weight,
-  //     r_height: this.state.r_height,
-  //     r_history: this.state.r_history,
-  //     r_blood_type: this.state.r_blood_type
-  //   });
-  //   this.setState({ pair: pairArray });
-  //   axios.post("/api/profile", {
-  //     r_name: this.state.r_name,
-  //     r_email: this.state.r_email,
-  //     r_dob: this.state.r_dob,
-  //     r_age: this.state.r_age,
-  //     r_weight: this.state.r_weight,
-  //     r_height: this.state.r_height,
-  //     r_history: this.state.r_history,
-  //     r_blood_type: this.state.r_blood_type
-  //   });
-  // }
 
   render() {
     console.log(this.state);
@@ -185,29 +150,32 @@ class RecipientForm extends Component {
                     />
                   </Col>
                 </FormGroup>
-              <FormGroup row>
-                <Label for="q9" sm={2}>
-                  Years of Dialysis Treatment
-                </Label>
-                <Col sm={8}>
-                  <Input
-                    type="dialysis"
-                    name="dialysis"
-                    id="dialysisinput"
-                    placeholder=""
-                    onChange={e =>
-                      this.setState({ r_dialysis: e.target.value })
-                    }
-                  />
-                </Col>
-              </FormGroup>
+                <FormGroup row>
+                  <Label for="q9" sm={2}>
+                    Years of Dialysis Treatment
+                  </Label>
+                  <Col sm={8}>
+                    <Input
+                      type="dialysis"
+                      name="dialysis"
+                      id="dialysisinput"
+                      placeholder=""
+                      onChange={e =>
+                        this.setState({ r_dialysis: e.target.value })
+                      }
+                    />
+                  </Col>
+                </FormGroup>
               </Form>
             </div>
             <div className="recipient-button">
-              <Link to={{ pathname: "/DonorForm", state: {recipient: this.state}}}>
-                <Button>
-                  Next
-                </Button>
+              <Link
+                to={{
+                  pathname: "/DonorForm",
+                  state: { recipient: this.state }
+                }}
+              >
+                <Button>Next</Button>
               </Link>
             </div>
           </div>
