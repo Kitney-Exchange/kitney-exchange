@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import "./Navbar.css";
-import care from "../../images/care.png";
+// import care from "../../images/care.png";
 import { Link } from "react-router-dom";
 
 class Navbar extends Component {
-  constructor(props) {
-    super(props);
-  }
   //will be updating this
   render() {
     return (
