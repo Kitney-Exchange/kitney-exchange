@@ -1,0 +1,19 @@
+.mapDisplay {
+    display: flex;
+    margin: 10px 10px 10px;
+    flex-wrap: nowrap;
+    border: 1px solid black;
+    position: relative;
+    height: 500px;
+    width: 600px;
+    flex-direction: column;
+
+}
+
+.thegooglemap {
+    display: inline;
+    position: fixed;
+    margin: 10px 10px 10px 10px;
+    height: 500px;
+    width: 500px;
+}

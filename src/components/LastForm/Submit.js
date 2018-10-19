@@ -5,7 +5,11 @@ import { getProfiles } from "../../dux/reducer";
 import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
 import "./Submit.css";
+import { withSwalInstance } from "sweetalert2-react";
+import swal from "sweetalert2";
 import axios from "axios";
+
+const SweetAlert = withSwalInstance(swal);
 
 class Submit extends Component {
   constructor(props) {
@@ -28,7 +32,8 @@ class Submit extends Component {
       r_height: "",
       r_history: "",
       r_blood_type: "",
-      r_dialysis: ""
+      r_dialysis: "",
+      show: false
     };
   }
   ç;
@@ -63,7 +68,16 @@ class Submit extends Component {
         <div className="submit-navbar">
           <Navbar />
         </div>
+
         <div className="header-box">
+          <div className="progressbar">
+            <ul id="progressbar">
+              <li class="active">Preliminary Questions</li>
+              <li>Recipient Information</li>
+              <li>Donor Information</li>
+              <li>Submit</li>
+            </ul>
+          </div>
           <p id="info-text">
             Please review and confirm all of information submitted.
             <br />
@@ -73,117 +87,182 @@ class Submit extends Component {
         </div>
 
         <div className="main-inputbox">
-          <p>Donor Information</p>
+          <h2>Donor Information</h2>
+          <div className="inputbox">
+            <p>Name</p>
+            <input
+              name="d_name"
+              id="editinput"
+              defaultValue={this.state.user.donor_name}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Age</p>
+            <input
+              id="editinput"
+              name="d_age"
+              defaultValue={this.state.user.donor_age}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Height</p>
+            <input
+              id="editinput"
+              name="d_height"
+              defaultValue={this.state.user.donor_height}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Weight</p>
+            <input
+              id="editinput"
+              name="d_weight"
+              defaultValue={this.state.user.donor_weight}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Date of Birth</p>
+            <input
+              id="editinput"
+              name="d_dob"
+              defaultValue={this.state.user.donor_dob}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Blood Type</p>
+            <input
+              id="editinput"
+              name="d_blood_type"
+              defaultValue={this.state.user.donor_blood_type}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Medical History</p>
+            <input
+              id="editinput"
+              name="d_history"
+              defaultValue={this.state.user.donor_history}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Email</p>
+            <input
+              id="editinput"
+              name="d_email"
+              defaultValue={this.state.user.donor_email}
+              onChange={this.handleChange}
+            />
+          </div>
 
-          <input
-            name="d_name"
-            id="editinput"
-            defaultValue={this.state.user.donor_name}
-            onChange={this.handleChange}
-          />
-          <input
-            id="editinput"
-            name="d_age"
-            defaultValue={this.state.user.donor_age}
-            onChange={this.handleChange}
-          />
-          <input
-            id="editinput"
-            name="d_height"
-            defaultValue={this.state.user.donor_height}
-            onChange={this.handleChange}
-          />
-          <input
-            id="editinput"
-            name="d_weight"
-            defaultValue={this.state.user.donor_weight}
-            onChange={this.handleChange}
-          />
-          <input
-            id="editinput"
-            name="d_dob"
-            defaultValue={this.state.user.donor_dob}
-            onChange={this.handleChange}
-          />
-          <input
-            id="editinput"
-            name="d_blood_type"
-            defaultValue={this.state.user.donor_blood_type}
-            onChange={this.handleChange}
-          />
-          <input
-            id="editinput"
-            name="d_history"
-            defaultValue={this.state.user.donor_history}
-            onChange={this.handleChange}
-          />
-          <input
-            id="editinput"
-            name="d_email"
-            defaultValue={this.state.user.donor_email}
-            onChange={this.handleChange}
-          />
-          <p>Recipient Information</p>
-
-          <input
-            id="editinput"
-            name="r_name"
-            defaultValue={this.state.user.recipient_name}
-            onChange={this.handleChange}
-          />
-          <input
-            id="editinput"
-            name="r_age"
-            defaultValue={this.state.user.recipient_age}
-            onChange={this.handleChange}
-          />
-          <input
-            id="editinput"
-            name="r_height"
-            defaultValue={this.state.user.recipient_height}
-            onChange={this.handleChange}
-          />
-          <input
-            id="editinput"
-            name="r_weight"
-            defaultValue={this.state.user.recipient_weight}
-            onChange={this.handleChange}
-          />
-          <input
-            id="editinput"
-            name="r_dob"
-            defaultValue={this.state.user.recipient_dob}
-            onChange={this.handleChange}
-          />
-          <input
-            id="editinput"
-            name="r_blood_type"
-            defaultValue={this.state.user.recipient_blood_type}
-            onChange={this.handleChange}
-          />
-          <input
-            id="editinput"
-            name="r_history"
-            defaultValue={this.state.user.recipient_history}
-            onChange={this.handleChange}
-          />
-          <input
-            id="editinput"
-            name="r_email"
-            defaultValue={this.state.user.recipient_email}
-            onChange={this.handleChange}
-          />
-          <input
-            id="editinput"
-            name="r_dialysis"
-            defaultValue={this.state.user.recipient_dialysis}
-            onChange={this.handleChange}
-          />
+          <h2>Recipient Information</h2>
+          <div className="inputbox">
+            <p>Name</p>
+            <input
+              id="editinput"
+              name="r_name"
+              defaultValue={this.state.user.recipient_name}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Age</p>
+            <input
+              id="editinput"
+              name="r_age"
+              defaultValue={this.state.user.recipient_age}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Height</p>
+            <input
+              id="editinput"
+              name="r_height"
+              defaultValue={this.state.user.recipient_height}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Weight</p>
+            <input
+              id="editinput"
+              name="r_weight"
+              defaultValue={this.state.user.recipient_weight}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Date of Birth</p>
+            <input
+              id="editinput"
+              name="r_dob"
+              defaultValue={this.state.user.recipient_dob}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Blood Type</p>
+            <input
+              id="editinput"
+              name="r_blood_type"
+              defaultValue={this.state.user.recipient_blood_type}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Medical History</p>
+            <input
+              id="editinput"
+              name="r_history"
+              defaultValue={this.state.user.recipient_history}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Email</p>
+            <input
+              id="editinput"
+              name="r_email"
+              defaultValue={this.state.user.recipient_email}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Years Of Dialysis</p>
+            <input
+              id="editinput"
+              name="r_dialysis"
+              defaultValue={this.state.user.recipient_dialysis}
+              onChange={this.handleChange}
+            />
+          </div>
         </div>
+
         <div className="submit-button">
-          <button onClick={() => this.handleSave(this.state.user.pair_id)}>
+          <button
+            onClick={() => {
+              this.setState({ show: true });
+            }}
+          >
+            {/* <button onClick={() => this.handleSave(this.state.user.pair_id)}> */}
             Submit
           </button>
+          <SweetAlert
+            show={this.state.show}
+            confirmButtonColor="#b9decc"
+            title="Thank you for applying!"
+            text="Please wait shortly for a confirmation email."
+            onConfirm={() => {
+              this.setState({ show: false });
+            }}
+          />
         </div>
       </div>
     );

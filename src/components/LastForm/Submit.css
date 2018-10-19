@@ -1,19 +1,39 @@
 .submitpage {
   display: flex;
   flex-direction: column;
+  background-color: rgb(217, 157, 148);
 }
 
 .main-inputbox {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  justify-content: center;
+  justify-content: space-between;
+  width: 600px;
+
   padding: 10px;
   margin: auto;
+  -webkit-box-shadow: 2px 6px 46px 6px rgba(133, 129, 133, 1);
+  -moz-box-shadow: 2px 6px 46px 6px rgba(133, 129, 133, 1);
+  box-shadow: 2px 6px 46px 6px rgba(133, 129, 133, 1);
+  background-color: white;
+  padding: 50px;
+  margin-top: 40px;
 }
 
+.inputbox {
+  display: flex;
+  flex-direction: row;
+}
 #editinput {
   padding: 10px;
   margin: 10px;
+  /* border: none; */
+  /* border-bottom: 1px solid rgb(157, 157, 157); */
+  border-radius: 10px solid rgb(157, 157, 157);
+  width: 300px;
+  font-family: "Lato", sans-serif;
+  font-size: 15px;
 }
 
 .header-box {
@@ -23,9 +43,65 @@
   margin: auto;
   width: 500px;
   font-family: "Lato", sans-serif;
-  color: rgb(47, 127, 85);
+  color: rgb(255, 255, 255);
   font-size: 20px;
   letter-spacing: 0.5px;
-  border-bottom: solid 1px rgb(47, 127, 85);
+  border-bottom: solid 1px rgb(255, 255, 255);
   padding-bottom: 30px;
+  margin-bottom: 50px;
+}
+
+#progressbar {
+  display: flex;
+
+  justify-content: center;
+  margin-bottom: 20px;
+  overflow: hidden;
+
+  counter-reset: step;
+}
+#progressbar li {
+  font-family: "Lato", sans-serif;
+  list-style-type: none;
+  color: rgb(139, 37, 17);
+  text-transform: uppercase;
+  font-size: 9px;
+  width: 30%;
+  float: left;
+  position: relative;
+}
+#progressbar li:before {
+  content: counter(step);
+  counter-increment: step;
+  width: 25px;
+  height: 25px;
+  line-height: 20px;
+  display: block;
+  font-family: "Lato", sans-serif;
+  font-size: 12px;
+  color: rgb(139, 37, 17);
+  background: rgb(255, 255, 255);
+  border-radius: 3px;
+  margin: 0 auto 5px auto;
+  z-index: 5;
+}
+/*progressbar lines*/
+#progressbar li:after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: rgb(120, 18, 18);
+  position: absolute;
+  left: -50%;
+  top: 9px;
+  z-index: -1;
+}
+#progressbar li:first-child:after {
+  content: none;
+}
+/* active page */
+#progressbar li.active:before,
+#progressbar li.active:after {
+  background: #7a3224;
+  color: white;
 }
