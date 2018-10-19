@@ -1,1 +1,1 @@
-SELECT * FROM profile ORDER BY pair_id;
+SELECT *, TO_CHAR(donor_dob :: DATE, 'Mon dd, yyyy') as donor_dob, TO_CHAR(recipient_dob :: DATE, 'Mon dd, yyyy') as recipient_dob  FROM profile ORDER BY pair_id;
