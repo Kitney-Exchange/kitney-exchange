@@ -14,6 +14,7 @@ class Submit extends Component {
       user: ""
     };
   }
+  ç;
 
   componentDidMount() {
     this.props.getProfiles();
