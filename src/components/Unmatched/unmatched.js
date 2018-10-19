@@ -4,14 +4,12 @@ import 'react-table/react-table.css'
 import {getProfiles} from '../../dux/reducer';
 import {connect} from 'react-redux';
 import axios from 'axios';
-
+import MagicButton from './magicButton';
 
 class UnmatchedPage extends Component {
     
 componentDidMount(){
     this.props.getProfiles();
-    
-
 }
 
 renderEditable = (cellInfo) => {
@@ -207,8 +205,9 @@ return (
           ]}
           defaultPageSize={20}
           className="-striped -highlight"
-
+          
           />
+          <button><MagicButton data={ data } />Magic Button</button>
       </div>
        )
 
