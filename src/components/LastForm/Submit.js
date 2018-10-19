@@ -11,7 +11,24 @@ class Submit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: ""
+      user: {},
+      d_name: "",
+      d_email: "",
+      d_dob: "",
+      d_age: "",
+      d_weight: "",
+      d_height: "",
+      d_histody: "",
+      d_blood_type: "",
+      r_name: "",
+      r_email: "",
+      r_dob: "",
+      r_age: "",
+      r_weight: "",
+      r_height: "",
+      r_history: "",
+      r_blood_type: "",
+      r_dialysis: ""
     };
   }
   ç;
@@ -28,12 +45,19 @@ class Submit extends Component {
     }
   };
 
-  //   handleChange(e) {
-  //     console.log(e.target.name);
-  //     this.setState({});
-  //   }
+  handleChange = e => {
+    console.log(e.target.value);
+    console.log(e.target.name);
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  //   handleSave = id => {
+  //     axios.put("/api/profile", id);
+  //   };
   render() {
     console.log(this.state);
+
+    // console.log(this.state.user.pair_id);
     return (
       <div className="submitpage">
         <div className="submit-navbar">
@@ -52,92 +76,114 @@ class Submit extends Component {
           <p>Donor Information</p>
 
           <input
+            name="d_name"
             id="editinput"
-            type="d_name"
-            placeholder={this.state.user.donor_name}
+            defaultValue={this.state.user.donor_name}
             onChange={this.handleChange}
           />
           <input
             id="editinput"
-            type="d_age"
-            placeholder={this.state.user.donor_age}
+            name="d_age"
+            defaultValue={this.state.user.donor_age}
+            onChange={this.handleChange}
           />
           <input
             id="editinput"
-            type="d_height"
-            placeholder={this.state.user.donor_height}
+            name="d_height"
+            defaultValue={this.state.user.donor_height}
+            onChange={this.handleChange}
           />
           <input
             id="editinput"
-            type="d_weight"
-            placeholder={this.state.user.donor_weight}
+            name="d_weight"
+            defaultValue={this.state.user.donor_weight}
+            onChange={this.handleChange}
           />
           <input
             id="editinput"
-            type="d_dob"
-            placeholder={this.state.user.donor_dob}
+            name="d_dob"
+            defaultValue={this.state.user.donor_dob}
+            onChange={this.handleChange}
           />
           <input
             id="editinput"
-            type="d_boodtype"
-            placeholder={this.state.user.donor_blood_type}
+            name="d_blood_type"
+            defaultValue={this.state.user.donor_blood_type}
+            onChange={this.handleChange}
           />
           <input
             id="editinput"
-            type="d_history"
-            placeholder={this.state.user.donor_history}
+            name="d_history"
+            defaultValue={this.state.user.donor_history}
+            onChange={this.handleChange}
           />
           <input
             id="editinput"
-            type="d_email"
-            placeholder={this.state.user.donor_email}
+            name="d_email"
+            defaultValue={this.state.user.donor_email}
+            onChange={this.handleChange}
           />
           <p>Recipient Information</p>
 
           <input
             id="editinput"
-            type="r_name"
-            placeholder={this.state.user.recipient_name}
+            name="r_name"
+            defaultValue={this.state.user.recipient_name}
             onChange={this.handleChange}
           />
           <input
             id="editinput"
-            type="r_age"
-            placeholder={this.state.user.recipient_age}
+            name="r_age"
+            defaultValue={this.state.user.recipient_age}
+            onChange={this.handleChange}
           />
           <input
             id="editinput"
-            type="r_height"
-            placeholder={this.state.user.recipient_height}
+            name="r_height"
+            defaultValue={this.state.user.recipient_height}
+            onChange={this.handleChange}
           />
           <input
             id="editinput"
-            type="r_weight"
-            placeholder={this.state.user.recipient_weight}
+            name="r_weight"
+            defaultValue={this.state.user.recipient_weight}
+            onChange={this.handleChange}
           />
           <input
             id="editinput"
-            type="r_dob"
-            placeholder={this.state.user.recipient_dob}
+            name="r_dob"
+            defaultValue={this.state.user.recipient_dob}
+            onChange={this.handleChange}
           />
           <input
             id="editinput"
-            type="r_boodtype"
-            placeholder={this.state.user.recipient_blood_type}
+            name="r_blood_type"
+            defaultValue={this.state.user.recipient_blood_type}
+            onChange={this.handleChange}
           />
           <input
             id="editinput"
-            type="r_history"
-            placeholder={this.state.user.recipient_history}
+            name="r_history"
+            defaultValue={this.state.user.recipient_history}
+            onChange={this.handleChange}
           />
           <input
             id="editinput"
-            type="r_email"
-            placeholder={this.state.user.recipient_email}
+            name="r_email"
+            defaultValue={this.state.user.recipient_email}
+            onChange={this.handleChange}
+          />
+          <input
+            id="editinput"
+            name="r_dialysis"
+            defaultValue={this.state.user.recipient_dialysis}
+            onChange={this.handleChange}
           />
         </div>
         <div className="submit-button">
-          <Button>Submit</Button>
+          <button onClick={() => this.handleSave(this.state.user.pair_id)}>
+            Submit
+          </button>
         </div>
       </div>
     );
