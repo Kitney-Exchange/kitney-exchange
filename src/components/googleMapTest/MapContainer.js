@@ -90,6 +90,13 @@ class MapContainer extends Component {
 }
   }
 
+  displayHospitals = () => {
+    const newArr = this.state.hospitalChoice
+    return <div>
+
+    </div>
+  }
+
   // addFavHospital = (hospital) => {
 
   // }
@@ -143,7 +150,9 @@ class MapContainer extends Component {
           {this.displayChosenHospital(this.state.selectedPlace, this.addButton, this.deleteButton)}
           </div>
         </Map>
-        
+        <div>
+
+        </div>
       </div>
     );
   }
