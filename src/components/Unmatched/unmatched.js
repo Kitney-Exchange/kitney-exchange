@@ -5,8 +5,7 @@ import {getProfiles} from '../../dux/reducer';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import MagicButton from './magicButton';
-import NavBar from '../Navbar/Navbar';
-
+import AdminNavbar from '../Navbar/AdminNavbar';
 class UnmatchedPage extends Component {
     
     
