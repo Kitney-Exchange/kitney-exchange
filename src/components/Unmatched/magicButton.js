@@ -10,7 +10,6 @@ class MagicButton extends Component {
     this.ageArrayFinder = this.ageArrayFinder.bind(this);
   }
 
-
   // Handle age limit within 10 years apart
   ageArrayFinder(userData, age) {
     let notAgeRangeMatch = []
