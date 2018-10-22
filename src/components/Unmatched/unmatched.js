@@ -69,7 +69,7 @@ render() {
 
 return (
       <div>
-          <NavBar/>
+          <AdminNavbar/>
           <MagicButton data={ data }/>
           <ReactTable 
           data = {data}
