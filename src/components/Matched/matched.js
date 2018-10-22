@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {getMatched, getProfiles} from '../../dux/reducer';
 import ReactTable from 'react-table';
 import {connect} from 'react-redux';
+import AdminNavbar from '../Navbar/AdminNavbar';
+
 
 class MatchedPage extends Component {
 
@@ -54,7 +56,9 @@ render() {
 if (this.props.matched)
 var data = this.props.matched
 return (
-      <div> <h1>
+      <div>
+          <AdminNavbar/>
+           <h1>
           Matched Page
           </h1>
           <ReactTable

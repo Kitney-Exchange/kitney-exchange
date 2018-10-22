@@ -4,6 +4,7 @@ import {getHospitals} from '../../dux/reducer';
 import ReactTable from 'react-table';
 import axios from 'axios';
 import NewHospital from './NewHospital';
+import AdminNavbar from '../Navbar/AdminNavbar';
 
 class Hospitals extends Component {
 
@@ -54,6 +55,7 @@ console.log(this.props.hospitals)
 
 return (
       <div>
+          <AdminNavbar/>
           <NewHospital/>
           <br/>
           <ReactTable
@@ -67,7 +69,13 @@ return (
               {
                 Header: "Hospital Name",
                 accessor: "hospital_name",
-                Cell: this.renderEditable
+                Cell: this.renderEditable,
+                className: "columncolor",
+                minWidth: 400,
+                // style: {
+                //     height: "10%",
+                //     width: "100%"
+                // }
             },
             {
                 Header: "Hospital Phone",
@@ -102,6 +110,7 @@ return (
           ]}
           defaultPageSize={20}
           className="-striped -highlight"
+          resizable= "true"
 
           />
 

@@ -4,6 +4,7 @@
   width: 100%;
   display: flex;
   flex-direction: row;
+  flex-direction: wrap;
   justify-content: space-between;
   justify-content: flex-start;
 
@@ -24,4 +25,10 @@
 .nav-homelink {
   color: white;
   letter-spacing: 1px;
+  margin: 0 auto;
+  padding: 0px 20px 0px 20px;
+}
+
+#link-dec {
+  text-decoration: none;
 }
