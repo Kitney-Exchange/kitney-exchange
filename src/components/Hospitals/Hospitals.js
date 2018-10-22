@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import {getHospitals} from '../../dux/reducer';
 import ReactTable from 'react-table';
 import axios from 'axios';
+import NewHospital from './NewHospital';
+import AdminNavbar from '../Navbar/AdminNavbar';
 
 class Hospitals extends Component {
 
@@ -17,6 +19,17 @@ class Hospitals extends Component {
         .catch(err=> alert(err));
     }
 
+    handleSave = (info) => {
+        axios.put('/api/hospitals', {name: info.hospital_name,
+            phone: info.hospital_phone, 
+            address: info.hospital_address, 
+            lat: info.lat,
+            long: info.log,
+            hospital_id: info.hospital_id})
+            .then(response => alert('Hospital Updated!'))
+            .catch(err=> alert(err));
+    }
+
     renderEditable = (cellInfo) => {
         return(
             <div
@@ -24,13 +37,13 @@ class Hospitals extends Component {
                 suppressContentEditableWarning
                 onBlur={e=> {
                     
-                    const data = [...this.props.schedule];
+                    const data = [...this.props.hospitals];
                     data[cellInfo.index][cellInfo.column.id] = e.target.innerHTML;
                 }
             }
             
                 dangerouslySetInnerHTML={{
-                    __html: this.props.schedule[cellInfo.index][cellInfo.column.id]
+                    __html: this.props.hospitals[cellInfo.index][cellInfo.column.id]
                 }
             }
             />
@@ -38,14 +51,15 @@ class Hospitals extends Component {
     }
 
 render() {
-    if (this.props.hospitals){
-        const data = this.props.Hospitals
-    }
+console.log(this.props.hospitals)
 
 return (
       <div>
+          <AdminNavbar/>
+          <NewHospital/>
+          <br/>
           <ReactTable
-          data= {this.data}
+          data= {this.props.hospitals}
           columns={[
               {
                   Header: "Hospital ID",
@@ -55,11 +69,17 @@ return (
               {
                 Header: "Hospital Name",
                 accessor: "hospital_name",
-                Cell: this.renderEditable
+                Cell: this.renderEditable,
+                className: "columncolor",
+                minWidth: 400,
+                // style: {
+                //     height: "10%",
+                //     width: "100%"
+                // }
             },
             {
                 Header: "Hospital Phone",
-                accessor: "hospital_Phone",
+                accessor: "hospital_phone",
                 Cell: this.renderEditable
             },
             {
@@ -77,7 +97,20 @@ return (
                 accessor: "long",
                 Cell: this.renderEditable
             },
+            {
+                Header: '',
+                Cell: row => (
+                    <div>
+                        <button onClick={()=> this.handleSave(row.original)}>Save</button>
+                        <button onClick={()=> this.handleDelete(row.original)}>Delete</button>
+                    </div>
+                
+                ),
+            }
           ]}
+          defaultPageSize={20}
+          className="-striped -highlight"
+          resizable= "true"
 
           />
 

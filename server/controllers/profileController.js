@@ -66,7 +66,7 @@ module.exports = {
   deleteProfile: (req, res, next) => {
     const db = req.app.get("db");
     db.delete_profile(req.params.pair_id)
-      .then(response => res.status(200).send("Profile deleted!"))
-      .catch(response => res.status(500).send("Error has occurred"));
+      .then(response => res.status(200).send(console.log(response)))
+      .catch(response => res.status(500).send(console.log(response)));
   }
 };

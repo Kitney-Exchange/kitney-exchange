@@ -1,6 +1,7 @@
-INSERT INTO hospitals
-(hopsital_name,
+INSERT INTO hospital
+(hospital_name,
 hospital_phone,
-hospital_address
-)
-VALUES ($1, $2, $3);
+hospital_address,
+lat,
+long)
+VALUES ($1, $2, $3, $4, $5);

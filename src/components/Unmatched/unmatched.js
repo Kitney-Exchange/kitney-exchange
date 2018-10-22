@@ -5,7 +5,7 @@ import {getProfiles} from '../../dux/reducer';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import MagicButton from './magicButton';
-
+import AdminNavbar from '../Navbar/AdminNavbar';
 class UnmatchedPage extends Component {
     
 componentDidMount(){
@@ -30,9 +30,9 @@ renderEditable = (cellInfo) => {
 }
 
 handleSave = (info) => {
-    console.log({hospital1: info.hospital_1, 
-        hospital2: info.hospital_2,
-        hospital3: info.hospital_3,
+    axios.put('/api/profile', {hospital_1: info.hospital_1, 
+        hospital_2: info.hospital_2,
+        hospital_3: info.hospital_3,
         recipient_name: info.recipient_name,
         recipient_dob: info.recipient_dob,
         recipient_age: info.recipient_age,
@@ -48,26 +48,10 @@ handleSave = (info) => {
         donor_height: info.donor_height,
         donor_history: info.donor_history,
         donor_blood_type: info.donor_blood_type,
-        pair_id: info.pair_id})
-    axios.put('/api/profile', {hospital1: info.hospital_1, 
-        hospital2: info.hospital_2,
-        hospital3: info.hospital_3,
-        recipient_name: info.recipient_name,
-        recipient_dob: info.recipient_dob,
-        recipient_age: info.recipient_age,
-        recipient_weight: info.recipient_weight,
-        recipient_height: info.recipient_height,
-        recipient_history: info.recipient_history,
-        recipient_dialysis: info.recipient_dialysis,
-        recipient_blood_type: info.recipient_blood_type,
-        donor_name: info.donor_name,
-        donor_dob: info.donor_dob,
-        donor_age: info.donor_age,
-        donor_weight: info.donor_weight,
-        donor_height: info.donor_height,
-        donor_history: info.donor_history,
-        donor_blood_type: info.donor_blood_type,
-        pair_id: info.pair_id})
+        pair_id: info.pair_id,
+        donor_email: info.donor_email,
+        recipient_email: info.recipient_email
+    })
         .then(response=> alert("Profile Update!"))
         .catch(err=> alert(err));
 }
@@ -84,6 +68,16 @@ render() {
 
 return (
       <div>
+          <AdminNavbar/>
+          <button
+          style=
+          {{
+              margin: "0 auto",
+              radius: "5px",
+              border: "1px solid black"
+
+        }} 
+        ><MagicButton data={ data }/>Magic Button</button>
           <ReactTable 
           data = {data}
           columns={[
