@@ -8,6 +8,7 @@ import MagicButton from './magicButton';
 import AdminNavbar from '../Navbar/AdminNavbar';
 class UnmatchedPage extends Component {
     
+    
 componentDidMount(){
     this.props.getProfiles();
 }
@@ -62,22 +63,14 @@ handleDelete = (info) => {
     .catch(err=> alert(err));
 }
 render() {
-    console.log(this.state)
+    // console.log(this.state)
     if (this.props.profile)
     var data = this.props.profile;
 
 return (
       <div>
-          <AdminNavbar/>
-          <button
-          style=
-          {{
-              margin: "0 auto",
-              radius: "5px",
-              border: "1px solid black"
-
-        }} 
-        ><MagicButton data={ data }/>Magic Button</button>
+          <NavBar/>
+          <MagicButton data={ data }/>
           <ReactTable 
           data = {data}
           columns={[
@@ -201,7 +194,7 @@ return (
           className="-striped -highlight"
           
           />
-          <button><MagicButton data={ data } />Magic Button</button>
+          <MagicButton data={ data } />
       </div>
        )
 
