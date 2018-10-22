@@ -125,12 +125,12 @@ class Submit extends Component {
           <p id="info-text">
             Please review and confirm all of information submitted.
             <br />
-            Once you click submit: this.state, you will have to request a change
-            through email.
+            Once you click submit, you will have to request a change through
+            email.
           </p>
         </div>
 
-        <div className="main-inputbox">
+        {/* <div className="main-inputbox">
           <h2>Donor Information</h2>
           <div className="inputbox">
             <p>Name</p>
@@ -203,188 +203,188 @@ class Submit extends Component {
               defaultValue={this.state.user.donor_email}
               onChange={this.handleChange}
             />
+          </div> */}
+
+        <div className="main-inputbox">
+          <h2>Donor Information</h2>
+          <div className="inputbox">
+            <p>Name</p>
+            <input
+              name="d_name"
+              id="editinput"
+              defaultValue={this.state.d_name}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Age</p>
+            <input
+              id="editinput"
+              name="d_age"
+              defaultValue={this.state.d_age}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Height</p>
+            <input
+              id="editinput"
+              name="d_height"
+              defaultValue={this.state.d_height}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Weight</p>
+            <input
+              id="editinput"
+              name="d_weight"
+              defaultValue={this.state.d_weight}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Date of Birth</p>
+            <input
+              id="editinput"
+              name="d_dob"
+              defaultValue={this.state.d_dob}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Blood Type</p>
+            <input
+              id="editinput"
+              name="d_blood_type"
+              defaultValue={this.state.d_blood_type}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Medical History</p>
+            <input
+              id="editinput"
+              name="d_history"
+              defaultValue={this.state.d_history}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Email</p>
+            <input
+              id="editinput"
+              name="d_email"
+              defaultValue={this.state.d_email}
+              onChange={this.handleChange}
+            />
           </div>
 
-          <div className="main-inputbox">
-            <h2>Donor Information</h2>
-            <div className="inputbox">
-              <p>Name</p>
-              <input
-                name="d_name"
-                id="editinput"
-                defaultValue={this.state.d_name}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="inputbox">
-              <p>Age</p>
-              <input
-                id="editinput"
-                name="d_age"
-                defaultValue={this.state.d_age}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="inputbox">
-              <p>Height</p>
-              <input
-                id="editinput"
-                name="d_height"
-                defaultValue={this.state.d_height}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="inputbox">
-              <p>Weight</p>
-              <input
-                id="editinput"
-                name="d_weight"
-                defaultValue={this.state.d_weight}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="inputbox">
-              <p>Date of Birth</p>
-              <input
-                id="editinput"
-                name="d_dob"
-                defaultValue={this.state.d_dob}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="inputbox">
-              <p>Blood Type</p>
-              <input
-                id="editinput"
-                name="d_blood_type"
-                defaultValue={this.state.d_blood_type}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="inputbox">
-              <p>Medical History</p>
-              <input
-                id="editinput"
-                name="d_history"
-                defaultValue={this.state.d_history}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="inputbox">
-              <p>Email</p>
-              <input
-                id="editinput"
-                name="d_email"
-                defaultValue={this.state.d_email}
-                onChange={this.handleChange}
-              />
-            </div>
-
-            <h2>Recipient Information</h2>
-            <div className="inputbox">
-              <p>Name</p>
-              <input
-                id="editinput"
-                name="r_name"
-                defaultValue={this.state.r_name}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="inputbox">
-              <p>Age</p>
-              <input
-                id="editinput"
-                name="r_age"
-                defaultValue={this.state.r_age}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="inputbox">
-              <p>Height</p>
-              <input
-                id="editinput"
-                name="r_height"
-                defaultValue={this.state.r_height}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="inputbox">
-              <p>Weight</p>
-              <input
-                id="editinput"
-                name="r_weight"
-                defaultValue={this.state.r_weight}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="inputbox">
-              <p>Date of Birth</p>
-              <input
-                id="editinput"
-                name="r_dob"
-                defaultValue={this.state.r_dob}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="inputbox">
-              <p>Blood Type</p>
-              <input
-                id="editinput"
-                name="r_blood_type"
-                defaultValue={this.state.r_blood_type}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="inputbox">
-              <p>Medical History</p>
-              <input
-                id="editinput"
-                name="r_history"
-                defaultValue={this.state.r_history}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="inputbox">
-              <p>Email</p>
-              <input
-                id="editinput"
-                name="r_email"
-                defaultValue={this.state.r_email}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="inputbox">
-              <p>Years Of Dialysis</p>
-              <input
-                id="editinput"
-                name="r_dialysis"
-                defaultValue={this.state.r_dialysis}
-                onChange={this.handleChange}
-              />
-            </div>
+          <h2>Recipient Information</h2>
+          <div className="inputbox">
+            <p>Name</p>
+            <input
+              id="editinput"
+              name="r_name"
+              defaultValue={this.state.r_name}
+              onChange={this.handleChange}
+            />
           </div>
-
-          <div className="submit-button">
-            <button
-              onClick={() => {
-                this.handleSave();
-                this.setState({ show: true });
-              }}
-            >
-              Submit
-            </button>
-            <SweetAlert
-              show={this.state.show}
-              confirmButtonColor="#b9decc"
-              title="Thank you for applying!"
-              text="Please wait shortly for a confirmation email."
-              onConfirm={() => {
-                this.setState({ show: false });
-              }}
+          <div className="inputbox">
+            <p>Age</p>
+            <input
+              id="editinput"
+              name="r_age"
+              defaultValue={this.state.r_age}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Height</p>
+            <input
+              id="editinput"
+              name="r_height"
+              defaultValue={this.state.r_height}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Weight</p>
+            <input
+              id="editinput"
+              name="r_weight"
+              defaultValue={this.state.r_weight}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Date of Birth</p>
+            <input
+              id="editinput"
+              name="r_dob"
+              defaultValue={this.state.r_dob}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Blood Type</p>
+            <input
+              id="editinput"
+              name="r_blood_type"
+              defaultValue={this.state.r_blood_type}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Medical History</p>
+            <input
+              id="editinput"
+              name="r_history"
+              defaultValue={this.state.r_history}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Email</p>
+            <input
+              id="editinput"
+              name="r_email"
+              defaultValue={this.state.r_email}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="inputbox">
+            <p>Years Of Dialysis</p>
+            <input
+              id="editinput"
+              name="r_dialysis"
+              defaultValue={this.state.r_dialysis}
+              onChange={this.handleChange}
             />
           </div>
         </div>
+
+        <div className="submit-button">
+          <button
+            onClick={() => {
+              this.handleSave();
+              this.setState({ show: true });
+            }}
+          >
+            Submit
+          </button>
+          <SweetAlert
+            show={this.state.show}
+            confirmButtonColor="#b9decc"
+            title="Thank you for applying!"
+            text="Please wait shortly for a confirmation email."
+            onConfirm={() => {
+              this.setState({ show: false });
+            }}
+          />
+        </div>
       </div>
+      // </div>
     );
   }
 }
