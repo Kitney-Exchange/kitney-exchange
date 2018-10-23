@@ -1,9 +1,28 @@
-.lastform {
+.lastform-information-box {
   display: flex;
   flex-direction: column;
+  text-align: center;
+  margin: auto;
+  background-color: white;
+  font-family: "Lato", sans-serif;
+  height: 1000px;
+  width: 900px;
 }
 
 .formbox {
   display: flex;
   flex-direction: column;
+}
+.firebase-box {
+  padding-bottom: 40px;
+}
+
+.hospital-mapbox {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.submit-button {
+  padding: 40px;
 }

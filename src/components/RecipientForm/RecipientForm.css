@@ -1,9 +1,7 @@
 .donorform {
   display: flex;
   flex-direction: column;
-
   background-color: rgb(217, 157, 148);
-  /* height: 100vh; */
   height: 1300px;
 }
 
@@ -20,11 +18,9 @@
 
   font-family: "Lato", sans-serif;
   letter-spacing: 0.5px;
-  /* margin-top: -20px; */
-  padding-top: 50px;
   margin: auto;
   background-color: white;
-  width: 1000px;
+  width: 800px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,13 +29,9 @@
 
 #formbox-questions {
   background-color: white;
-
   width: 100%;
-  /* height: 100vh; */
   display: flex;
   flex-direction: column;
-
-  /* background-color: rgb(217, 157, 148); */
   margin: auto;
 }
 
@@ -50,4 +42,9 @@
 
 .react-parallax-content {
   height: 400px;
+}
+
+#formgroup {
+  padding-bottom: 30px;
+  margin: auto;
 }

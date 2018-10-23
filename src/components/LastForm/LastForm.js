@@ -16,8 +16,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import "./LastForm.css";
-import {connect} from 'react-redux';
-import {getHospitals, getProfiles} from '../../dux/reducer';
+import { connect } from "react-redux";
+import { getHospitals, getProfiles } from "../../dux/reducer";
 
 class LastForm extends Component {
   constructor(props) {
@@ -26,56 +26,66 @@ class LastForm extends Component {
       hospital1: "",
       hospital2: "",
       hospital3: "",
-      pair_id: ''
+      pair_id: ""
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.getHospitals();
     this.props.getProfiles();
-    setTimeout(this.stateSetter, 2000)
+    setTimeout(this.stateSetter, 2000);
   }
 
   stateSetter = () => {
-    const {profile} = this.props
+    const { profile } = this.props;
     if (profile) {
-    this.setState({pair_id: profile[profile.length-1].pair_id})}
-  }
+      this.setState({ pair_id: profile[profile.length - 1].pair_id });
+    }
+  };
 
   render() {
-    console.log(this.state)
+    console.log(this.state);
     return (
-      <div className="lastform">
+      <div className="register-page">
         <Navbar />
         <div className="formbox">
-          <div className="upload-filebox">
+          <div className="lastform-information-box">
             <p>
               Please upload medical files that can help build up your portfolio.
             </p>
-            <Firebase pair_id={this.state.pair_id}/>
-          </div>
-          <div className="hospital-mapbox">
-            <p>Please choose 3 potential hospitals for the procedure.</p>
-            <MapContainer />
+            <div className="firebase-box">
+              <Firebase pair_id={this.state.pair_id} />
+            </div>
+            <div className="hospital-mapbox">
+              <p>Please choose 3 potential hospitals for the procedure.</p>
+              <MapContainer />
+            </div>
+            <div className="submit-button">
+              <Link to="/Submit">
+                <Button id="bootstrap-button" outline color="secondary">
+                  Submit
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
-        <div className="submit-button">
-          <Link to="/Submit">
-            <Button
-            // onClick={e => {
-            //   this.addPair();
-            // }}
-            >
-              Submit
-            </Button>
-          </Link>
-        </div>
+        <footer>
+          <ul>
+            <li>Kitney Exchange</li>
+            <li>Home</li>
+            <li>Contact Us</li>
+            <li>Admin</li>
+          </ul>
+        </footer>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {...state}
-}
-export default connect(mapStateToProps, {getHospitals, getProfiles})(LastForm);
+const mapStateToProps = state => {
+  return { ...state };
+};
+export default connect(
+  mapStateToProps,
+  { getHospitals, getProfiles }
+)(LastForm);

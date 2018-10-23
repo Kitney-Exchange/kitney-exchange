@@ -1,7 +1,14 @@
+body {
+  position: relative;
+  z-index: 0;
+}
+
 .register-page {
   display: flex;
   flex-direction: column;
   background-color: rgb(217, 157, 148);
+  position: relative;
+  z-index: 1;
 }
 
 .information-box {
@@ -20,7 +27,7 @@
   font-size: 22px;
   letter-spacing: 0.5px;
   /* border-bottom: solid 1px rgb(166, 87, 75); */
-  padding-bottom: 80px;
+  padding-bottom: 40px;
   /* padding: 30px; */
 }
 
@@ -43,7 +50,7 @@
   margin-top: 40px;
 } */
 
-#formgroup {
+#formgroup1 {
   border: none;
   font-family: "Lato", sans-serif;
   margin-left: 90px;
@@ -57,4 +64,56 @@
   background-color: white;
   width: 800px;
   font-size: 16px;
+}
+
+footer {
+  height: 200px;
+  color: white;
+  font-size: 20px;
+
+  position: relative;
+  z-index: -1;
+
+  background-color: rgb(103, 33, 33);
+
+  background-image: -webkit-linear-gradient(
+    top,
+    rgb(117, 49, 49),
+    rgb(103, 33, 33)
+  );
+  background-image: -moz-linear-gradient(
+    top,
+    rgb(117, 49, 49),
+    rgb(103, 33, 33)
+  );
+  background-image: linear-gradient(top, rgb(117, 49, 49), rgb(103, 33, 33));
+}
+
+footer > ul {
+  width: 960px;
+  position: fixed;
+  left: 60%;
+  bottom: 0;
+  margin: auto;
+  /* margin-left: -480px; */
+  padding-bottom: 40px;
+  z-index: -1;
+}
+
+footer ul {
+  display: flex;
+  justify-content: center;
+
+  /* flex-direction: column; */
+  margin-left: -690px;
+  /* margin: auto; */
+  justify-content: space-evenly;
+
+  font-family: "Lato", sans-serif;
+
+  list-style: none;
+}
+
+#bootstrap-button {
+  margin: 20px;
 }

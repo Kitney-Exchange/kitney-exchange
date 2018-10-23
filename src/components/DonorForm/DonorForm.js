@@ -55,31 +55,23 @@ class DonorForm extends Component {
     console.log(this.state);
     console.log(this.props.location.state);
     return (
-      <div className="donorform">
+      <div className="register-page">
         <Navbar />
         <div className="formbox">
-          <div className="info-box">
-            {" "}
+          <div className="information-box">
             <Parallax
               id="info-box"
               bgImage={plants}
               bgImageAlt="plant"
               strength={350}
             >
-              <p id="info-text">
-                You will be registering as a pair.
-                <br />
-                Before we start, we need to see if the donor is eligible for
-                donation.
-                {/* It is our priority to provide a safe environment for
-                you. */}
-              </p>
+              <p id="info-text">Donor Form</p>
               <div style={{ height: "400px" }} />
             </Parallax>
           </div>
           <div className="formbox-questions">
-            <Form>
-              <FormGroup row>
+            <Form id="form">
+              <FormGroup id="formgroup" row>
                 <Label for="q1" sm={2}>
                   Full Name
                 </Label>
@@ -93,7 +85,7 @@ class DonorForm extends Component {
                   />
                 </Col>
               </FormGroup>
-              <FormGroup row>
+              <FormGroup id="formgroup" row>
                 <Label for="q2" sm={2}>
                   Email
                 </Label>
@@ -107,7 +99,7 @@ class DonorForm extends Component {
                   />
                 </Col>
               </FormGroup>
-              <FormGroup row>
+              <FormGroup id="formgroup" row>
                 <Label for="q3" sm={2}>
                   Date of Birth
                 </Label>
@@ -121,7 +113,7 @@ class DonorForm extends Component {
                   />
                 </Col>
               </FormGroup>
-              <FormGroup row>
+              <FormGroup id="formgroup" row>
                 <Label for="q4" sm={2}>
                   Age
                 </Label>
@@ -135,7 +127,7 @@ class DonorForm extends Component {
                   />
                 </Col>
               </FormGroup>
-              <FormGroup row>
+              <FormGroup id="formgroup" row>
                 <Label for="q5" sm={2}>
                   Weight
                 </Label>
@@ -149,7 +141,7 @@ class DonorForm extends Component {
                   />
                 </Col>
               </FormGroup>
-              <FormGroup row>
+              <FormGroup id="formgroup" row>
                 <Label for="q6" sm={2}>
                   Height
                 </Label>
@@ -163,7 +155,7 @@ class DonorForm extends Component {
                   />
                 </Col>
               </FormGroup>
-              <FormGroup row>
+              <FormGroup id="formgroup" row>
                 <Label for="q7" sm={2}>
                   Medical History
                 </Label>
@@ -177,7 +169,7 @@ class DonorForm extends Component {
                   />
                 </Col>
               </FormGroup>
-              <FormGroup row>
+              <FormGroup id="formgroup" row>
                 <Label for="q8" sm={2}>
                   Blood Type
                 </Label>
@@ -197,6 +189,9 @@ class DonorForm extends Component {
             <div className="donor-button">
               <Link to="/Form">
                 <Button
+                  id="bootstrap-button"
+                  outline
+                  color="secondary"
                   onClick={e => {
                     this.handleSubmit();
                   }}
@@ -207,6 +202,14 @@ class DonorForm extends Component {
             </div>
           </div>
         </div>
+        <footer>
+          <ul>
+            <li>Kitney Exchange</li>
+            <li>Home</li>
+            <li>Contact Us</li>
+            <li>Admin</li>
+          </ul>
+        </footer>
       </div>
     );
   }
