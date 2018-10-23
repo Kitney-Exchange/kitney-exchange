@@ -9,6 +9,7 @@
   justify-content: flex-start;
 
   height: 90px;
+  border-bottom: 7px solid white;
 }
 
 .home-link {

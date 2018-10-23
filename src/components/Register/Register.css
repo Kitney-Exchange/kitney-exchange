@@ -1,31 +1,60 @@
 .register-page {
   display: flex;
   flex-direction: column;
+  background-color: rgb(217, 157, 148);
 }
 
 .information-box {
+  /* background-image: url("https://images.unsplash.com/photo-1504972721419-9b9a8cd90638?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b0683be5686965f9b840692eeb9d6792&auto=format&fit=crop&w=1567&q=80"); */
   display: flex;
   flex-direction: column;
   text-align: center;
   margin: auto;
+  margin-top: 0px;
   width: 500px;
+  height: 570px;
   font-family: "Lato", sans-serif;
-  color: rgb(47, 127, 85);
-  font-size: 25px;
+  color: rgb(255, 255, 255);
+  background-color: white;
+  width: 800px;
+  font-size: 22px;
   letter-spacing: 0.5px;
-  border-bottom: solid 1px rgb(47, 127, 85);
-  padding-bottom: 30px;
+  /* border-bottom: solid 1px rgb(166, 87, 75); */
+  padding-bottom: 80px;
+  /* padding: 30px; */
 }
 
+#info-text {
+  /* padding-top: px; */
+  font-family: "Lato", sans-serif;
+  color: rgb(255, 255, 255);
+  font-size: 28px;
+  width: 450px;
+  margin: auto;
+  margin-top: 250px;
+  letter-spacing: 1px;
+  text-align: center;
+
+  /* margin-left: 30px; */
+}
+/* 
 .formbox {
   margin: auto;
   margin-top: 40px;
-}
+} */
 
 #formgroup {
   border: none;
   font-family: "Lato", sans-serif;
+  margin-left: 90px;
 }
 
 .prelim-questions {
+  padding-top: 35px;
+  margin: auto;
+  font-family: "Lato", sans-serif;
+  color: rgb(166, 87, 75);
+  background-color: white;
+  width: 800px;
+  font-size: 16px;
 }
