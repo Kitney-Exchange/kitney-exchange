@@ -4,6 +4,9 @@ import axios from "axios";
 import { Button, Label, Input, Col, Form, FormGroup } from "reactstrap";
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
+import "./DonorForm.css";
+import { Parallax, Background } from "react-parallax";
+import plants from "../../images/plants.jpeg";
 
 class DonorForm extends Component {
   constructor(props) {
@@ -55,7 +58,25 @@ class DonorForm extends Component {
       <div className="donorform">
         <Navbar />
         <div className="formbox">
-          <div className="information-box">Donor Form</div>
+          <div className="info-box">
+            {" "}
+            <Parallax
+              id="info-box"
+              bgImage={plants}
+              bgImageAlt="plant"
+              strength={350}
+            >
+              <p id="info-text">
+                You will be registering as a pair.
+                <br />
+                Before we start, we need to see if the donor is eligible for
+                donation.
+                {/* It is our priority to provide a safe environment for
+                you. */}
+              </p>
+              <div style={{ height: "400px" }} />
+            </Parallax>
+          </div>
           <div className="formbox-questions">
             <Form>
               <FormGroup row>
@@ -173,17 +194,17 @@ class DonorForm extends Component {
                 </Col>
               </FormGroup>
             </Form>
-          </div>
-          <div className="donor-button">
-            <Link to="/Form">
-              <Button
-                onClick={e => {
-                  this.handleSubmit();
-                }}
-              >
-                Next
-              </Button>
-            </Link>
+            <div className="donor-button">
+              <Link to="/Form">
+                <Button
+                  onClick={e => {
+                    this.handleSubmit();
+                  }}
+                >
+                  Next
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

@@ -3,6 +3,9 @@ import React, { Component } from "react";
 import { Button, Label, Input, Col, Form, FormGroup } from "reactstrap";
 import Navbar from "../Navbar/Navbar";
 import { Link } from "react-router-dom";
+import { Parallax, Background } from "react-parallax";
+import ivy from "../../images/ivy.jpeg";
+import "./RecipientForm.css";
 
 class RecipientForm extends Component {
   constructor(props) {
@@ -26,12 +29,26 @@ class RecipientForm extends Component {
       <div>
         <div className="donorform">
           <Navbar />
-          <div className="formbox">
-            <div className="information-box">Recipient Form</div>
+          <div className="donor-formbox">
+            <div className="info-box">
+              <Parallax
+                id="info-box"
+                bgImage={ivy}
+                bgImageAlt="plant"
+                strength={350}
+              >
+                <p id="info-text">
+                  Recipient Form
+                  {/* It is our priority to provide a safe environment for
+                you. */}
+                  <div style={{ height: "500px" }} />
+                </p>
+              </Parallax>
+            </div>
             <div className="formbox-questions">
-              <Form>
+              <Form id="formbox-questions">
                 <FormGroup row>
-                  <Label for="q1" sm={2}>
+                  <Label id="label" for="q1" sm={2}>
                     Full Name
                   </Label>
                   <Col sm={8}>
@@ -167,16 +184,16 @@ class RecipientForm extends Component {
                   </Col>
                 </FormGroup>
               </Form>
-            </div>
-            <div className="recipient-button">
-              <Link
-                to={{
-                  pathname: "/DonorForm",
-                  state: { recipient: this.state }
-                }}
-              >
-                <Button>Next</Button>
-              </Link>
+              <div className="recipient-button">
+                <Link
+                  to={{
+                    pathname: "/DonorForm",
+                    state: { recipient: this.state }
+                  }}
+                >
+                  <Button>Next</Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
