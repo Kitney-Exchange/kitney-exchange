@@ -10,6 +10,7 @@ import LastForm from "./components/LastForm/LastForm";
 import Sorry from "./components/Register/Sorry";
 import Submit from "./components/LastForm/Submit";
 import Hospitals from './components/Hospitals/Hospitals';
+import Confirmation from './components/Matched/confirmation';
 
 export default (
   <Switch>
@@ -32,5 +33,6 @@ export default (
         )
       }
     />
+    <Route path="/confirmation/:id" render={props=> <Confirmation props={props}/>} />
   </Switch>
 );

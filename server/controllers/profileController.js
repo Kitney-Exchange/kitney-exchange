@@ -68,5 +68,12 @@ module.exports = {
     db.delete_profile(req.params.pair_id)
       .then(response => res.status(200).send(console.log(response)))
       .catch(response => res.status(500).send(console.log(response)));
+  },
+  confirmMatch: (req, res, next) => {
+    const db = req.app.get("db");
+    //answer must be true or null
+    db.modify_confirmation(req.params.pair_id, req.params.answer)
+      .then(response => res.status(200).send(console.log(response)))
+      .catch(response => res.status(500).send(console.log(response)));
   }
 };

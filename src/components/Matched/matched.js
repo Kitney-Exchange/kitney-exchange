@@ -3,6 +3,9 @@ import {getMatched, getProfiles} from '../../dux/reducer';
 import ReactTable from 'react-table';
 import {connect} from 'react-redux';
 import AdminNavbar from '../Navbar/AdminNavbar';
+import { Icon } from 'react-icons-kit'
+import {checkmark} from 'react-icons-kit/ionicons/checkmark'
+import {trashA} from 'react-icons-kit/ionicons/trashA'
 
 
 class MatchedPage extends Component {
@@ -86,7 +89,15 @@ return (
                     },
                     {
                         Header: "Finished?",
-                        accessor: "finished"
+                        accessor: "finished",
+                        Cell: row => (
+                            <span style={{display: 'flex', wrap: 'no-wrap'}}>
+                            <div style={{color: 'green', margin: '0 10px 0 20px'}}>
+                            <Icon size={24} icon={checkmark}/></div>
+                            <div style={{color: 'black', margin: '0 10px 0 10px'}}>
+                            <Icon size={24} icon={trashA}/></div>
+                            </span>
+                        )
                     },
                 ]}
                 defaultPageSize={20}
@@ -104,9 +115,29 @@ return (
                             {Header: "Donor Name",
                             accessor: 'donor_name'},
                             {Header: "Recipient Name",
-                            accessor: 'recipient_name'}
+                            accessor: 'recipient_name'},
+                            {Header: "Confirmed?",
+                            accessor: 'confirmed',
+                            Cell: row => {
+                                console.log(row.value)
+                                return (<span>
+                                    <span style={{
+                                    color: row.value === true ? '#57d500' :
+                                    row.value === null ? 'red'
+                                        : '#ffcc00',
+                                    transition: 'all .3s ease-out'
+                                    }}>
+                                    &#x25cf;
+                                    </span> {
+                                    row.value === true ? 'Confirmed!' :
+                                    row.value === null ? 'Declined'
+                                    : 'Waiting'
+                                    }
+                                </span>)
+                            } }
                         ]}
-                        
+                        defaultPageSize={6}
+                        showPagination= {false}
                         />
 
                         </div>)

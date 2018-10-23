@@ -1,0 +1,1 @@
+UPDATE profile SET confirmed = $2 where pair_id = $1;
