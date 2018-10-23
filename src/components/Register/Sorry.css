@@ -1,0 +1,22 @@
+.sorry-page {
+  background-color: rgb(217, 157, 148);
+  width: 100%;
+  height: 100vh;
+}
+
+.sorry-information-box {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: auto;
+  margin-top: 0px;
+
+  height: 920px;
+  font-family: "Lato", sans-serif;
+  color: rgb(0, 0, 0);
+  background-color: white;
+  width: 800px;
+  font-size: 22px;
+  letter-spacing: 0.5px;
+  padding: 0px;
+}

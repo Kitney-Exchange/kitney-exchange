@@ -48,7 +48,7 @@ class Register extends Component {
   render() {
     console.log(this.state);
     return (
-      <div className="register-page">
+      <div className="register-page" id="main">
         <Navbar />
         <div className="formbox">
           <div className="information-box">
@@ -63,8 +63,6 @@ class Register extends Component {
                 <br />
                 Before we start, we need to see if the donor is eligible for
                 donation.
-                {/* It is our priority to provide a safe environment for
-                you. */}
                 <div style={{ height: "400px" }} />
               </p>
             </Parallax>
@@ -78,20 +76,8 @@ class Register extends Component {
             </p> */}
           </div>
           <div className="prelim-questions">
-            {/* <div className="prelim">
-              <form>
-                <input type="radio" name="yes" value="yes" />
-                Yes
-                <input type="radio" name="yes" value="no" />
-                No
-              </form>
-            </div> */}
             <div className="prelim">
-              <FormGroup
-                id="formgroup"
-                tag="fieldset"
-                // onChange={e => this.handleChange(e)}
-              >
+              <FormGroup id="formgroup1" tag="fieldset">
                 <p>Have you been screened by the hospital?</p>
                 <FormGroup check>
                   <Label check>
@@ -124,7 +110,7 @@ class Register extends Component {
               </FormGroup>
             </div>
             <div className="prelim1">
-              <FormGroup id="formgroup" tag="fieldset">
+              <FormGroup id="formgroup1" tag="fieldset">
                 <p>
                   Have you ever been diagnosed with any of the following kidney
                   diseases?
@@ -165,7 +151,7 @@ class Register extends Component {
               </FormGroup>
             </div>
             <div className="prelim2">
-              <FormGroup id="formgroup" tag="fieldset">
+              <FormGroup id="formgroup1" tag="fieldset">
                 <p>Have you ever had a heart attack?</p>
                 <FormGroup check>
                   <Label check>
@@ -198,7 +184,7 @@ class Register extends Component {
               </FormGroup>
             </div>
             <div className="prelim3">
-              <FormGroup id="formgroup" tag="fieldset">
+              <FormGroup id="formgroup1" tag="fieldset">
                 <p>Do you have diabetes or high blood sugar?</p>
                 <FormGroup check>
                   <Label check>
@@ -234,7 +220,7 @@ class Register extends Component {
               </FormGroup>
             </div>
             <div className="prelim4">
-              <FormGroup id="formgroup" tag="fieldset">
+              <FormGroup id="formgroup1" tag="fieldset">
                 <p>Have you ever been diagnosed with cancer?</p>
                 <FormGroup check>
                   <Label check>
@@ -267,7 +253,7 @@ class Register extends Component {
               </FormGroup>
             </div>
             <div className="prelim5">
-              <FormGroup id="formgroup" tag="fieldset">
+              <FormGroup id="formgroup1" tag="fieldset">
                 <p>Have you ever used tobacco products?</p>
                 <FormGroup check>
                   <Label check>
@@ -300,7 +286,7 @@ class Register extends Component {
               </FormGroup>
             </div>
             <div className="prelim6">
-              <FormGroup id="formgroup" tag="fieldset">
+              <FormGroup id="formgroup1" tag="fieldset">
                 <p>Have you ever been diagnosed with kidney stones?</p>
                 <FormGroup check>
                   <Label check>
@@ -333,7 +319,7 @@ class Register extends Component {
               </FormGroup>
             </div>
             <div className="prelim7">
-              <FormGroup id="formgroup" tag="fieldset">
+              <FormGroup id="formgroup1" tag="fieldset">
                 <p>Are you pregnant?</p>
                 <FormGroup check>
                   <Label check>
@@ -366,7 +352,7 @@ class Register extends Component {
               </FormGroup>
             </div>
             <div className="prelim8">
-              <FormGroup id="formgroup" tag="fieldset">
+              <FormGroup id="formgroup1" tag="fieldset">
                 <p>Do you have a history of HIV?</p>
                 <FormGroup check>
                   <Label check>
@@ -400,7 +386,7 @@ class Register extends Component {
             </div>
             <center onClick={() => this.isAccepted()}>
               <Link to={`/RegisterSubmit/:${this.state.accepted}`}>
-                <Button outline color="success">
+                <Button id="bootstrap-button" outline color="secondary">
                   Submit
                 </Button>
               </Link>
@@ -408,6 +394,14 @@ class Register extends Component {
             </center>
           </div>
         </div>
+        <footer>
+          <ul>
+            <li>Kitney Exchange</li>
+            <li>Home</li>
+            <li>Contact Us</li>
+            <li>Admin</li>
+          </ul>
+        </footer>
       </div>
     );
   }
