@@ -3,11 +3,13 @@ import Navbar from "../Navbar/Navbar";
 import { connect } from "react-redux";
 import { getProfiles } from "../../dux/reducer";
 import { Link } from "react-router-dom";
-import { Button } from "reactstrap";
+import { Form, FormGroup, Label, Col, Input, Button } from "reactstrap";
 import "./Submit.css";
 import { withSwalInstance } from "sweetalert2-react";
 import swal from "sweetalert2";
 import axios from "axios";
+import { Parallax, Background } from "react-parallax";
+import ivy from "../../images/ivy.jpeg";
 
 const SweetAlert = withSwalInstance(swal);
 
@@ -108,281 +110,302 @@ class Submit extends Component {
 
     // console.log(this.state.user.pair_id);
     return (
-      <div className="submitpage">
+      <div className="register-page">
         <div className="submit-navbar">
           <Navbar />
         </div>
-
-        <div className="header-box">
-          <div className="progressbar">
+        <div className="formbox">
+          <div className="information-box">
+            {/* <div className="progressbar">
             <ul id="progressbar">
               <li className="active">Preliminary Questions</li>
               <li>Recipient Information</li>
               <li>Donor Information</li>
               <li>Submit</li>
             </ul>
-          </div>
-          <p id="info-text">
-            Please review and confirm all of information submitted.
-            <br />
-            Once you click submit, you will have to request a change through
-            email.
-          </p>
-        </div>
-
-        {/* <div className="main-inputbox">
-          <h2>Donor Information</h2>
-          <div className="inputbox">
-            <p>Name</p>
-            <input
-              name="d_name"
-              id="editinput"
-              defaultValue={this.state.user.donor_name}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="inputbox">
-            <p>Age</p>
-            <input
-              id="editinput"
-              name="d_age"
-              defaultValue={this.state.user.donor_age}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="inputbox">
-            <p>Height</p>
-            <input
-              id="editinput"
-              name="d_height"
-              defaultValue={this.state.user.donor_height}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="inputbox">
-            <p>Weight</p>
-            <input
-              id="editinput"
-              name="d_weight"
-              defaultValue={this.state.user.donor_weight}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="inputbox">
-            <p>Date of Birth</p>
-            <input
-              id="editinput"
-              name="d_dob"
-              defaultValue={this.state.user.donor_dob}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="inputbox">
-            <p>Blood Type</p>
-            <input
-              id="editinput"
-              name="d_blood_type"
-              defaultValue={this.state.user.donor_blood_type}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="inputbox">
-            <p>Medical History</p>
-            <input
-              id="editinput"
-              name="d_history"
-              defaultValue={this.state.user.donor_history}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="inputbox">
-            <p>Email</p>
-            <input
-              id="editinput"
-              name="d_email"
-              defaultValue={this.state.user.donor_email}
-              onChange={this.handleChange}
-            />
           </div> */}
+            <Parallax
+              id="info-box"
+              bgImage={ivy}
+              bgImageAlt="plant"
+              strength={350}
+            >
+              <p id="info-text">
+                Please review and confirm all of information submitted.
+                <br />
+                Once you click submit, you will have to request a change through
+                email.
+                <div style={{ height: "500px" }} />
+              </p>
+            </Parallax>
+            {/* <p id="submit-info">
+              Please review and confirm all of information submitted.
+              <br />
+              Once you click submit, you will have to request a change through
+              email.
+            </p> */}
+          </div>
+          <div className="submit-formbox-questions">
+            <Form id="submit-form">
+              <h2 id="submit-title">Donor Information</h2>
+              <FormGroup id="formgroup" row>
+                <Label for="q1" sm={2}>
+                  Full Name
+                </Label>
+                <Col sm={8}>
+                  <Input
+                    name="d_name"
+                    id="editinputsubmit"
+                    defaultValue={this.state.d_name}
+                    onChange={this.handleChange}
+                  />
+                </Col>
+              </FormGroup>
+              <FormGroup id="formgroup" row>
+                <Label for="q2" sm={2}>
+                  Age
+                </Label>
+                <Col sm={8}>
+                  <Input
+                    id="editinputsubmit"
+                    name="d_age"
+                    defaultValue={this.state.d_age}
+                    onChange={this.handleChange}
+                  />
+                </Col>
+              </FormGroup>
+              <FormGroup id="formgroup" row>
+                <Label for="q3" sm={2}>
+                  Height
+                </Label>
+                <Col sm={8}>
+                  <Input
+                    id="editinputsubmit"
+                    name="d_height"
+                    defaultValue={this.state.d_height}
+                    onChange={this.handleChange}
+                  />
+                </Col>
+              </FormGroup>
+              <FormGroup id="formgroup" row>
+                <Label for="q4" sm={2}>
+                  Weight
+                </Label>
+                <Col sm={8}>
+                  <Input
+                    id="editinputsubmit"
+                    name="d_weight"
+                    defaultValue={this.state.d_weight}
+                    onChange={this.handleChange}
+                  />
+                </Col>
+              </FormGroup>
+              <FormGroup id="formgroup" row>
+                <Label for="q5" sm={2}>
+                  Date of Birth
+                </Label>
+                <Col sm={8}>
+                  <Input
+                    id="editinputsubmit"
+                    name="d_dob"
+                    defaultValue={this.state.d_dob}
+                    onChange={this.handleChange}
+                  />
+                </Col>
+              </FormGroup>
+              <FormGroup id="formgroup" row>
+                <Label for="q6" sm={2}>
+                  Blood Type
+                </Label>
+                <Col sm={8}>
+                  <Input
+                    id="editinputsubmit"
+                    name="d_blood_type"
+                    defaultValue={this.state.d_blood_type}
+                    onChange={this.handleChange}
+                  />
+                </Col>
+              </FormGroup>
+              <FormGroup id="formgroup" row>
+                <Label for="q7" sm={2}>
+                  Medical History
+                </Label>
+                <Col sm={8}>
+                  <Input
+                    id="editinputsubmit"
+                    name="d_history"
+                    defaultValue={this.state.d_history}
+                    onChange={this.handleChange}
+                  />
+                </Col>
+              </FormGroup>
+              <FormGroup id="formgroup" row>
+                <Label for="q8" sm={2}>
+                  Email
+                </Label>
+                <Col sm={8}>
+                  <Input
+                    id="editinputsubmit"
+                    name="d_email"
+                    defaultValue={this.state.d_email}
+                    onChange={this.handleChange}
+                  />
+                </Col>
+              </FormGroup>
 
-        <div className="main-inputbox">
-          <h2>Donor Information</h2>
-          <div className="inputbox">
-            <p>Name</p>
-            <input
-              name="d_name"
-              id="editinput"
-              defaultValue={this.state.d_name}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="inputbox">
-            <p>Age</p>
-            <input
-              id="editinput"
-              name="d_age"
-              defaultValue={this.state.d_age}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="inputbox">
-            <p>Height</p>
-            <input
-              id="editinput"
-              name="d_height"
-              defaultValue={this.state.d_height}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="inputbox">
-            <p>Weight</p>
-            <input
-              id="editinput"
-              name="d_weight"
-              defaultValue={this.state.d_weight}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="inputbox">
-            <p>Date of Birth</p>
-            <input
-              id="editinput"
-              name="d_dob"
-              defaultValue={this.state.d_dob}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="inputbox">
-            <p>Blood Type</p>
-            <input
-              id="editinput"
-              name="d_blood_type"
-              defaultValue={this.state.d_blood_type}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="inputbox">
-            <p>Medical History</p>
-            <input
-              id="editinput"
-              name="d_history"
-              defaultValue={this.state.d_history}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="inputbox">
-            <p>Email</p>
-            <input
-              id="editinput"
-              name="d_email"
-              defaultValue={this.state.d_email}
-              onChange={this.handleChange}
-            />
-          </div>
+              <h2 id="submit-title">Recipient Information</h2>
+              <FormGroup id="formgroup" row>
+                <Label for="q9" sm={2}>
+                  Name
+                </Label>
+                <Col sm={8}>
+                  <Input
+                    id="editinputsubmit"
+                    name="r_name"
+                    defaultValue={this.state.r_name}
+                    onChange={this.handleChange}
+                  />
+                </Col>
+              </FormGroup>
 
-          <h2>Recipient Information</h2>
-          <div className="inputbox">
-            <p>Name</p>
-            <input
-              id="editinput"
-              name="r_name"
-              defaultValue={this.state.r_name}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="inputbox">
-            <p>Age</p>
-            <input
-              id="editinput"
-              name="r_age"
-              defaultValue={this.state.r_age}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="inputbox">
-            <p>Height</p>
-            <input
-              id="editinput"
-              name="r_height"
-              defaultValue={this.state.r_height}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="inputbox">
-            <p>Weight</p>
-            <input
-              id="editinput"
-              name="r_weight"
-              defaultValue={this.state.r_weight}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="inputbox">
-            <p>Date of Birth</p>
-            <input
-              id="editinput"
-              name="r_dob"
-              defaultValue={this.state.r_dob}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="inputbox">
-            <p>Blood Type</p>
-            <input
-              id="editinput"
-              name="r_blood_type"
-              defaultValue={this.state.r_blood_type}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="inputbox">
-            <p>Medical History</p>
-            <input
-              id="editinput"
-              name="r_history"
-              defaultValue={this.state.r_history}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="inputbox">
-            <p>Email</p>
-            <input
-              id="editinput"
-              name="r_email"
-              defaultValue={this.state.r_email}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="inputbox">
-            <p>Years Of Dialysis</p>
-            <input
-              id="editinput"
-              name="r_dialysis"
-              defaultValue={this.state.r_dialysis}
-              onChange={this.handleChange}
-            />
+              <FormGroup id="formgroup" row>
+                <Label for="q10" sm={2}>
+                  Age
+                </Label>
+                <Col sm={8}>
+                  <Input
+                    id="editinputsubmit"
+                    name="r_age"
+                    defaultValue={this.state.r_age}
+                    onChange={this.handleChange}
+                  />
+                </Col>
+              </FormGroup>
+              <FormGroup id="formgroup" row>
+                <Label for="q11" sm={2}>
+                  Height
+                </Label>
+                <Col sm={8}>
+                  <Input
+                    id="editinputsubmit"
+                    name="r_height"
+                    defaultValue={this.state.r_height}
+                    onChange={this.handleChange}
+                  />
+                </Col>
+              </FormGroup>
+
+              <FormGroup id="formgroup" row>
+                <Label for="q12" sm={2}>
+                  Weight
+                </Label>
+                <Col sm={8}>
+                  <Input
+                    id="editinputsubmit"
+                    name="r_weight"
+                    defaultValue={this.state.r_weight}
+                    onChange={this.handleChange}
+                  />
+                </Col>
+              </FormGroup>
+              <FormGroup id="formgroup" row>
+                <Label for="q13" sm={2}>
+                  Date of Birth
+                </Label>
+                <Col sm={8}>
+                  <Input
+                    id="editinputsubmit"
+                    name="r_dob"
+                    defaultValue={this.state.r_dob}
+                    onChange={this.handleChange}
+                  />
+                </Col>
+              </FormGroup>
+              <FormGroup id="formgroup" row>
+                <Label for="q14" sm={2}>
+                  Blood Type
+                </Label>
+                <Col sm={8}>
+                  <Input
+                    id="editinputsubmit"
+                    name="r_blood_type"
+                    defaultValue={this.state.r_blood_type}
+                    onChange={this.handleChange}
+                  />
+                </Col>
+              </FormGroup>
+              <FormGroup id="formgroup" row>
+                <Label for="q15" sm={2}>
+                  Medical History
+                </Label>
+                <Col sm={8}>
+                  <Input
+                    id="editinputsubmit"
+                    name="r_history"
+                    defaultValue={this.state.r_history}
+                    onChange={this.handleChange}
+                  />
+                </Col>
+              </FormGroup>
+              <FormGroup id="formgroup" row>
+                <Label for="q16" sm={2}>
+                  Email
+                </Label>
+                <Col sm={8}>
+                  <Input
+                    id="editinputsubmit"
+                    name="r_email"
+                    defaultValue={this.state.r_email}
+                    onChange={this.handleChange}
+                  />
+                </Col>
+              </FormGroup>
+              <FormGroup id="formgroup" row>
+                <Label for="q17" sm={2}>
+                  Years of Dialysis
+                </Label>
+                <Col sm={8}>
+                  <Input
+                    id="editinputsubmit"
+                    name="r_dialysis"
+                    defaultValue={this.state.r_dialysis}
+                    onChange={this.handleChange}
+                  />
+                </Col>
+              </FormGroup>
+            </Form>
+            <div className="submit-button">
+              <Button
+                id="bootstrap-button"
+                outline
+                color="secondary"
+                onClick={() => {
+                  this.handleSave();
+                  this.setState({ show: true });
+                }}
+              >
+                Submit
+              </Button>
+              <SweetAlert
+                show={this.state.show}
+                confirmButtonColor="#b9decc"
+                title="Thank you for applying!"
+                text="Please wait shortly for a confirmation email."
+                onConfirm={() => {
+                  this.setState({ show: false });
+                }}
+              />
+            </div>
           </div>
         </div>
-
-        <div className="submit-button">
-          <button
-            onClick={() => {
-              this.handleSave();
-              this.setState({ show: true });
-            }}
-          >
-            Submit
-          </button>
-          <SweetAlert
-            show={this.state.show}
-            confirmButtonColor="#b9decc"
-            title="Thank you for applying!"
-            text="Please wait shortly for a confirmation email."
-            onConfirm={() => {
-              this.setState({ show: false });
-            }}
-          />
-        </div>
+        <footer>
+          <ul>
+            <li>Kitney Exchange</li>
+            <li>Home</li>
+            <li>Contact Us</li>
+            <li>Admin</li>
+          </ul>
+        </footer>
       </div>
       // </div>
     );

@@ -27,10 +27,10 @@ class RecipientForm extends Component {
     console.log(this.state);
     return (
       <div>
-        <div className="donorform">
+        <div className="register-page">
           <Navbar />
-          <div className="donor-formbox">
-            <div className="info-box">
+          <div className="formbox">
+            <div className="information-box">
               <Parallax
                 id="info-box"
                 bgImage={ivy}
@@ -39,16 +39,14 @@ class RecipientForm extends Component {
               >
                 <p id="info-text">
                   Recipient Form
-                  {/* It is our priority to provide a safe environment for
-                you. */}
                   <div style={{ height: "500px" }} />
                 </p>
               </Parallax>
             </div>
             <div className="formbox-questions">
-              <Form id="formbox-questions">
-                <FormGroup row>
-                  <Label id="label" for="q1" sm={2}>
+              <Form id="form">
+                <FormGroup id="formgroup" row>
+                  <Label for="q1" sm={2}>
                     Full Name
                   </Label>
                   <Col sm={8}>
@@ -61,7 +59,7 @@ class RecipientForm extends Component {
                     />
                   </Col>
                 </FormGroup>
-                <FormGroup row>
+                <FormGroup id="formgroup" row>
                   <Label for="q2" sm={2}>
                     Email
                   </Label>
@@ -75,7 +73,7 @@ class RecipientForm extends Component {
                     />
                   </Col>
                 </FormGroup>
-                <FormGroup row>
+                <FormGroup id="formgroup" row>
                   <Label for="q3" sm={2}>
                     Date of Birth
                   </Label>
@@ -89,7 +87,7 @@ class RecipientForm extends Component {
                     />
                   </Col>
                 </FormGroup>
-                <FormGroup row>
+                <FormGroup id="formgroup" row>
                   <Label for="q4" sm={2}>
                     Age
                   </Label>
@@ -103,7 +101,7 @@ class RecipientForm extends Component {
                     />
                   </Col>
                 </FormGroup>
-                <FormGroup row>
+                <FormGroup id="formgroup" row>
                   <Label for="q5" sm={2}>
                     Weight
                   </Label>
@@ -119,7 +117,7 @@ class RecipientForm extends Component {
                     />
                   </Col>
                 </FormGroup>
-                <FormGroup row>
+                <FormGroup id="formgroup" row>
                   <Label for="q6" sm={2}>
                     Height
                   </Label>
@@ -135,7 +133,7 @@ class RecipientForm extends Component {
                     />
                   </Col>
                 </FormGroup>
-                <FormGroup row>
+                <FormGroup id="formgroup" row>
                   <Label for="q7" sm={2}>
                     Medical History
                   </Label>
@@ -151,7 +149,7 @@ class RecipientForm extends Component {
                     />
                   </Col>
                 </FormGroup>
-                <FormGroup row>
+                <FormGroup id="formgroup" row>
                   <Label for="q8" sm={2}>
                     Blood Type
                   </Label>
@@ -167,7 +165,7 @@ class RecipientForm extends Component {
                     />
                   </Col>
                 </FormGroup>
-                <FormGroup row>
+                <FormGroup id="formgroup" row>
                   <Label for="q9" sm={2}>
                     Years of Dialysis Treatment
                   </Label>
@@ -191,12 +189,22 @@ class RecipientForm extends Component {
                     state: { recipient: this.state }
                   }}
                 >
-                  <Button>Next</Button>
+                  <Button id="bootstrap-button" outline color="secondary">
+                    Next
+                  </Button>
                 </Link>
               </div>
             </div>
           </div>
         </div>
+        <footer>
+          <ul>
+            <li>Kitney Exchange</li>
+            <li>Home</li>
+            <li>Contact Us</li>
+            <li>Admin</li>
+          </ul>
+        </footer>
       </div>
     );
   }
