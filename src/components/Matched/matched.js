@@ -26,24 +26,24 @@ class MatchedPage extends Component {
 matchedProfiles = (idsArr) => {
 
     var newArr = [];
-    var newStr = this.props.matched[0].profile_ids.split(',')
+    var newStr = idsArr.split(',')
 
-    for (let i = 0; i < idsArr.length; i++){
-        console.log(idsArr[i].pair_id, idsArr.length, Number(newStr[0]))
-    if (idsArr[i].pair_id === Number(newStr[0])) {
-        newArr.push(idsArr[i].recipient_name, idsArr[i].donor_name)
+    for (let i = 0; i < this.state.profiles.length; i++){
+        console.log(this.state.profiles[i].pair_id, this.state.profiles.length, Number(newStr[0]))
+    if (this.state.profiles[i].pair_id === Number(newStr[0])) {
+        newArr.push(this.state.profiles[i])
     }
-    else if (idsArr[i].pair_id === Number(newStr[1])) {
-        newArr.push(idsArr[i].recipient_name, idsArr[i].donor_name)
+    else if (this.state.profiles[i].pair_id === Number(newStr[1])) {
+        newArr.push(this.state.profiles[i])
     }
-    else if (idsArr[i].pair_id === Number(newStr[2])) {
-        newArr.push(idsArr[i].recipient_name, idsArr[i].donor_name)
+    else if (this.state.profiles[i].pair_id === Number(newStr[2])) {
+        newArr.push(this.state.profiles[i])
     }
-    else if (idsArr[i].pair_id === Number(newStr[3])) {
-        newArr.push(idsArr[i].recipient_name, idsArr[i].donor_name)
+    else if (this.state.profiles[i].pair_id === Number(newStr[3])) {
+        newArr.push(this.state.profiles[i])
     }
-    else if (idsArr[i].pair_id === Number(newStr[4])) {
-        newArr.push(idsArr[i].recipient_name, idsArr[i].donor_name)
+    else if (this.state.profiles[i].pair_id === Number(newStr[4])) {
+        newArr.push(this.state.profiles[i])
     }
     else {
     return newArr};
@@ -52,7 +52,7 @@ matchedProfiles = (idsArr) => {
 }
 
 render() {
-    setTimeout(()=> console.log(this.matchedProfiles(this.state.profiles)), 2000)
+    // setTimeout(()=> console.log(this.matchedProfiles(this.state.profile)), 2000)
 if (this.props.matched)
 var data = this.props.matched
 return (
@@ -90,7 +90,29 @@ return (
                     },
                 ]}
                 defaultPageSize={20}
-                className="-striped -highlight" />
+                className="-striped -highlight" 
+                
+                SubComponent={row => {
+                    const data = this.matchedProfiles(row.original.profile_ids)
+                    console.log(row)
+                    return (<div>
+                        <ReactTable
+                        data={data}
+                        columns={[
+                            {Header: "Pair ID",
+                            accessor: 'pair_id'},
+                            {Header: "Donor Name",
+                            accessor: 'donor_name'},
+                            {Header: "Recipient Name",
+                            accessor: 'recipient_name'}
+                        ]}
+                        
+                        />
+
+                        </div>)
+                    
+                    }
+                }/>
     </div>
        )
 
