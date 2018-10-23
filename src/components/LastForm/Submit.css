@@ -21,6 +21,9 @@
   margin-top: 40px;
 }
 
+#submit-info {
+  color: black;
+}
 .inputbox {
   display: flex;
   flex-direction: row;
@@ -47,11 +50,29 @@
   font-size: 20px;
   letter-spacing: 0.5px;
   border-bottom: solid 1px rgb(255, 255, 255);
-  padding-bottom: 30px;
-  margin-bottom: 50px;
+  /* padding-bottom: 30px;
+  margin-bottom: 50px; */
+}
+.submit-formbox-questions {
+  text-align: center;
+
+  font-family: "Lato", sans-serif;
+  letter-spacing: 0.5px;
+  margin: auto;
+  background-color: white;
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
 }
 
-#progressbar {
+#submit-title {
+  padding: 30px;
+  letter-spacing: 1px;
+  color: gray;
+}
+/* #progressbar {
   display: flex;
 
   justify-content: center;
@@ -85,7 +106,7 @@
   margin: 0 auto 5px auto;
   z-index: 5;
 }
-/*progressbar lines*/
+
 #progressbar li:after {
   content: "";
   width: 100%;
@@ -99,9 +120,9 @@
 #progressbar li:first-child:after {
   content: none;
 }
-/* active page */
+
 #progressbar li.active:before,
 #progressbar li.active:after {
   background: #7a3224;
   color: white;
-}
+} */

@@ -3,6 +3,9 @@
   background-color: #b9decc;
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 1000px;
 }
 
 .banner {
@@ -13,12 +16,7 @@
 .banner-img {
   display: flex;
   position: relative;
-  /* width: 100vh; */
 }
-
-/* #banner-img {
-  width: 100vh;
-} */
 
 .banner-content {
   display: flex;
@@ -29,7 +27,6 @@
 .banner-top {
   width: 100%;
   display: flex;
-  /* background-color: white; */
   justify-content: center;
   justify-content: space-evenly;
   border-bottom: solid 7px white;
@@ -47,7 +44,6 @@
 .banner-title {
   font-size: 30px;
   color: rgb(47, 127, 85);
-  /* letter-spacing: 0.5px; */
   font-weight: bold;
   font-family: "Lato", sans-serif;
   margin-top: 20px;
@@ -223,11 +219,9 @@
   margin-bottom: 100px;
 }
 
-.carousel-box {
-  /* justify-content: center; */
-  /* margin: auto; */
+/* #carousel {
+  background-color: #b9decc;
 }
-
 .carousel-fade .carousel-item {
   display: block;
   position: absolute;
@@ -242,19 +236,26 @@
 .carousel {
   position: absolute;
   margin: auto;
-  /* width: 300px;
-  height: 200px; */
-  /* margin-left: 15px; */
+  position: relative;
+  z-index: 1;
+
 }
 
 .carousel,
 .carousel-inner,
 .carousel-item {
-  /* width: 600px;
-  height: 400px; */
+
   margin: auto;
   transition: opacity 1s ease-in-out;
-}
+  position: relative;
+  z-index: 1;
+} 
+
+ .carousel-item {
+  margin: auto;
+  position: relative;
+  z-index: 1;
+} */
 
 .sun-img {
   padding-top: 30px;
@@ -263,6 +264,46 @@
   justify-content: center;
 }
 
-.carousel-item {
+.legend {
+  font-size: 30px;
+}
+
+#footer-home {
+  border-top: 5px solid white;
+
+  display: flex;
+  height: 200px;
+  color: white;
+  font-size: 20px;
+
+  position: relative;
+  z-index: -1;
+
+  background-color: #b9decc;
+
+  background-image: -webkit-linear-gradient(top, #b9decc, #b9decc);
+  background-image: -moz-linear-gradient(top, #b9decc, #b9decc);
+  background-image: linear-gradient(top, #b9decc, #b9decc);
+}
+
+#footer-home > ul {
+  width: 960px;
+  position: fixed;
+  left: 60%;
+  bottom: 0;
   margin: auto;
+  margin-left: -700px;
+  padding-bottom: 70px;
+  z-index: -1;
+}
+
+#footer-home ul {
+  display: flex;
+  /* flex-direction: column; */
+
+  justify-content: space-evenly;
+
+  font-family: "Lato", sans-serif;
+
+  list-style: none;
 }
