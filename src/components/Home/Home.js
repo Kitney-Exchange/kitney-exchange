@@ -4,6 +4,8 @@ import channel from "../../images/channel.png";
 import care from "../../images/care.png";
 import singleline from "../../images/singleline.png";
 import sun from "../../images/sun.png";
+import twohands from "../../images/twohands.jpeg";
+import { Parallax, Background } from "react-parallax";
 import { UncontrolledCarousel } from "reactstrap";
 import { Link } from "react-router-dom";
 
