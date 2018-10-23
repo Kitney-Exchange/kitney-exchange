@@ -1,0 +1,53 @@
+.donorform {
+  display: flex;
+  flex-direction: column;
+
+  background-color: rgb(217, 157, 148);
+  /* height: 100vh; */
+  height: 1300px;
+}
+
+.info-box {
+  width: 1000px;
+  height: 500px;
+  margin: auto;
+  margin-bottom: 0px;
+  padding-bottom: 30px;
+}
+
+.formbox-questions {
+  text-align: center;
+
+  font-family: "Lato", sans-serif;
+  letter-spacing: 0.5px;
+  /* margin-top: -20px; */
+  padding-top: 50px;
+  margin: auto;
+  background-color: white;
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+}
+
+#formbox-questions {
+  background-color: white;
+
+  width: 100%;
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+
+  /* background-color: rgb(217, 157, 148); */
+  margin: auto;
+}
+
+.donor-formbox {
+  height: 100vh;
+  background-color: rgb(217, 157, 148);
+}
+
+.react-parallax-content {
+  height: 400px;
+}
