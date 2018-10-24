@@ -3,7 +3,7 @@ const { json } = require("body-parser");
 const massive = require("massive");
 require("dotenv").config();
 const cors = require("cors");
-const { sendEmail } = require('./nodeMailerTests/NodeMailer');
+const { sendWelcomeEmail, sendSuccessStory} = require('./nodeMailerTests/NodeMailer');
 const { getProfiles, newProfile, modifyProfile, deleteProfile, confirmMatch } = require("./controllers/profileController");
 const { getFiles, newFile } = require("./controllers/fileController");
 const { getMatched, newMatched } = require("./controllers/matchedController");
@@ -20,7 +20,8 @@ massive({ connectionString: process.env.CONNECTION_STRING })
   .catch(err => console.log(err));
 
 // ENDPOINT NODMAILER
-app.post("/api/post", sendEmail)
+app.post("/api/post", sendWelcomeEmail)
+app.post("/api/successstory", sendSuccessStory)
 
 // profile //
 app.get("/api/profile", getProfiles);
