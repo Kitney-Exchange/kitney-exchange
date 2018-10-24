@@ -75,5 +75,12 @@ module.exports = {
     db.modify_confirmation(req.params.pair_id, req.params.answer)
       .then(response => res.status(200).send(console.log(response)))
       .catch(response => res.status(500).send(console.log(response)));
+  },
+  hospitalUpdater: (req, res, next) => {
+    const db = req.app.get("db");
+    //answer must be a number
+    db.set_hospitals(req.body.hospital_1, req.body.hospital_2, req.body.hospital_3, req.body.pair_id)
+      .then(response => res.status(200).send(console.log(response)))
+      .catch(response => res.status(500).send(console.log(response)));
   }
 };

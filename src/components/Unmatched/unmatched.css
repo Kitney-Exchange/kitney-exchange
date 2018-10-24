@@ -1,0 +1,18 @@
+.inputbox {
+    display: flex;
+    flex-direction: row;
+  }
+  #editinput {
+    padding: 10px;
+    margin: 10px;
+    /* border: none; */
+    /* border-bottom: 1px solid rgb(157, 157, 157); */
+    border-radius: 10px solid rgb(157, 157, 157);
+    width: 300px;
+    font-family: "Lato", sans-serif;
+    font-size: 15px;
+}
+.columncolor {
+  background-color: chartreuse;
+  height: 300px;
+}

@@ -63,7 +63,7 @@ class AutoCompleteMap extends Component {
 
   render() {
     return (
-      <div style={ { marginLeft: "500px", border: "1px solid red" } }>
+      <div style={ { marginLeft: "500px" } }>
         <div>
           <form onSubmit={ this.onSubmit }>
             <input
