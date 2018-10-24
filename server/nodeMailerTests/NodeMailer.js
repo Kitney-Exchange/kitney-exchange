@@ -3,39 +3,40 @@ const AUTH_USER = process.env.NODEMAIL_AUTH_USER;
 const AUTH_PASSWORD = process.env.NODEMAIL_AUTH_PASSWORD;
 
 /*
-    // THIS IS EXAMPLE OF BODY NEEDED FOR function sendEmail()
-
+    // This is example of BODY needed for function sendWelcomeEmail()
+    // 
 {
-	"to": ["vutran6853@gmail.com", "Jordan@hotmail.com", "Ashley@yahoo.com"],
-	"subject": "Approve Match",
+  "to": ["vutran6853@gmail.com", "Jordan@hotmail.com", "Ashley@yahoo.com"],
+	"subject": "Welcome Email",
 	"name": ["VU", "Jordan", "Ashley"]
 }
 
 */
 
-let sendEmail = (req, res, next) => {
-  console.log("REQ.BODY: ", req);
-  let { to } = req.body;
-  let { name } = req.body;
-
+let sendWelcomeEmail = (req, res, next) => {
+  console.log('REQ.BODY: ', req.body)
+  let { to } = req.body
+  let { name } = req.body
+  let { bcc } = req.body
+  
   let transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
+    host: 'smtp.gmail.com',
     port: 465,
     secure: true,
     auth: {
-      user: AUTH_USER,
-      pass: AUTH_PASSWORD
+        user: AUTH_USER,
+        pass: AUTH_PASSWORD
     }
   });
 
-  for (var i = 0; i < to.length; i++) {
+  for(var i = 0; i < to.length; i++) {
     // console.log('TO:', to[i])
     // console.log('BODY:', body[i]);
     var mailOptions = {
-      from: '"kitneyExchangeEmail" kitneyExchangeEmail', // sender address
+      from: '"kitneyExchangeEmail" kitneyExchangeEmail', // sender address 
       to: to[i], // list of receivers
       subject: req.body.subject, // Subject line
-      text: "Test1?", // plain text body
+      text: 'Test?', // plain text body
       forceEmbeddedImages: true,
       html: `
       <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -245,7 +246,7 @@ let sendEmail = (req, res, next) => {
                             <tr>
                               <td data-color="title" data-size="size title" data-min="25" data-max="45" data-link-color="link title color" data-link-style="text-decoration:none; color:#292c34;"
                                class="title" align="center" style="font:35px/38px Arial, Helvetica, sans-serif; color:#292c34; padding:0 0 24px;">
-                                Hello ${name[i]}, </td>
+                                Hello ${ name[i] }, </td>
                             </tr>
                             <tr>
                               <td data-color="text" data-size="size text" data-min="10" data-max="26" data-link-color="link text color" data-link-style="font-weight:bold; text-decoration:underline; color:#40aceb;"
@@ -300,7 +301,7 @@ let sendEmail = (req, res, next) => {
                               <td data-color="text" data-size="size text" data-min="10" data-max="26" data-link-color="link text color" data-link-style="font-weight:bold; text-decoration:underline; color:#40aceb;"
                                align="center" style="font:16px/29px Arial, Helvetica, sans-serif; color:#888; padding:0 0 21px;">
                                 We will be processing your information and perform cross matching with other candidates in your area. The average wait time
-                                for a potential match can range due to complicity of matching. Please be patient with us. Our priority is the
+                                for a potential match can range due to complicity of matching. Our priority is the
                                 safety and health of our candidates. Please allow at least one month for a response. You will be notified when
                                 a match is available for you. Thank you for being patient.
                               </td>
@@ -350,39 +351,7 @@ let sendEmail = (req, res, next) => {
                                   </tr>
                                 </table>
                               </th>
-                              <th class="thead" width="200" align="left" style="vertical-align:top; padding:0;">
-                                <table class="center" align="right" cellpadding="0" cellspacing="0">
-                                  <tr>
-                                    <td class="btn" valign="top" style="line-height:0; padding:3px 0 0;">
-                                      <a target="_blank" style="text-decoration:none;" href="#">
-                                        <img src="images/ico-facebook.png" border="0" style="font:12px/15px Arial, Helvetica, sans-serif; color:#797c82;" align="left"
-                                         vspace="0" hspace="0" width="6" height="13" alt="fb" />
-                                      </a>
-                                    </td>
-                                    <td width="20"></td>
-                                    <td class="btn" valign="top" style="line-height:0; padding:3px 0 0;">
-                                      <a target="_blank" style="text-decoration:none;" href="#">
-                                        <img src="images/ico-twitter.png" border="0" style="font:12px/15px Arial, Helvetica, sans-serif; color:#797c82;" align="left"
-                                         vspace="0" hspace="0" width="13" height="11" alt="tw" />
-                                      </a>
-                                    </td>
-                                    <td width="19"></td>
-                                    <td class="btn" valign="top" style="line-height:0; padding:3px 0 0;">
-                                      <a target="_blank" style="text-decoration:none;" href="#">
-                                        <img src="images/ico-google-plus.png" border="0" style="font:12px/15px Arial, Helvetica, sans-serif; color:#797c82;" align="left"
-                                         vspace="0" hspace="0" width="19" height="15" alt="g+" />
-                                      </a>
-                                    </td>
-                                    <td width="20"></td>
-                                    <td class="btn" valign="top" style="line-height:0; padding:3px 0 0;">
-                                      <a target="_blank" style="text-decoration:none;" href="#">
-                                        <img src="images/ico-linkedin.png" border="0" style="font:12px/15px Arial, Helvetica, sans-serif; color:#797c82;" align="left"
-                                         vspace="0" hspace="0" width="13" height="11" alt="in" />
-                                      </a>
-                                    </td>
-                                  </tr>
-                                </table>
-                              </th>
+                             
                             </tr>
                           </table>
                         </td>
@@ -404,11 +373,67 @@ let sendEmail = (req, res, next) => {
       </body>
       
       </html>
+        `,
+      };
+      console.log('');
+      console.log('mailOptions: ', mailOptions)
+      console.log('');
+
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+              return console.log(error);
+          }
+          console.log('Message %s sent: %s', info.messageId, info.response);
+              res.render('index');
+          });
+  }
+}
+
+
+//// Did we want to send to one person or mult person for successStory Email?  ////
+/// if so [ do FOR loop for mult ] ////
+
+
+let sendSuccessStory = (req, res, next) => {
+  console.log('HIT')
+  console.log('req.body', req.body)
+  let { to } = req.body
+  let { name } = req.body
+
+  let transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    auth: {
+      user: AUTH_USER,
+      pass: AUTH_PASSWORD
+    }
+  });
+
+  for (var i = 0; i < to.length; i++) {
+    // console.log('TO:', to[i])
+    // console.log('BODY:', body[i]);
+    var mailOptions = {
+      from: '"kitneyExchangeEmail" kitneyExchangeEmail', // sender address
+      to: to[i], // list of receivers
+      subject: req.body.subject, // Subject line
+      text: "Test1?", // plain text body
+      forceEmbeddedImages: true,
+      html: `
+      <h3>Welcome to Kitney Exchange ${ name[i] }</h3>,
+      //       <p>
+      //         Carrots soybeans, owls duck raising or, cheep in plows. Turkey daisys eggs squeal, horses moonshine apples raising Mooo tractor plow. Feed in a woof, a farmers market. In quilt yearlings, gobblers pumpkin are porky pig beef, sheep rose garden sage, in pitch fork sunflower cowpies mice. bull bowels cat chicken cow, calf donkey duck.
+      //       </p>
+      //       <br/>
+      //       <div>
+      //         Embedded image: 
+      //         <img style="height:150px; width:150px "src="https://cdn1.medicalnewstoday.com/content/images/articles/318/318852/hands-holding-a-heart.jpg"/>
+      //       </div> 
         `
     };
-    //       console.log('');
-    //       console.log('mailOptions: ', mailOptions)
-    //       console.log('');
+          console.log('');
+          console.log('mailOptions: ', mailOptions)
+          console.log('');
 
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
@@ -421,5 +446,6 @@ let sendEmail = (req, res, next) => {
 };
 
 module.exports = {
-  sendEmail
+  sendWelcomeEmail,
+  sendSuccessStory
 };
