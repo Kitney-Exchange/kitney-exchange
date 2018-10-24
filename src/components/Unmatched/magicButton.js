@@ -47,7 +47,7 @@ class MagicButton extends Component {
   };
 
   findMatchPair(array1, array2) {
-    let { possibleMatchPair } = this.state;
+    let { = } = this.state;
     // console.log('donor2: ', array1);
     // console.log('recipient2: ', array2);
     // console.log('')
@@ -209,7 +209,7 @@ class MagicButton extends Component {
 
     console.log(donorArr, RecipArr);
     // console.log();
-    testFinal.push(donorArr.shift(), RecipArr.shift());
+    // testFinal.push(donorArr.shift(), RecipArr.shift());
     console.log("testFinal:", testFinal);
     // console.log(RecipArr.filter(testFinal[1]))
     // finalResult.push(donorArr.shift(), RecipArr.shift())
