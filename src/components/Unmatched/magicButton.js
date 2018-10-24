@@ -23,13 +23,14 @@ class MagicButton extends Component {
 
   // Handle age limit within 10 years apart
   ageArrayFinder(userData, age) {
-    console.log(userData);
+    console.log("All users in database:", userData);
 
     return this.setState({
       agesArray: userData
         .map(
           (element, index) =>
-            Math.abs(element.donor_age - age) <= 10
+            Math.abs(element.donor_age - age) <= 5 ||
+            age + 5 <= Math.abs(element.donor_age)
               ? {
                   age: element.donor_age,
                   pair_id: element.pair_id,
@@ -189,7 +190,7 @@ class MagicButton extends Component {
   }
 
   finalBatcher = array1 => {
-    console.log(array1);
+    // console.log("final matches:", array1);
 
     const initialArr = array1.filter((e, i) => e[i]);
 
@@ -210,7 +211,7 @@ class MagicButton extends Component {
     console.log(donorArr, RecipArr);
     // console.log();
     testFinal.push(donorArr.shift(), RecipArr.shift());
-    console.log("testFinal:", testFinal);
+    // console.log("testFinal:", testFinal);
     // console.log(RecipArr.filter(testFinal[1]))
     // finalResult.push(donorArr.shift(), RecipArr.shift())
     // console.log(donorArr, RecipArr);
@@ -223,7 +224,7 @@ class MagicButton extends Component {
 
     // return finalResult;
 
-    console.log("finalResult:", finalResult);
+    // console.log("finalResult:", finalResult);
   };
 
   // /////////// This is from test for final function and mybe part of finalBatcher function?  /////////
@@ -276,7 +277,7 @@ class MagicButton extends Component {
 
   render() {
     let profileList = this.props;
-    console.log(this.state);
+    console.log("group of donors in the selected age range:", this.state);
 
     return (
       <div>
