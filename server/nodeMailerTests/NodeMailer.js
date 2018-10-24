@@ -14,7 +14,8 @@ const AUTH_PASSWORD = process.env.NODEMAIL_AUTH_PASSWORD;
 */
 
 let sendEmail = (req, res, next) => {
-  console.log("REQ.BODY: ", req);
+  console.log("Hello");
+  console.log("REQ.BODY: ", req.body);
   let { to } = req.body;
   let { name } = req.body;
 
