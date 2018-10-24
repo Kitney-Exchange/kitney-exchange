@@ -20,7 +20,7 @@ massive({ connectionString: process.env.CONNECTION_STRING })
   .catch(err => console.log(err));
 
 // ENDPOINT NODMAILER
-app.post("/api/post", sendWelcomeEmail)
+app.post("/api/welcome", sendWelcomeEmail)
 app.post("/api/successstory", sendSuccessStory)
 
 // profile //
