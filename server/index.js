@@ -4,7 +4,7 @@ const massive = require("massive");
 require("dotenv").config();
 const cors = require("cors");
 const { sendEmail } = require('./nodeMailerTests/NodeMailer');
-const { getProfiles, newProfile, modifyProfile, deleteProfile } = require("./controllers/profileController");
+const { getProfiles, newProfile, modifyProfile, deleteProfile, confirmMatch } = require("./controllers/profileController");
 const { getFiles, newFile } = require("./controllers/fileController");
 const { getMatched, newMatched } = require("./controllers/matchedController");
 const { getHospitals, newHospital, modifyHospital, deleteHospital } = require("./controllers/hospitalController");
@@ -26,7 +26,8 @@ app.post("/api/post", sendEmail)
 app.get("/api/profile", getProfiles);
 app.post("/api/profile", newProfile);
 app.put("/api/profile", modifyProfile);
-app.delete("/api/profile/:pair_id", deleteProfile)
+app.delete("/api/profile/:pair_id", deleteProfile);
+app.put("/api/confirm", confirmMatch);
 
 // files //
 app.get("/api/files", getFiles);
