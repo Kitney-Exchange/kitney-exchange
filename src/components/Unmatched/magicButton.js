@@ -27,7 +27,7 @@ class MagicButton extends Component {
     console.log(userData)
 
     return this.setState({agesArray: userData.map((element, index) => 
-    Math.abs(element.donor_age - age) <= 10 ? {age: element.donor_age, pair_id: element.pair_id, donor_blood_type: element.donor_blood_type, recipient_blood_type: element.recipient_blood_type} : null)
+    Math.abs(element.donor_age - age) <= 5 ||  (age + 5) <= Math.abs(element.donor_age) ? {age: element.donor_age, pair_id: element.pair_id, donor_blood_type: element.donor_blood_type, recipient_blood_type: element.recipient_blood_type} : null)
     .filter(element => element !== null)})
   }
 
@@ -115,13 +115,13 @@ class MagicButton extends Component {
   // console.log();
   testFinal.push(donorArr.shift(), RecipArr.shift())
   console.log('testFinal:', testFinal)
-  console.log(RecipArr.filter(testFinal[1]))
+  // console.log(RecipArr.filter(testFinal[1]))
   // finalResult.push(donorArr.shift(), RecipArr.shift())
   // console.log(donorArr, RecipArr);
   // console.log(donorArr.shift(), RecipArr.shift());
   // console.log(donorArr, RecipArr);
 
-  console.log('finalResult:', finalResult[1])
+  // console.log('finalResult:', finalResult[1])
   
   // // finalResult.push([donorArr[0], RecipArr[0]]);
 

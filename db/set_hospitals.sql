@@ -1,0 +1,1 @@
+UPDATE profile SET hospital_1 = $1, hospital_2 = $2, hospital_3 = $3 where pair_id = $4;

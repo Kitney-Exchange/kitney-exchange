@@ -18,7 +18,7 @@ class MapContainer extends Component {
       activeMarker: {},
       selectedPlace: {},
       hospitalChoice: [],
-      style: { width: "40%", height: "40%" }
+      style: { width: "70%", height: "70%" }
     };
     this.handleOnMarkerClick = this.handleOnMarkerClick.bind(this);
   }
