@@ -6,6 +6,7 @@ import AdminNavbar from '../Navbar/AdminNavbar';
 import { Icon } from 'react-icons-kit'
 import {checkmark} from 'react-icons-kit/ionicons/checkmark'
 import {trashA} from 'react-icons-kit/ionicons/trashA'
+import MatchedPostComponent from '../Unmatched/matchedPostComponent';
 
 
 class MatchedPage extends Component {
@@ -61,6 +62,7 @@ var data = this.props.matched
 return (
       <div>
           <AdminNavbar/>
+          <MatchedPostComponent/>
            <h1>
           Matched Page
           </h1>
