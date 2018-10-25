@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./matchedPostComponent.css";
 
 class MagicButton extends Component {
   constructor(props) {
@@ -259,21 +260,25 @@ class MagicButton extends Component {
     console.log("group of donors in the selected age range:", this.state);
 
     return (
-      <div>
-        <button
-          onClick={() => this.ageArrayFinder(profileList.data, this.state.age)}
-        >
-          Magic Button!
-        </button>
-        <select onChange={this.changeHandler}>
+      <div className="magic-button-container">
+        <select id="age-select" onChange={this.changeHandler}>
           <option> Age </option>
           <option value="18">18</option>
           <option value="28">28</option>
           <option value="38">38</option>
           <option value="48">48</option>
         </select>
-        <button onClick={() => this.finalMatch(this.state.possibleMatchPair)}>
-          Final button??
+        <button
+          id="matched-button"
+          onClick={() => this.ageArrayFinder(profileList.data, this.state.age)}
+        >
+          Possible Matches Generator
+        </button>
+        <button
+          id="matched-button"
+          onClick={() => this.finalMatch(this.state.possibleMatchPair)}
+        >
+          Create Matches
         </button>
       </div>
     );
