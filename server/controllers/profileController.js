@@ -5,9 +5,15 @@ module.exports = {
       .then(response => res.status(200).send(response))
       .catch(err => res.status(500).send(err));
   },
+  getUnmatchedProfiles: (req, res, next) => {
+    const db = req.app.get("db");
+    db.get_unmatched_profiles()
+      .then(response => res.status(200).send(response))
+      .catch(err => res.status(500).send(err));
+  },
   newProfile: (req, res, next) => {
     const db = req.app.get("db");
-
+    console.log(req.body)
     db.new_profile([
       req.body.hospital_1,
       req.body.hospital_2,
