@@ -65,7 +65,7 @@ class LastForm extends Component {
     }
 
   saveHospital = () => {
-    
+
   }
 
 
@@ -87,7 +87,10 @@ class LastForm extends Component {
               <MapContainer />
             </div>
             <div className="submit-button">
-              <Link to="/Submit">
+              <Link to={{
+                    pathname: "/Submit",
+                    state: this.state
+                  }}>
                 <Button id="bootstrap-button" outline color="secondary">
                   Submit
                 </Button>

@@ -79,9 +79,9 @@ class Submit extends Component {
   handleSave = id => {
     axios
       .put("/api/profile", {
-        hospital_1: null,
-        hospital_2: null,
-        hospital_3: null,
+        hospital_1: this.props.location.hospital_1,
+        hospital_2: this.props.location.hospital_2,
+        hospital_3: this.props.location.hospital_3,
         recipient_name: this.state.r_name,
         recipient_dob: this.state.r_dob,
         recipient_age: this.state.r_age,
@@ -97,7 +97,7 @@ class Submit extends Component {
         donor_height: this.state.d_height,
         donor_history: this.state.d_history,
         donor_blood_type: this.state.d_blood_type,
-        pair_id: 18,
+        pair_id: this.props.location.state.pair_id,
         donor_email: this.state.d_email,
         recipient_email: this.state.r_email
       })
@@ -107,7 +107,7 @@ class Submit extends Component {
 
   render() {
     console.log(this.state);
-
+    console.log(this.props)
     // console.log(this.state.user.pair_id);
     return (
       <div className="register-page">
