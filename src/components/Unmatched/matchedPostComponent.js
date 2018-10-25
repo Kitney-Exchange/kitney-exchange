@@ -113,30 +113,32 @@ class MatchedPostComponent extends Component {
     console.log(this.state);
     return (
       <div className="matched-page">
-        <p id="unmatched-top-title"> Matched Set</p>
+        <p id="unmatched-top-title"> Match Confirmation</p>
 
         <div className="matched-inputboxes">
-          <input
-            id="editinput"
-            placeholder="Hospital ID"
-            name="hospital_id"
-            onChange={e => this.handleChange(e)}
-          />
-          <br />
-          <input
-            id="editinput"
-            placeholder="Date"
-            name="date"
-            onChange={e => this.handleChange(e)}
-          />
-          <br />
-          <input
-            id="editinput"
-            placeholder="Potential Matches"
-            name="potential_matches"
-            onChange={e => this.handleChange(e)}
-          />
-          <br />
+          <div className="matched-input">
+            <input
+              id="editinput"
+              placeholder="Hospital ID"
+              name="hospital_id"
+              onChange={e => this.handleChange(e)}
+            />
+            <br />
+            <input
+              id="editinput"
+              placeholder="Date"
+              name="date"
+              onChange={e => this.handleChange(e)}
+            />
+            <br />
+            <input
+              id="editinput"
+              placeholder="Potential Matches"
+              name="potential_matches"
+              onChange={e => this.handleChange(e)}
+            />
+            <br />
+          </div>
           <div className="matched-button">
             <button
               id="matched-button"

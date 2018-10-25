@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import "./MapContainer.css";
 class AutoCompleteMap extends Component {
   constructor(props) {
     super(props);
@@ -33,16 +33,15 @@ class AutoCompleteMap extends Component {
     autocomplete.bindTo("bounds", map);
 
     autocomplete.addListener("place_changed", () => {
-      const place = autocomplete.getPlace(); 
+      const place = autocomplete.getPlace();
 
-      this.setState({ newCityInfo: autocomplete.getPlace().formatted_address }) //// store user input new city into local state ////
-      
+      this.setState({ newCityInfo: autocomplete.getPlace().formatted_address }); //// store user input new city into local state ////
+
       if (!place.geometry) {
         return;
       }
 
-      if (place.geometry.viewport) 
-        map.fitBounds(place.geometry.viewport);
+      if (place.geometry.viewport) map.fitBounds(place.geometry.viewport);
       else {
         map.setCenter(place.geometry.location);
         map.setZoom(17);
@@ -50,34 +49,52 @@ class AutoCompleteMap extends Component {
       this.setState({ position: place.geometry.location });
 
       //// Set lat && lng of new city into local state ////
-      this.state.newLocationInfo = Object.create({}, 
-        { lat: { value: place.geometry.location.lat() }, 
-          lng: { value: place.geometry.location.lng() } });
+      this.state.newLocationInfo = Object.create(
+        {},
+        {
+          lat: { value: place.geometry.location.lat() },
+          lng: { value: place.geometry.location.lng() }
+        }
+      );
     });
   }
 
   handleSubmitNewInfo() {
-    console.log('this.state', this.state);
+    console.log("this.state", this.state);
   }
 
   render() {
     return (
-      <div style={ { marginLeft: "500px" } }>
-        <div>
-          <form onSubmit={ this.onSubmit }>
-            <input
-              placeholder="Enter a location"
-              ref={ ref => (this.autocomplete = ref) }
-              type="text"
-            />
-            <input type="submit" value="Go" 
-                    onClick={ () => this.handleSubmitNewInfo() }
-            />
+      <div
+      // style={{ marginLeft: "500px" }}
+      >
+        <div className="location-box">
+          <form onSubmit={this.onSubmit}>
+            <div className="location-input">
+              <input
+                id="editinput"
+                placeholder="Enter a location"
+                ref={ref => (this.autocomplete = ref)}
+                type="text"
+              />
+            </div>
+            <div className="location-input">
+              <input
+                id="matched-button"
+                type="submit"
+                value="Go"
+                onClick={() => this.handleSubmitNewInfo()}
+              />
+            </div>
           </form>
 
-          <div>
-            <div>Lat: { this.state.position && this.state.position.lat() }</div>
-            <div>Lng: { this.state.position && this.state.position.lng() }</div>
+          <div className="latlong-box">
+            <div>
+              Latitude: {this.state.position && this.state.position.lat()}
+            </div>
+            <div>
+              Longitude: {this.state.position && this.state.position.lng()}
+            </div>
           </div>
         </div>
       </div>
