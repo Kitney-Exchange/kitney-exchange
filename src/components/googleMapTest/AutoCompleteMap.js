@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import MapContainer from "./MapContainer";
 
 class AutoCompleteMap extends Component {
   constructor(props) {
@@ -23,7 +22,8 @@ class AutoCompleteMap extends Component {
   onSubmit(e) {
     e.preventDefault();
   }
-  //  HANDLE USER INPUT FOR LOCATION AND AUTOSUGGEST && TRIGGER MAP TO RENDER TO NEW LOCATION
+
+  //// Handle user input for location and autosuggest && Trigger map to render to new location ////
   renderAutoComplete() {
     const { google, map } = this.props;
 
@@ -33,24 +33,23 @@ class AutoCompleteMap extends Component {
     autocomplete.bindTo("bounds", map);
 
     autocomplete.addListener("place_changed", () => {
-      const place = autocomplete.getPlace();
+      const place = autocomplete.getPlace(); 
 
-      this.setState({ newCityInfo: autocomplete.getPlace().formatted_address }) // STORE USER INPUT NEW CITY INTO LOCAL STATE
+      this.setState({ newCityInfo: autocomplete.getPlace().formatted_address }) //// store user input new city into local state ////
       
       if (!place.geometry) {
         return;
       }
 
       if (place.geometry.viewport) 
-
-      map.fitBounds(place.geometry.viewport);
+        map.fitBounds(place.geometry.viewport);
       else {
         map.setCenter(place.geometry.location);
         map.setZoom(17);
       }
       this.setState({ position: place.geometry.location });
-      
-      //  SET LAT && LNG OF NEW CITY INTO LOCAL STATE
+
+      //// Set lat && lng of new city into local state ////
       this.state.newLocationInfo = Object.create({}, 
         { lat: { value: place.geometry.location.lat() }, 
           lng: { value: place.geometry.location.lng() } });

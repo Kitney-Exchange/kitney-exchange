@@ -5,10 +5,7 @@ import AutoCompleteMap from "./AutoCompleteMap";
 import { getHospitals } from "../../dux/reducer";
 import './MapContainer.css';
 
-
 const GOOGLE_MAP_KEY = process.env.REACT_APP_GOOGLE_MAP_KEY;
-
-
 
 class MapContainer extends Component {
   constructor(props) {
@@ -29,7 +26,6 @@ class MapContainer extends Component {
 
   handleOnMarkerClick(props, marker, e) {
     console.log("props", props);
-    console.log("e:", e)
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
@@ -48,10 +44,9 @@ class MapContainer extends Component {
           name= {e.hospital_name}
           position={{ lat: e.lat, lng: e.long }} />}
       )
-      
   }
 
-  addButton =(hospital) => {
+  addButton = (hospital) => {
     console.log('I fired')
     const newFav = [...this.state.hospitalChoice]
     newFav.push(hospital);
@@ -76,42 +71,39 @@ class MapContainer extends Component {
     for (let i = 0; i < hospitals.length; i++){
       if (place.name === hospitals[i].hospital_name){
         console.log(place)
-        return <span><h1>{hospitals[i].hospital_name}</h1><br/>
-        {hospitals[i].hospital_address}<br/>
-        {hospitals[i].hospital_phone}<br/>
-        <div>
-          <button onClick={()=> addButton(hospitals[i].hospital_id)}>Add</button><br/>
-          </div>
-        <div>
-          <button onClick={()=> deleteButton(hospitals[i].hospital_id)}>Delete</button>
-          </div>
-          </span>
-  }
-}
+        return <div class='displayChosenHospital'>
+                <h1>{hospitals[i].hospital_name}</h1><br/>
+                    {hospitals[i].hospital_address}<br/>
+                    {hospitals[i].hospital_phone}<br/>
+                <div>
+                  <button onClick={()=> addButton(hospitals[i].hospital_id)}>Add</button><br/>
+                </div>
+                <div>
+                  <button onClick={()=> deleteButton(hospitals[i].hospital_id)}>Delete</button>
+                </div>
+               </div>
+      }
+    }
   }
 
   displayHospitals = () => {
     const newArr = this.state.hospitalChoice
     return <div>
 
-    </div>
+           </div>
   }
-
-  // addFavHospital = (hospital) => {
-
-  // }
-  
-  
 
   findMyStats = (place) => {
     const {hospitals} = this.props
     for (let i = 0; i < hospitals.length; i++){
       if (place === hospitals[i].hospital_name){
-        return <span>{hospitals[i].hospital_address}<br/>
-        {hospitals[i].hospital_phone}</span>
+        return <span>
+                {hospitals[i].hospital_address}<br/>
+                {hospitals[i].hospital_phone}
+               </span>
       }
+    }
   }
-}
   // </Jordan> //
 
   handleOnMapClicked(props) {
@@ -125,10 +117,8 @@ class MapContainer extends Component {
     console.log(this.state.hospitalChoice)
     return (
       <div className="mapDisplay">
-        {/* <p>Map 1 this will show location and marker tootip hospital info </p> */}
-
         <Map
-        className="thegooglemap"
+          className="thegooglemap"
           google={this.props.google}
           onClick={() => this.handleOnMapClicked()}
           zoom={10}
@@ -147,12 +137,9 @@ class MapContainer extends Component {
           </InfoWindow>
           <AutoCompleteMap /><br/>
           <div>
-          {this.displayChosenHospital(this.state.selectedPlace, this.addButton, this.deleteButton)}
+            {this.displayChosenHospital(this.state.selectedPlace, this.addButton, this.deleteButton)}
           </div>
         </Map>
-        <div>
-
-        </div>
       </div>
     );
   }
