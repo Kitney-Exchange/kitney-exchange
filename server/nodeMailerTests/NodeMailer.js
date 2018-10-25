@@ -389,7 +389,7 @@ let sendWelcomeEmail = (req, res, next) => {
 };
 
 /*
-		//// This is example of req.body needed for function sendSuccessStory() ////
+		//// This is example of req.body needed for function sendConfirmation() ////
 		 
 {
   "to": ["vutran6853@gmail.com", "Jordan@hotmail.com", "Ashley@yahoo.com"],
@@ -399,8 +399,8 @@ let sendWelcomeEmail = (req, res, next) => {
 
 */
 
-let sendSuccessStory = (req, res, next) => {
-  // console.log("req.body", req.body);
+let sendConfirmation = (req, res, next) => {
+  console.log("req.body", req.body);
   let { to } = req.body;
   let { name } = req.body;
 
@@ -898,17 +898,17 @@ let sendSuccessStory = (req, res, next) => {
     console.log("");
     console.log("mailOptions: ", mailOptions);
 
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        return console.log(error);
-      }
-      console.log("Message %s sent: %s", info.messageId, info.response);
-      res.render("index");
-    });
+    // transporter.sendMail(mailOptions, (error, info) => {
+    //   if (error) {
+    //     return console.log(error);
+    //   }
+    //   console.log("Message %s sent: %s", info.messageId, info.response);
+    //   res.render("index");
+    // });
   }
 };
 
 module.exports = {
   sendWelcomeEmail,
-  sendSuccessStory
+  sendConfirmation
 };
