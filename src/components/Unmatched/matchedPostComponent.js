@@ -8,7 +8,8 @@ class MatchedPostComponent extends Component {
         batch_id: '',
         profiles: '',
         hospital_id: '',
-        potential_matches: ''
+        potential_matches: '',
+        date: ''
         }
     }
 
@@ -17,6 +18,19 @@ class MatchedPostComponent extends Component {
         console.log(e.target.name);
         this.setState({ [e.target.name]: e.target.value });
       };
+
+    confirmMatches = () => {
+        axios.post('/api/matched', {profiles: this.state.profiles, hospital: this.state.hospital_id, date: this.state.date})
+        .then(alert('Pair added!'))
+        .then(err=> console.log(err));
+    }
+    resetForm = () => {
+        this.setState({batch_id: '',
+        profiles: '',
+        hospital_id: '',
+        potential_matches: '',
+        date: ''})
+    }
 
 render() {
     console.log(this.state)
@@ -27,7 +41,7 @@ return (
           <input id="editinput" placeholder="Hospital ID" name="hospital_id" onChange={(e)=> this.handleChange(e)} /><br/>
           <input id="editinput" placeholder="Date" name="date" onChange={(e)=> this.handleChange(e)} /><br/>
           <input id="editinput" placeholder="Potential Matches" name="potential_matches" onChange={(e)=> this.handleChange(e)} /><br/>
-          <button>Confirm</button> <button>Decline</button>
+          <button onClick={this.confirmMatches}>Confirm</button> <button onClick={this.resetForm}>Decline</button>
           </div>
     </div>
        )

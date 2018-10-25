@@ -65,6 +65,7 @@ module.exports = {
   },
   deleteProfile: (req, res, next) => {
     const db = req.app.get("db");
+    //insert number
     db.delete_profile(req.params.pair_id)
       .then(response => res.status(200).send(console.log(response)))
       .catch(response => res.status(500).send(console.log(response)));
@@ -78,9 +79,14 @@ module.exports = {
   },
   hospitalUpdater: (req, res, next) => {
     const db = req.app.get("db");
-    //answer must be a number
+    //all must be a number
     db.set_hospitals(req.body.hospital_1, req.body.hospital_2, req.body.hospital_3, req.body.pair_id)
       .then(response => res.status(200).send(console.log(response)))
       .catch(response => res.status(500).send(console.log(response)));
+  },
+  updateBatched: (req, res, next) => {
+    const db = req.app.get('db');
+    //number, boolean, number
+    db.update_batched(req.body.batch_id, req.body.match, req.body.pair_id)
   }
 };

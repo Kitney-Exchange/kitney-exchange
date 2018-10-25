@@ -6,7 +6,7 @@ const cors = require("cors");
 const { sendWelcomeEmail, sendSuccessStory} = require('./nodeMailerTests/NodeMailer');
 const { getProfiles, newProfile, modifyProfile, deleteProfile, confirmMatch } = require("./controllers/profileController");
 const { getFiles, newFile } = require("./controllers/fileController");
-const { getMatched, newMatched } = require("./controllers/matchedController");
+const { getMatched, newMatched, deleteMatched } = require("./controllers/matchedController");
 const { getHospitals, newHospital, modifyHospital, deleteHospital } = require("./controllers/hospitalController");
 
 //create server
@@ -37,6 +37,7 @@ app.post("/api/files", newFile);
 // matched profiles info //
 app.get("/api/matched", getMatched);
 app.post("/api/matched", newMatched);
+app.delete("/api/matched", deleteMatched);
 
 // hospitals info //
 app.get("/api/hospitals", getHospitals);
