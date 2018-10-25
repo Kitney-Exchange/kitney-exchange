@@ -15,6 +15,7 @@ class MagicButton extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevState.agesArray !== this.state.agesArray) {
       this.findMatchPair(this.state.agesArray, this.state.agesArray);
+      //     console.log(this.finalBatcher(this.state.possibleMatchPair));
     }
   }
 
@@ -25,13 +26,14 @@ class MagicButton extends Component {
   //// Handle age limit within 10 years apart. Part 1 function for magic button ////
 
   ageArrayFinder(userData, age) {
-    console.log(userData);
+    console.log("All users in database:", userData);
 
     return this.setState({
       agesArray: userData
         .map(
           (element, index) =>
-            (Math.abs(element.donor_age - age) <= 5 || (age + 5) <= Math.abs(element.donor_age))
+            Math.abs(element.donor_age - age) <= 5 ||
+            age + 5 <= Math.abs(element.donor_age)
               ? {
                   age: element.donor_age,
                   pair_id: element.pair_id,
@@ -184,20 +186,19 @@ class MagicButton extends Component {
     }
   }
 
-
   //// This will take possibleMatchPair array and pair donor and recipient in order. Part 3 function for magic button ////
 
-  finalMatch = (array) => {
-    console.log('array: ', array)
+  finalMatch = array => {
+    console.log("array: ", array);
     let oldArray = [];
-    let finalArray = []
+    let finalArray = [];
 
-    for(let t = 0; t < array.length; t++) {
-      oldArray.push([ array[t][0], array[t][1] ])
+    for (let t = 0; t < array.length; t++) {
+      oldArray.push([array[t][0], array[t][1]]);
     }
 
     finalArray.push(oldArray[0]);
-    console.log('finalArray:', finalArray);
+    console.log("finalArray:", finalArray);
 
     for (let i = 0; i < oldArray.length; i++) {
       // console.log('')
@@ -205,10 +206,12 @@ class MagicButton extends Component {
         // console.log(`finalArray[${i}]:`, finalArray[j], `finalArray[${i}]:`, finalArray[j], `oldArray[${i}]`, oldArray[i]);
         // console.log(`oldArray[${i}][1] === finalArray[${j}][1]`, oldArray[i][0] ,  finalArray[j][1])
         // console.log(`oldArray[${i}][1] === finalArray[${j}][1]`, oldArray[i][0] , oldArray[i][1] ,  finalArray[j][1])
-        if(oldArray[i][0] === finalArray[j][1] && 
-            oldArray[i][1] !== finalArray[j][1]) {
-          finalArray.push(oldArray[i])
-        } 
+        if (
+          oldArray[i][0] === finalArray[j][1] &&
+          oldArray[i][1] !== finalArray[j][1]
+        ) {
+          finalArray.push(oldArray[i]);
+        }
       }
     }
 
@@ -217,16 +220,17 @@ class MagicButton extends Component {
       for (let b = 0; b < finalArray.length; b++) {
         // console.log(`finalArray[${b}]:`, finalArray[b], `finalArray[${b}]:`, finalArray[0], `oldArray[${a}]`, oldArray[a]);
         // console.log('oldArray[a][0] === finalArray[b][1]::', oldArray[a][0] , oldArray[a][1], finalArray[b][1])
-        if(oldArray[a][0] === finalArray[b][1] && 
-            oldArray[a][1] !== finalArray[b][1] &&
-            oldArray[a][1] !== finalArray[0][1] &&
-            oldArray[a][0] !== finalArray[0][1]) {
-          finalArray.push(oldArray[a])
+        if (
+          oldArray[a][0] === finalArray[b][1] &&
+          oldArray[a][1] !== finalArray[b][1] &&
+          oldArray[a][1] !== finalArray[0][1] &&
+          oldArray[a][0] !== finalArray[0][1]
+        ) {
+          finalArray.push(oldArray[a]);
         }
       }
     }
-
-  }
+  };
 
   finalBatcher = array1 => {
     console.log(array1);
@@ -252,7 +256,7 @@ class MagicButton extends Component {
 
   render() {
     let profileList = this.props;
-    console.log(this.state);
+    console.log("group of donors in the selected age range:", this.state);
 
     return (
       <div>
@@ -268,7 +272,9 @@ class MagicButton extends Component {
           <option value="38">38</option>
           <option value="48">48</option>
         </select>
-        <button onClick={()=> this.finalMatch(this.state.possibleMatchPair)}>Final button??</button>
+        <button onClick={() => this.finalMatch(this.state.possibleMatchPair)}>
+          Final button??
+        </button>
       </div>
     );
   }
