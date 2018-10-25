@@ -7,6 +7,7 @@ import axios from "axios";
 import MagicButton from "./magicButton";
 import AdminNavbar from "../Navbar/AdminNavbar";
 import "./matchedPostComponent.css";
+import MatchedPostComponent from "./matchedPostComponent";
 class UnmatchedPage extends Component {
   componentDidMount() {
     this.props.getProfiles();
@@ -75,8 +76,10 @@ class UnmatchedPage extends Component {
         <div className="magicbutton-top">
           <p id="unmatched-top-title"> Create Matches</p>
           <MagicButton data={data} />
+        <MatchedPostComponent/>
         </div>
         <p id="matched-bottom-title">Unmatched Table</p>
+        
         <ReactTable
           data={data}
           columns={[
