@@ -3,8 +3,8 @@ const AUTH_USER = process.env.NODEMAIL_AUTH_USER;
 const AUTH_PASSWORD = process.env.NODEMAIL_AUTH_PASSWORD;
 
 /*
-    // This is example of BODY needed for function sendWelcomeEmail()
-    // 
+    //// This is example of req.body needed for function sendWelcomeEmail() ////
+
 {
   "to": ["vutran6853@gmail.com", "Jordan@hotmail.com", "Ashley@yahoo.com"],
 	"subject": "Welcome Email",
@@ -14,7 +14,7 @@ const AUTH_PASSWORD = process.env.NODEMAIL_AUTH_PASSWORD;
 */
 
 let sendWelcomeEmail = (req, res, next) => {
-  console.log("REQ.BODY: ", req.body);
+  console.log("req.body: ", req.body);
   let { to } = req.body;
   let { name } = req.body;
   let { bcc } = req.body;
@@ -377,7 +377,6 @@ let sendWelcomeEmail = (req, res, next) => {
     };
     console.log("");
     console.log("mailOptions: ", mailOptions);
-    console.log("");
 
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
@@ -389,12 +388,19 @@ let sendWelcomeEmail = (req, res, next) => {
   }
 };
 
-//// Did we want to send to one person or mult person for successStory Email?  ////
-/// if so [ do FOR loop for mult ] ////
+/*
+		//// This is example of req.body needed for function sendSuccessStory() ////
+		 
+{
+  "to": ["vutran6853@gmail.com", "Jordan@hotmail.com", "Ashley@yahoo.com"],
+	"subject": "Kitney Exchange Confirmation Email",
+	"name": ["VU", "Jordan", "Ashley"]
+}
+
+*/
 
 let sendSuccessStory = (req, res, next) => {
-  console.log("HIT");
-  console.log("req.body", req.body);
+  // console.log("req.body", req.body);
   let { to } = req.body;
   let { name } = req.body;
 
@@ -780,7 +786,7 @@ let sendSuccessStory = (req, res, next) => {
 														</tr>
 														<tr>
 															<td class="img-flex">
-																<img src="images/img-05.jpg" style="vertical-align:top;" width="300" height="200" alt="" />
+																<img src="https://images.unsplash.com/photo-1496092607007-ca127e0b6a10?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b94d4819baa327a9632b6fa311a56faa&auto=format&fit=crop&w=1385&q=80" style="vertical-align:top;" width="300" height="200" alt="" />
 															</td>
 														</tr>
 														<!-- post -->
@@ -811,7 +817,7 @@ let sendSuccessStory = (req, res, next) => {
 														</tr>
 														<tr>
 															<td class="img-flex">
-																<img src="images/img-06.jpg" style="vertical-align:top;" width="300" height="200" alt="" />
+																<img src="https://images.unsplash.com/photo-1472200129899-ecfa867b5534?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c42850e3beeb5d69dd56f619f548795c&auto=format&fit=crop&w=1365&q=80" style="vertical-align:top;" width="300" height="200" alt="" />
 															</td>
 														</tr>
 													</table>
@@ -891,7 +897,6 @@ let sendSuccessStory = (req, res, next) => {
     };
     console.log("");
     console.log("mailOptions: ", mailOptions);
-    console.log("");
 
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {

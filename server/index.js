@@ -19,7 +19,7 @@ massive({ connectionString: process.env.CONNECTION_STRING })
   .then(db => app.set("db", db))
   .catch(err => console.log(err));
 
-// ENDPOINT NODMAILER
+//// endpoint nodemailer ////
 app.post("/api/welcome", sendWelcomeEmail)
 app.post("/api/successstory", sendSuccessStory)
 

@@ -17,3 +17,8 @@
     height: 400px;
     width: 400px;
 }
+
+.displayChosenHospital {
+    border: 1px solid blue;
+    margin-left: 500px
+}
