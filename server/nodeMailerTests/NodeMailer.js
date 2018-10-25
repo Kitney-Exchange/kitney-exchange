@@ -677,7 +677,7 @@ let sendSuccessStory = (req, res, next) => {
 											<tr>
 												<td data-color="text" data-size="size text" data-min="10" data-max="26" data-link-color="link text color" data-link-style="font-weight:bold; text-decoration:underline; color:#40aceb;"
 												 align="center" style="font:16px/29px Arial, Helvetica, sans-serif; color:#888; padding:0 0 21px;">
-													Lorem Ipsum is simply dummy text of the printing and typesetting industry has been the industry's standard
+												There are simple steps to follow to get started with the process.
 												</td>
 											</tr>
 										</table>

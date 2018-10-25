@@ -1,37 +1,38 @@
-import React, {Component} from 'react';
-import ReactTable from 'react-table';
-import 'react-table/react-table.css'
-import {getProfiles} from '../../dux/reducer';
-import {connect} from 'react-redux';
-import axios from 'axios';
-import MagicButton from './magicButton';
-import AdminNavbar from '../Navbar/AdminNavbar';
+import React, { Component } from "react";
+import ReactTable from "react-table";
+import "react-table/react-table.css";
+import { getProfiles } from "../../dux/reducer";
+import { connect } from "react-redux";
+import axios from "axios";
+import MagicButton from "./magicButton";
+import AdminNavbar from "../Navbar/AdminNavbar";
+import "./matchedPostComponent.css";
 class UnmatchedPage extends Component {
-    
-    
-componentDidMount(){
+  componentDidMount() {
     this.props.getProfiles();
-}
+  }
 
-renderEditable = (cellInfo) => {
-    return(
-        <div
+  renderEditable = cellInfo => {
+    return (
+      <div
         contentEditable
         suppressContentEditableWarning
-        onBlur={e=> {
-            const data = [...this.props.profile];
-            data[cellInfo.index][cellInfo.column.id] = e.target.innerHTML;
-            this.setState({data})
-        }
-    }
+        onBlur={e => {
+          const data = [...this.props.profile];
+          data[cellInfo.index][cellInfo.column.id] = e.target.innerHTML;
+          this.setState({ data });
+        }}
+        dangerouslySetInnerHTML={{
+          __html: this.props.profile[cellInfo.index][cellInfo.column.id]
+        }}
+      />
+    );
+  };
 
-        dangerouslySetInnerHTML={{__html: this.props.profile[cellInfo.index][cellInfo.column.id]}}
-            />
-    )
-}
-
-handleSave = (info) => {
-    axios.put('/api/profile', {hospital_1: info.hospital_1, 
+  handleSave = info => {
+    axios
+      .put("/api/profile", {
+        hospital_1: info.hospital_1,
         hospital_2: info.hospital_2,
         hospital_3: info.hospital_3,
         recipient_name: info.recipient_name,
@@ -52,157 +53,167 @@ handleSave = (info) => {
         pair_id: info.pair_id,
         donor_email: info.donor_email,
         recipient_email: info.recipient_email
-    })
-        .then(response=> alert("Profile Update!"))
-        .catch(err=> alert(err));
-}
+      })
+      .then(response => alert("Profile Update!"))
+      .catch(err => alert(err));
+  };
 
-handleDelete = (info) => {
-    axios.delete(`/api/profile/${info.pair_id}`)
-    .then(response=> alert("Profile Deleted!"))
-    .catch(err=> alert(err));
-}
-render() {
+  handleDelete = info => {
+    axios
+      .delete(`/api/profile/${info.pair_id}`)
+      .then(response => alert("Profile Deleted!"))
+      .catch(err => alert(err));
+  };
+  render() {
     // console.log(this.state)
-    if (this.props.profile)
-    var data = this.props.profile;
+    if (this.props.profile) var data = this.props.profile;
 
-return (
-      <div>
-          <AdminNavbar/>
-          <MagicButton data={ data }/>
-          <ReactTable 
-          data = {data}
+    return (
+      <div className="unmatched-table-section">
+        <AdminNavbar />
+        <div className="magicbutton-top">
+          <p id="unmatched-top-title"> Create Matches</p>
+          <MagicButton data={data} />
+        </div>
+        <p id="matched-bottom-title">Unmatched Table</p>
+        <ReactTable
+          data={data}
           columns={[
-              {
-                  Header: "Pair id",
-                  accessor: "pair_id",
-                  Cell: this.renderEditable
-              },
-              {
-                Header: "Hospital 1 id",
-                accessor: "hospital_1",
-                Cell: this.renderEditable
+            {
+              Header: "Pair id",
+              accessor: "pair_id",
+              Cell: this.renderEditable
             },
             {
-                Header: "Hospital 2 id",
-                accessor: "hospital_2",
-                Cell: this.renderEditable
+              Header: "Hospital 1 id",
+              accessor: "hospital_1",
+              Cell: this.renderEditable
             },
             {
-                Header: "Hospital 3 id",
-                accessor: "hospital_3",
-                Cell: this.renderEditable
+              Header: "Hospital 2 id",
+              accessor: "hospital_2",
+              Cell: this.renderEditable
             },
             {
-                Header: "Recipient Name",
-                accessor: "recipient_name",
-                Cell: this.renderEditable
+              Header: "Hospital 3 id",
+              accessor: "hospital_3",
+              Cell: this.renderEditable
             },
             {
-                Header: "Recipient DOB",
-                accessor: "recipient_dob",
-                Cell: this.renderEditable
+              Header: "Recipient Name",
+              accessor: "recipient_name",
+              Cell: this.renderEditable
             },
             {
-                Header: "Recipient Age",
-                accessor: "recipient_age",
-                Cell: this.renderEditable
+              Header: "Recipient DOB",
+              accessor: "recipient_dob",
+              Cell: this.renderEditable
             },
             {
-                Header: "Recipient Weight",
-                accessor: "recipient_weight",
-                Cell: this.renderEditable
+              Header: "Recipient Age",
+              accessor: "recipient_age",
+              Cell: this.renderEditable
             },
             {
-                Header: "Recipient Height",
-                accessor: "recipient_height",
-                Cell: this.renderEditable
+              Header: "Recipient Weight",
+              accessor: "recipient_weight",
+              Cell: this.renderEditable
             },
             {
-                Header: "Recipient History",
-                accessor: "recipient_history",
-                Cell: this.renderEditable
+              Header: "Recipient Height",
+              accessor: "recipient_height",
+              Cell: this.renderEditable
             },
             {
-                Header: "Recipient Dialysis",
-                accessor: "recipient_dialysis",
-                Cell: this.renderEditable
+              Header: "Recipient History",
+              accessor: "recipient_history",
+              Cell: this.renderEditable
             },
             {
-                Header: "Recipient Blood Type",
-                accessor: "recipient_blood_type",
-                Cell: this.renderEditable
+              Header: "Recipient Dialysis",
+              accessor: "recipient_dialysis",
+              Cell: this.renderEditable
             },
             {
-                Header: "Recipient Email",
-                accessor: "recipient_email",
-                Cell: this.renderEditable
+              Header: "Recipient Blood Type",
+              accessor: "recipient_blood_type",
+              Cell: this.renderEditable
             },
             {
-                Header: "Donor Name",
-                accessor: "donor_name",
-                Cell: this.renderEditable
+              Header: "Recipient Email",
+              accessor: "recipient_email",
+              Cell: this.renderEditable
             },
             {
-                Header: "Donor DOB",
-                accessor: "donor_dob",
-                Cell: this.renderEditable
+              Header: "Donor Name",
+              accessor: "donor_name",
+              Cell: this.renderEditable
             },
             {
-                Header: "Donor Age",
-                accessor: "donor_age",
-                Cell: this.renderEditable
+              Header: "Donor DOB",
+              accessor: "donor_dob",
+              Cell: this.renderEditable
             },
             {
-                Header: "Donor Weight",
-                accessor: "donor_weight",
-                Cell: this.renderEditable
+              Header: "Donor Age",
+              accessor: "donor_age",
+              Cell: this.renderEditable
             },
             {
-                Header: "Donor Height",
-                accessor: "donor_height",
-                Cell: this.renderEditable
+              Header: "Donor Weight",
+              accessor: "donor_weight",
+              Cell: this.renderEditable
             },
             {
-                Header: "Donor History",
-                accessor: "donor_history",
-                Cell: this.renderEditable
+              Header: "Donor Height",
+              accessor: "donor_height",
+              Cell: this.renderEditable
             },
             {
-                Header: "Donor Blood Type",
-                accessor: "donor_blood_type",
-                Cell: this.renderEditable
+              Header: "Donor History",
+              accessor: "donor_history",
+              Cell: this.renderEditable
             },
             {
-                Header: "Donor Email",
-                accessor: "donor_email",
-                Cell: this.renderEditable
+              Header: "Donor Blood Type",
+              accessor: "donor_blood_type",
+              Cell: this.renderEditable
             },
             {
-                Header: '',
-                Cell: row => (
-                    <div>
-                        <button onClick={()=> this.handleSave(row.original)}>Save</button>
-                        <button onClick={()=> this.handleDelete(row.original)}>Delete</button>
-                    </div>
-                
-                ),
+              Header: "Donor Email",
+              accessor: "donor_email",
+              Cell: this.renderEditable
+            },
+            {
+              Header: "",
+              Cell: row => (
+                <div>
+                  <button onClick={() => this.handleSave(row.original)}>
+                    Save
+                  </button>
+                  <button onClick={() => this.handleDelete(row.original)}>
+                    Delete
+                  </button>
+                </div>
+              )
             }
           ]}
           defaultPageSize={20}
           className="-striped -highlight"
-          
-          />
-          <MagicButton data={ data } />
+        />
+        <div className="bottom-magicbutton">
+          <MagicButton data={data} />
+        </div>
       </div>
-       )
-
- }
+    );
+  }
 }
 
-const mapStateToProps = (state) => ({
-    ...state
-})
+const mapStateToProps = state => ({
+  ...state
+});
 
-export default connect(mapStateToProps, {getProfiles})(UnmatchedPage);
+export default connect(
+  mapStateToProps,
+  { getProfiles }
+)(UnmatchedPage);
