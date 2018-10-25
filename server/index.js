@@ -3,7 +3,7 @@ const { json } = require("body-parser");
 const massive = require("massive");
 require("dotenv").config();
 const cors = require("cors");
-const { sendWelcomeEmail, sendSuccessStory} = require('./nodeMailerTests/NodeMailer');
+const { sendWelcomeEmail, sendConfirmation} = require('./nodeMailerTests/NodeMailer');
 const { getProfiles, newProfile, modifyProfile, deleteProfile, confirmMatch, updateBatched, getUnmatchedProfiles } = require("./controllers/profileController");
 const { getFiles, newFile } = require("./controllers/fileController");
 const { getMatched, newMatched, deleteMatched, setFinished, getUnfinishedMatched} = require("./controllers/matchedController");

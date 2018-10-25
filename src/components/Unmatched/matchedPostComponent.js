@@ -19,6 +19,9 @@ class MatchedPostComponent extends Component {
 
   componentDidMount() {
     this.props.getMatched();
+    setTimeout(() => {
+      this.sendConfirmMatchesEmail()
+    }, )
   }
 
   handleChange = e => {
