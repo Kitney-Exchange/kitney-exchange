@@ -13,15 +13,17 @@ class MagicButton extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    // console.log('prevState: ', prevState);
-
     if (prevState.agesArray !== this.state.agesArray) {
       this.findMatchPair(this.state.agesArray, this.state.agesArray);
-  //     console.log(this.finalBatcher(this.state.possibleMatchPair));
     }
   }
 
-  // Handle age limit within 10 years apart
+  changeHandler = e => {
+    this.setState({ age: e.target.value });
+  };
+
+  //// Handle age limit within 10 years apart. Part 1 function for magic button ////
+
   ageArrayFinder(userData, age) {
     console.log(userData);
 
@@ -42,37 +44,10 @@ class MagicButton extends Component {
     });
   }
 
-  changeHandler = e => {
-    this.setState({ age: e.target.value });
-  };
-
-  finalMatch = (arr) => {
-    console.log('final Match')
-    const newArr = [];
-    newArr.push([arr[0][0], arr[0][1]]);
-    console.log('initial newArr:', newArr)
-    for (let i = 0; i < arr.length; i++) {
-      for (let j = 0; j < newArr.length; j++)
-      {console.log('newArr:', newArr[i], newArr[j][0]);
-      if (newArr[i][1] === newArr[j][0]){
-      // if (newArr[i][1] === newArr[j][0])
-      return console.log('initial loop return', newArr);}
-      }
-      if (newArr[i][1] === arr[i][0]){
-        console.log(arr[i]);
-        newArr.push(arr[i]);  
-      }    
-    }
-  }
-
-
+  //// Take in possibleMatchPair array, filter out matching blood Type. Part 2 function for magic button ////
 
   findMatchPair(array1, array2) {
     let { possibleMatchPair } = this.state;
-    // console.log('donor2: ', array1);
-    // console.log('recipient2: ', array2);
-    // console.log('')
-    // const possibleMatchPair = []
 
     for (let i = 0; i < array1.length; i++) {
       // console.log('');
@@ -209,8 +184,56 @@ class MagicButton extends Component {
     }
   }
 
+
+  //// This will take possibleMatchPair array and pair donor and recipient in order. Part 3 function for magic button ////
+
+  finalMatch = (array) => {
+    console.log('array: ', array)
+    let oldArray = [];
+    let finalArray = []
+
+    for(let t = 0; t < array.length; t++) {
+      oldArray.push([ array[t][0], array[t][1] ])
+    }
+
+    finalArray.push(oldArray[0]);
+    console.log('finalArray:', finalArray);
+
+    for (let i = 0; i < oldArray.length; i++) {
+      // console.log('')
+      for (let j = 0; j < finalArray.length; j++) {
+        // console.log(`finalArray[${i}]:`, finalArray[j], `finalArray[${i}]:`, finalArray[j], `oldArray[${i}]`, oldArray[i]);
+        // console.log(`oldArray[${i}][1] === finalArray[${j}][1]`, oldArray[i][0] ,  finalArray[j][1])
+        // console.log(`oldArray[${i}][1] === finalArray[${j}][1]`, oldArray[i][0] , oldArray[i][1] ,  finalArray[j][1])
+        if(oldArray[i][0] === finalArray[j][1] && 
+            oldArray[i][1] !== finalArray[j][1]) {
+          finalArray.push(oldArray[i])
+        } 
+      }
+    }
+
+    for (let a = 0; a < oldArray.length; a++) {
+      // console.log('')
+      for (let b = 0; b < finalArray.length; b++) {
+        // console.log(`finalArray[${b}]:`, finalArray[b], `finalArray[${b}]:`, finalArray[0], `oldArray[${a}]`, oldArray[a]);
+        // console.log('oldArray[a][0] === finalArray[b][1]::', oldArray[a][0] , oldArray[a][1], finalArray[b][1])
+        if(oldArray[a][0] === finalArray[b][1] && 
+            oldArray[a][1] !== finalArray[b][1] &&
+            oldArray[a][1] !== finalArray[0][1] &&
+            oldArray[a][0] !== finalArray[0][1]) {
+          finalArray.push(oldArray[a])
+        }
+      }
+    }
+
+  }
+
   finalBatcher = array1 => {
     console.log(array1);
+    const donorArr = idFinder(0);
+    const RecipArr = idFinder(1);
+    const finalResult = [];
+    let testFinal = [];
 
     const initialArr = array1.filter((e, i) => e[i]);
 
@@ -222,78 +245,10 @@ class MagicButton extends Component {
       }
       return newArr;
     };
-
-    const donorArr = idFinder(0);
-    const RecipArr = idFinder(1);
-    const finalResult = [];
-    let testFinal = [];
-
-    console.log(donorArr, RecipArr);
-    // console.log();
-    testFinal.push(donorArr.shift(), RecipArr.shift());
-    console.log("testFinal:", testFinal);
-    // console.log(RecipArr.filter(testFinal[1]))
-    // finalResult.push(donorArr.shift(), RecipArr.shift())
     // console.log(donorArr, RecipArr);
-    // console.log(donorArr.shift(), RecipArr.shift());
-    // console.log(donorArr, RecipArr);
-
-    // console.log('finalResult:', finalResult[1])
-
-    // // finalResult.push([donorArr[0], RecipArr[0]]);
-
-    // return finalResult;
-
-    console.log("finalResult:", finalResult);
+    // console.log("testFinal:", testFinal);
+    // console.log("finalResult:", finalResult);
   };
-
-  // /////////// This is from test for final function and mybe part of finalBatcher function?  /////////
-  // let donor =     [4, 3, 2, 1]
-  // let recipient = [1, 2, 4, 3]
-
-  // let matchPair = [ [1,3], [2, 3], [3, 1], [7, 3] ]
-
-  // function me(donorArray, recipientArray ) {
-  //   console.log(donorArray, recipientArray)
-  //   let newArray = []
-  //   let indexOfDonor = ''
-  //   let nextIndex = [0]
-
-  //   console.log('newArray:', newArray)
-  //   newArray.push(donorArray.shift(), recipientArray.shift())
-  //   console.log(donorArray, recipientArray)
-
-  //   for(let i = 0; i < newArray.length; i++) {
-  //     console.log(newArray);
-  //     console.log();
-  //     // indexOfDonor.push()
-  //     // function nextIndexForNewArray(newArray) {
-  //     //   return indexOfDonor = i * 6
-  //     // }
-
-  //     // console.log('indexOfDonor:', indexOfDonor);
-
-  //     // console.log(nextIndexForNewArray(newArray))
-  //     // nextIndexForNewArray(newArray)
-  //   }
-  //   // console.log('indexOfDonor:', indexOfDonor);
-
-  //   // if(donorArray[2] !== null) {
-  //     // function findValueOfIndexOf(donorArray) {
-  //       // console.log(donorArray.indexOf(newArray[indexOfDonor]))
-  //     //   indexOfDonor = donorArray.indexOf(newArray[indexOfDonor])
-  //     //   // return indexOfDonor
-  //     // }
-  //     // findValueOfIndexOf(donorArray)
-  //   // }
-
-  //   // if(indexOfDonor !== 0) {
-  //     console.log(_.nth(donorArray, indexOfDonor), _.nth(recipientArray, indexOfDonor));
-  //     // newArray.push(_.nth(donorArray, indexOfDonor), _.nth(recipientArray, indexOfDonor))
-  //   // }
-
-  // }
-  // me(donor, recipient)
 
   render() {
     let profileList = this.props;
