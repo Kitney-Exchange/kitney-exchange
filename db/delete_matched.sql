@@ -1,0 +1,1 @@
+DELETE FROM matched WHERE batch_id = $1;
