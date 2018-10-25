@@ -17,7 +17,7 @@ class MagicButton extends Component {
 
     if (prevState.agesArray !== this.state.agesArray) {
       this.findMatchPair(this.state.agesArray, this.state.agesArray);
-      console.log(this.finalBatcher(this.state.possibleMatchPair));
+      //     console.log(this.finalBatcher(this.state.possibleMatchPair));
     }
   }
 
@@ -46,6 +46,46 @@ class MagicButton extends Component {
   changeHandler = e => {
     this.setState({ age: e.target.value });
   };
+
+  finalMatch = arr => {
+    console.log("final Match");
+    const newArr = [];
+    newArr.push([arr[0][0], arr[0][1]]);
+    console.log("initial newArr after pushing in first match:", newArr);
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = 0; j < newArr.length; j++) {
+        console.log("newArr again after forloop:", arr[i], newArr[j]);
+        if (arr[i][1] === newArr[j][0]) {
+          //if the receipient id matches the first index of
+          // if (newArr[i][1] === newArr[j][0])
+          return console.log("initial loop return", newArr);
+        }
+      }
+      if (newArr[i][1] === arr[i][0]) {
+        console.log(arr[i]);
+        newArr.push(arr[i]);
+      }
+    }
+  };
+
+  // finalMatch = (arr) => {
+  //   console.log('final Match')
+  //   const newArr = [];
+  //   newArr.push([arr[0][0], arr[0][1]]);
+  //   console.log('initial newArr:', newArr)
+  //   for (let i = 0; i < arr.length; i++) {
+  //     for (let j = 0; j < newArr.length; j++)
+  //     {console.log('newArr:', newArr[i], newArr[j][0]);
+  //     if (newArr[i][1] === newArr[j][0]){
+  //     // if (newArr[i][1] === newArr[j][0])
+  //     return console.log('initial loop return', newArr);}
+  //     }
+  //     if (newArr[i][1] === arr[i][0]){
+  //       console.log(arr[i]);
+  //       newArr.push(arr[i]);
+  //     }
+  //   }
+  // }
 
   findMatchPair(array1, array2) {
     let { possibleMatchPair } = this.state;
@@ -293,6 +333,9 @@ class MagicButton extends Component {
           <option value="38">38</option>
           <option value="48">48</option>
         </select>
+        <button onClick={() => this.finalMatch(this.state.possibleMatchPair)}>
+          Final button??
+        </button>
       </div>
     );
   }
