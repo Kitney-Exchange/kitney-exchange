@@ -301,7 +301,7 @@ let sendWelcomeEmail = (req, res, next) => {
                               <td data-color="text" data-size="size text" data-min="10" data-max="26" data-link-color="link text color" data-link-style="font-weight:bold; text-decoration:underline; color:#40aceb;"
                                align="center" style="font:16px/29px Arial, Helvetica, sans-serif; color:#888; padding:0 0 21px;">
                                 We will be processing your information and perform cross matching with other candidates in your area. The average wait time
-                                for a potential match can range due to complicity of matching. Our priority is the
+                                for a potential match can range due to complicity of matching. Please be patient with us. Our priority is the
                                 safety and health of our candidates. Please allow at least one month for a response. You will be notified when
                                 a match is available for you. Thank you for being patient.
                               </td>
