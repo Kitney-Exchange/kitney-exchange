@@ -1,0 +1,1 @@
+SELECT * FROM matched WHERE finished = false ORDER BY batch_id;

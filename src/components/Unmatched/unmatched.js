@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
-import { getProfiles } from "../../dux/reducer";
+import { getProfiles, getUnmatchedProfiles } from "../../dux/reducer";
 import { connect } from "react-redux";
 import axios from "axios";
 import MagicButton from "./magicButton";
@@ -10,6 +10,7 @@ import "./matchedPostComponent.css";
 class UnmatchedPage extends Component {
   componentDidMount() {
     this.props.getProfiles();
+    this.props.getUnmatchedProfiles();
   }
 
   renderEditable = cellInfo => {
@@ -18,12 +19,12 @@ class UnmatchedPage extends Component {
         contentEditable
         suppressContentEditableWarning
         onBlur={e => {
-          const data = [...this.props.profile];
+          const data = [...this.props.unmatchedProfiles];
           data[cellInfo.index][cellInfo.column.id] = e.target.innerHTML;
           this.setState({ data });
         }}
         dangerouslySetInnerHTML={{
-          __html: this.props.profile[cellInfo.index][cellInfo.column.id]
+          __html: this.props.unmatchedProfiles[cellInfo.index][cellInfo.column.id]
         }}
       />
     );
@@ -66,7 +67,7 @@ class UnmatchedPage extends Component {
   };
   render() {
     // console.log(this.state)
-    if (this.props.profile) var data = this.props.profile;
+    if (this.props.unmatchedProfiles) var data = this.props.unmatchedProfiles;
 
     return (
       <div className="unmatched-table-section">
@@ -202,7 +203,6 @@ class UnmatchedPage extends Component {
           className="-striped -highlight"
         />
         <div className="bottom-magicbutton">
-          <MagicButton data={data} />
         </div>
       </div>
     );
@@ -215,5 +215,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getProfiles }
+  { getProfiles, getUnmatchedProfiles }
 )(UnmatchedPage);
