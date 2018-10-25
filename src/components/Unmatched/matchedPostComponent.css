@@ -1,6 +1,8 @@
 .matched-page {
   /* margin: auto; */
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin: auto;
   background-color: rgb(217, 157, 148);
 }
@@ -17,7 +19,7 @@
 #unmatched-top-title {
   font-size: 30px;
   padding: 10px;
-  letter-spacing: 2.5pt;
+  letter-spacing: 3px;
   margin-top: 25px;
   font-family: "Lato", sans-serif;
   /* color: rgb(103, 33, 33); */
@@ -105,4 +107,17 @@
 .bottom-magicbutton {
   padding-top: 30px;
   background-color: rgb(217, 157, 148);
+}
+
+.matched-inputboxes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+}
+
+.matched-input {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
 }

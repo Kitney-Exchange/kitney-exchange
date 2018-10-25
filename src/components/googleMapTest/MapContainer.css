@@ -1,24 +1,92 @@
 .mapDisplay {
-    display: flex;
-    margin: 10px 10px 10px;
-    flex-wrap: nowrap;
-    /* border: 1px solid black; */
-    position: relative;
-    height: 500px;
-    width: 700px;
-    flex-direction: column;
+  display: flex;
+  margin: 10px 10px 10px;
+  flex-wrap: nowrap;
+  /* border: 1px solid black; */
+  position: relative;
+  width: 700px;
+  height: 500px;
+  flex-direction: column;
+  font-family: "Lato", sans-serif;
+  color: rgb(105, 103, 103);
+}
 
+.mapdisplayinner {
+  display: flex;
+  flex-direction: column;
 }
 
 .thegooglemap {
-    /* display: inline; */
-    position: fixed;
-    /* margin: 10px 10px 10px 10px; */
-    height: 400px;
-    width: 400px;
+  /* display: flex; */
+
+  /* display: inline; */
+  position: fixed;
+  /* margin: 10px 10px 10px 10px; */
+  height: 500px;
+  width: 400px;
+  padding: none;
+  margin: none;
 }
 
 .displayChosenHospital {
-    border: 1px solid blue;
-    margin-left: 500px
+  background-color: white;
+  border-radius: 5px;
+  border: 2px solid rgb(193, 193, 193);
+
+  padding: 15px;
+  margin-left: 516px;
+  font-family: "Lato", sans-serif;
+  color: gray;
+}
+
+#hospital-titlebox {
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+}
+
+#address {
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+}
+
+.mapcontainer-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.location-box {
+  display: flex;
+  padding: 10px;
+  margin: auto;
+  flex-direction: column;
+  justify-content: center;
+  /* height: 400px; */
+}
+
+.latlong-box {
+  background-color: white;
+  border-radius: 5px;
+  border: 2px solid rgb(193, 193, 193);
+  width: 300px;
+  margin: auto;
+  padding: 8px;
+  /* margin-left: 9px; */
+  /* margin-left: 510px; */
+  font-family: "Lato", sans-serif;
+  color: gray;
+}
+
+.findlocation-box {
+  /* display: flex; */
+  margin-top: 300px;
+  padding: 70px;
+  position: relative;
+
+  /* padding-top: 400px; */
+}
+
+.location-input {
+  margin: auto;
+  display: flex;
+  justify-content: center;
 }
