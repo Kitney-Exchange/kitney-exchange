@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getMatched, getProfiles } from "../../dux/reducer";
+import { getMatched, getProfiles, getUnfinishedMatched } from "../../dux/reducer";
 import ReactTable from "react-table";
 import { connect } from "react-redux";
 import AdminNavbar from "../Navbar/AdminNavbar";
@@ -7,6 +7,7 @@ import { Icon } from "react-icons-kit";
 import { checkmark } from "react-icons-kit/ionicons/checkmark";
 import { trashA } from "react-icons-kit/ionicons/trashA";
 import MatchedPostComponent from "../Unmatched/matchedPostComponent";
+import axios from "axios";
 
 class MatchedPage extends Component {
   constructor() {
@@ -20,11 +21,12 @@ class MatchedPage extends Component {
   componentDidMount() {
     this.props.getMatched();
     this.props.getProfiles();
+    this.props.getUnfinishedMatched();
     setTimeout(
       () =>
         this.setState({
           profiles: this.props.profile,
-          matched: this.props.matched
+          matched: this.props.unfinishedMatched
         }),
       2000
     );
@@ -33,36 +35,41 @@ class MatchedPage extends Component {
   matchedProfiles = idsArr => {
     var newArr = [];
     var newStr = idsArr.split(",");
-
+    console.log(idsArr.split(','))
     for (let i = 0; i < this.state.profiles.length; i++) {
+      for (let j = 0; j < newStr.length; j++){
       console.log(
         this.state.profiles[i].pair_id,
         this.state.profiles.length,
-        Number(newStr[0])
+        Number(newStr[i])
       );
-      if (this.state.profiles[i].pair_id === Number(newStr[0])) {
+      if (this.state.profiles[i].pair_id === Number(newStr[j])) {
         newArr.push(this.state.profiles[i]);
-      } else if (this.state.profiles[i].pair_id === Number(newStr[1])) {
-        newArr.push(this.state.profiles[i]);
-      } else if (this.state.profiles[i].pair_id === Number(newStr[2])) {
-        newArr.push(this.state.profiles[i]);
-      } else if (this.state.profiles[i].pair_id === Number(newStr[3])) {
-        newArr.push(this.state.profiles[i]);
-      } else if (this.state.profiles[i].pair_id === Number(newStr[4])) {
-        newArr.push(this.state.profiles[i]);
-      } else {
-        return newArr;
       }
     }
+  }
+  return newArr;
   };
+
+  handleDelete = info => {
+    axios
+      .delete(`/api/matched/${info.batch_id}`)
+      .then(response => alert("Profile Deleted!"))
+      .catch(err => alert(err));
+  };
+
+  handleFinished = info => {
+    axios.put(`/api/matched/${info.batch_id}`)
+    .then(response => alert("Hospital notified!"))
+    .catch(err => alert(err));
+  }
 
   render() {
     // setTimeout(()=> console.log(this.matchedProfiles(this.state.profile)), 2000)
-    if (this.props.matched) var data = this.props.matched;
+    if (this.props.unfinishedMatched) var data = this.props.unfinishedMatched;
     return (
       <div className="matched-bottom-page">
         <AdminNavbar />
-        <MatchedPostComponent />
         <p id="matched-bottom-title">Matched Table</p>
         <ReactTable
           data={data}
@@ -93,10 +100,10 @@ class MatchedPage extends Component {
               Cell: row => (
                 <span style={{ display: "flex", wrap: "no-wrap" }}>
                   <div style={{ color: "green", margin: "0 10px 0 20px" }}>
-                    <Icon size={24} icon={checkmark} />
+                    <Icon size={24} icon={checkmark} onClick={() => this.handleFinished(row.original)}/>
                   </div>
                   <div style={{ color: "black", margin: "0 10px 0 10px" }}>
-                    <Icon size={24} icon={trashA} />
+                    <Icon size={24} icon={trashA} onClick={() => this.handleDelete(row.original)}/>
                   </div>
                 </span>
               )
@@ -172,5 +179,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getProfiles, getMatched }
+  { getProfiles, getMatched, getUnfinishedMatched }
 )(MatchedPage);

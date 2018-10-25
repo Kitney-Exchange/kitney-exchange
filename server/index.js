@@ -4,9 +4,9 @@ const massive = require("massive");
 require("dotenv").config();
 const cors = require("cors");
 const { sendWelcomeEmail, sendSuccessStory} = require('./nodeMailerTests/NodeMailer');
-const { getProfiles, newProfile, modifyProfile, deleteProfile, confirmMatch, updateBatched } = require("./controllers/profileController");
+const { getProfiles, newProfile, modifyProfile, deleteProfile, confirmMatch, updateBatched, getUnmatchedProfiles } = require("./controllers/profileController");
 const { getFiles, newFile } = require("./controllers/fileController");
-const { getMatched, newMatched, deleteMatched } = require("./controllers/matchedController");
+const { getMatched, newMatched, deleteMatched, setFinished, getUnfinishedMatched} = require("./controllers/matchedController");
 const { getHospitals, newHospital, modifyHospital, deleteHospital } = require("./controllers/hospitalController");
 
 //create server
@@ -25,6 +25,7 @@ app.post("/api/successstory", sendSuccessStory)
 
 // profile //
 app.get("/api/profile", getProfiles);
+app.get("/api/getUnmatched", getUnmatchedProfiles)
 app.post("/api/profile", newProfile);
 app.put("/api/profile", modifyProfile);
 app.delete("/api/profile/:pair_id", deleteProfile);
@@ -38,7 +39,9 @@ app.post("/api/files", newFile);
 // matched profiles info //
 app.get("/api/matched", getMatched);
 app.post("/api/matched", newMatched);
-app.delete("/api/matched", deleteMatched);
+app.delete("/api/matched/:id", deleteMatched);
+app.put("/api/matched/:id", setFinished);
+app.get("/api/getUnfinished", getUnfinishedMatched)
 
 // hospitals info //
 app.get("/api/hospitals", getHospitals);

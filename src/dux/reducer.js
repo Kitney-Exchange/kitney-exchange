@@ -12,12 +12,26 @@ const GET_PROFILES = "GET_PROFILES";
 const GET_FILES = "GET_FILES";
 const GET_HOSPITALS = "GET_HOSPITALS";
 const GET_MATCHED = "GET_MATCHED";
+const GET_UNMATCHED_PROFILES = "GET_UNMATCHED_PROFILES";
+const GET_UNFINISHED_MATCHES = "GET_UNFINISHED_MATCHES"
 
 export const getProfiles = () => {
   return {
     type: GET_PROFILES,
     payload: axios
       .get("/api/profile")
+      .then(response => {
+        return response.data;
+      })
+      .catch(err => console.log(err))
+  };
+};
+
+export const getUnmatchedProfiles = () => {
+  return {
+    type: GET_UNMATCHED_PROFILES,
+    payload: axios
+      .get("/api/getUnmatched")
       .then(response => {
         return response.data;
       })
@@ -54,6 +68,18 @@ export const getMatched = () => {
     type: GET_MATCHED,
     payload: axios
       .get("/api/matched")
+      .then(response => {
+        return response.data;
+      })
+      .catch(err => console.log(err))
+  };
+};
+
+export const getUnfinishedMatched = () => {
+  return {
+    type: GET_UNFINISHED_MATCHES,
+    payload: axios
+      .get("/api/getUnfinished")
       .then(response => {
         return response.data;
       })
@@ -135,6 +161,32 @@ export default function reducer(state = initialState, action) {
     case `${GET_MATCHED}_REJECTED`:
       return {
         ...state,
+        isLoading: false
+      };
+
+      case `${GET_UNFINISHED_MATCHES}_PENDING`:
+      return {
+        ...state,
+        isLoading: false
+      };
+      
+      case `${GET_UNFINISHED_MATCHES}_FULFILLED`:
+      return {
+        ...state,
+        unfinishedMatched: action.payload,
+        isLoading: false
+      };
+
+      case `${GET_UNMATCHED_PROFILES}_PENDING`:
+      return {
+        ...state,
+        isLoading: true
+      };
+
+    case `${GET_UNMATCHED_PROFILES}_FULFILLED`:
+      return {
+        ...state,
+        unmatchedProfiles: action.payload,
         isLoading: false
       };
     default:
