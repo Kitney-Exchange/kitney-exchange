@@ -1,18 +1,77 @@
 .inputbox {
-    display: flex;
-    flex-direction: row;
-  }
-  #editinput {
-    padding: 10px;
-    margin: 10px;
-    /* border: none; */
-    /* border-bottom: 1px solid rgb(157, 157, 157); */
-    border-radius: 10px solid rgb(157, 157, 157);
-    width: 300px;
-    font-family: "Lato", sans-serif;
-    font-size: 15px;
+  display: flex;
+  flex-direction: row;
 }
-.columncolor {
+#editinput {
+  padding: 10px;
+  margin: 10px;
+  /* border: none; */
+  /* border-bottom: 1px solid rgb(157, 157, 157); */
+  border-radius: 10px solid rgb(157, 157, 157);
+  width: 300px;
+  font-family: "Lato", sans-serif;
+  font-size: 15px;
+}
+
+.hospital-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  background-color: rgb(217, 157, 148);
+}
+
+#hospital-title {
+  display: flex;
+  margin: auto;
+  font-size: 30px;
+  padding: 10px;
+  letter-spacing: 3px;
+  margin-top: 25px;
+  font-family: "Lato", sans-serif;
+
+  color: white;
+  text-align: center;
+
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+.hospital-top-container {
+  display: flex;
+  margin: auto;
+  justify-content: space-evenly;
+}
+.hospital-left-container {
+  margin: 30px;
+  padding-left: 30px;
+}
+
+.hospital-right-container {
+  margin: 30px;
+  /* padding-left: 30px; */
+}
+/* .columncolor {
   background-color: chartreuse;
   height: 300px;
+} */
+
+#addhospital-button {
+  margin: auto;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 8px;
+  width: 300px;
+  background-color: rgb(103, 33, 33);
+  color: white;
+  font-family: "Lato", sans-serif;
+  margin-bottom: 30px;
+}
+
+.addhospital-button {
+  display: flex;
+  justify-content: center;
+  padding-top: 120px;
+  /* color: white; */
+  /* margin: auto; */
 }
