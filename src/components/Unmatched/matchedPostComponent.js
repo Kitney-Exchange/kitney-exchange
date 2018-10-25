@@ -12,7 +12,8 @@ class MatchedPostComponent extends Component {
       profiles: "7,17,20",
       hospital_id: "",
       potential_matches: "",
-      date: ""
+      date: "",
+      emailProfilesData: []
     };
   }
 
@@ -36,6 +37,7 @@ class MatchedPostComponent extends Component {
       .then(alert("Pair added!"))
       .catch(err => console.log(err));
   };
+  
   resetForm = () => {
     this.setState({
       batch_id: "",
@@ -58,6 +60,7 @@ class MatchedPostComponent extends Component {
         .then(response => alert("Profiles updated!"));
     }
   };
+
   updateBatchedFalse = () => {
     const { profiles } = this.state;
     for (let i = 0; i < profiles.length; i++) {
@@ -69,6 +72,38 @@ class MatchedPostComponent extends Component {
         })
         .then(response => alert("Profiles updated!"));
     }
+  };
+
+  sendConfirmMatchesEmail() {
+    let { emailProfilesData } = this.state
+    console.log('emailProfilesData: ', emailProfilesData);
+    if(emailProfilesData === null) {
+      console.log('empley')
+    } else {
+      console.log('hit')
+    }
+
+  };
+
+  //// extent data from prop and state for confirm email function ////
+
+  matchedProfiles() {
+    let { profile } = this.props
+    let newArr = [];
+    let newStr = this.state.profiles.split(",");
+    console.log('newStr::', newStr)
+
+    for (let i = 0; i < profile.length; i++) {
+      
+      for (let j = 0; j < newStr.length; j++){
+        // console.log(`Number(newStr[${j}])`, Number(newStr[j]) , `profile[${i}]`, profile[i].pair_id);
+        if (profile[i].pair_id === Number(newStr[j])) {
+            // console.log(profile[i], 'HIT')
+          newArr.push(profile[i]);
+        }
+      }
+    }
+     this.setState({ emailProfilesData: newArr});
   };
 
   render() {
@@ -103,8 +138,10 @@ class MatchedPostComponent extends Component {
             <button
               id="matched-button"
               onClick={() => {
-                this.confirmMatches();
-                this.updateBatchedTrue();
+                // this.confirmMatches();
+                // this.updateBatchedTrue();
+                this.matchedProfiles();
+                this.sendConfirmMatchesEmail();
               }}
             >
               Confirm
