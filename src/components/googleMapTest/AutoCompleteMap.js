@@ -65,36 +65,24 @@ class AutoCompleteMap extends Component {
 
   render() {
     return (
-      <div
-      // style={{ marginLeft: "500px" }}
-      >
-        <div className="location-box">
+      <div style={{ marginLeft: "500px" }}>
+        <div>
           <form onSubmit={this.onSubmit}>
-            <div className="location-input">
-              <input
-                id="editinput"
-                placeholder="Enter a location"
-                ref={ref => (this.autocomplete = ref)}
-                type="text"
-              />
-            </div>
-            <div className="location-input">
-              <input
-                id="matched-button"
-                type="submit"
-                value="Go"
-                onClick={() => this.handleSubmitNewInfo()}
-              />
-            </div>
+            <input
+              placeholder="Enter a location"
+              ref={ref => (this.autocomplete = ref)}
+              type="text"
+            />
+            <input
+              type="submit"
+              value="Go"
+              onClick={() => this.handleSubmitNewInfo()}
+            />
           </form>
 
-          <div className="latlong-box">
-            <div>
-              Latitude: {this.state.position && this.state.position.lat()}
-            </div>
-            <div>
-              Longitude: {this.state.position && this.state.position.lng()}
-            </div>
+          <div>
+            <div>Lat: {this.state.position && this.state.position.lat()}</div>
+            <div>Lng: {this.state.position && this.state.position.lng()}</div>
           </div>
         </div>
       </div>
@@ -103,3 +91,38 @@ class AutoCompleteMap extends Component {
 }
 
 export default AutoCompleteMap;
+
+/* <div
+// style={{ marginLeft: "500px" }}
+>
+  <div className="location-box">
+    <form onSubmit={this.onSubmit}>
+      <div className="location-input">
+        <input
+          id="editinput"
+          placeholder="Enter a location"
+          ref={ref => (this.autocomplete = ref)}
+          type="text"
+        />
+      </div>
+      <div className="location-input">
+        <input
+          id="matched-button"
+          type="submit"
+          value="Go"
+          onClick={() => this.handleSubmitNewInfo()}
+        />
+      </div>
+    </form>
+
+    <div className="latlong-box">
+      <div>
+        Latitude: {this.state.position && this.state.position.lat()}
+      </div>
+      <div>
+        Longitude: {this.state.position && this.state.position.lng()}
+      </div>
+    </div>
+  </div>
+</div>
+); */
