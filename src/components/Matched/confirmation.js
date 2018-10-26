@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { getProfiles, getHospitals, getMatched } from "../../dux/reducer";
 import { connect } from "react-redux";
 import axios from "axios";
+import Navbar from "../Navbar/Navbar";
+import { Parallax, Background } from "react-parallax";
+import ivy from "../../images/ivy.jpeg";
 import { Link } from "react-router-dom";
 
 class Confirmation extends Component {
@@ -16,11 +19,11 @@ class Confirmation extends Component {
     this.props.getProfiles();
     this.props.getHospitals();
     this.props.getMatched();
-    setTimeout(this.stateSetter, 3000);
+    setTimeout(this.stateSetter, 6000);
     setTimeout(
       () =>
         this.findPairIdOf("profile", this.props.profile, this.state.pair_id),
-      3000
+      6000
     );
     setTimeout(
       () =>
@@ -29,7 +32,7 @@ class Confirmation extends Component {
           this.props.matched,
           this.state.profile.batch_id
         ),
-      3000
+      6000
     );
     setTimeout(
       () =>
@@ -38,7 +41,7 @@ class Confirmation extends Component {
           this.props.hospitals,
           this.state.matched.hospital_id
         ),
-      3000
+      6000
     );
   }
 
@@ -79,15 +82,17 @@ class Confirmation extends Component {
   displayInfo = () => {
     if (this.state.hospital) {
       return (
-        <div>
-          Donor: {this.state.profile.donor_name}
-          <br />
-          Recipient: {this.state.profile.recipient_name}
-          <br />
-          Hospital: {this.state.hospital.hospital_name},<br />
-          {this.state.hospital.hospital_address}, <br />
-          Date: {this.state.matched.date}
-          <br />
+        <div className="confirmation-infobox">
+          <div>
+            Donor: {this.state.profile.donor_name}
+            <br />
+            Recipient: {this.state.profile.recipient_name}
+            <br />
+            Hospital: {this.state.hospital.hospital_name},<br />
+            {this.state.hospital.hospital_address}, <br />
+            Date: {this.state.matched.date}
+            <br />
+          </div>
         </div>
       );
     }
@@ -128,20 +133,40 @@ class Confirmation extends Component {
     console.log(this.state);
     //id = this.props.props.match.params.id
     return (
-      <div>
-        {" "}
-        <h1>Confirmation </h1>
-        <p>
-          Congratulations! You have been selected to take part in a matched set.
-          Please review the information below and confirm or decline this match.
-          Please review <b>all</b> of the information below and confirm that it
-          is correct before submitting.
-        </p>
-        {this.displayInfo()}
-        <Link to="/">
-          <button onClick={this.confirm}>Confirm</button>
-        </Link>
-        <button onClick={this.decline}>Decline</button>
+      <div className="register-page">
+        <Navbar />
+        {/* <div className="confirmation-top"> */}
+        <div className="formbox">
+          <div className="information-box">
+            <Parallax
+              id="info-box"
+              bgImage={ivy}
+              bgImageAlt="plant"
+              strength={350}
+            >
+              <p id="info-text">
+                Confirmation
+                <div style={{ height: "500px" }} />
+              </p>
+            </Parallax>
+          </div>
+          {/* <p id="confirmation title">Confirmation </p> */}
+          <div className="formbox-questions">
+            <p>
+              Congratulations! You have been selected to take part in a matched
+              set. Please review the information below and confirm or decline
+              this match. Please review <b>all</b> of the information below and
+              confirm that it is correct before submitting.
+            </p>
+            {this.displayInfo()}
+            <div className="confirmation-buttons">
+              <Link to="/">
+                <button onClick={this.confirm}>Confirm</button>
+              </Link>
+              <button onClick={this.decline}>Decline</button>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

@@ -145,42 +145,35 @@ class MapContainer extends Component {
     console.log(this.state.hospitalChoice);
     return (
       <div className="mapDisplay">
-        <div className="mapdisplayinner">
-          <Map
-            className="thegooglemap"
-            google={this.props.google}
-            onClick={() => this.handleOnMapClicked()}
-            zoom={10}
-            style={this.state.style}
-            initialCenter={{ lat: 32.7773293, lng: -96.7963455 }} // <- INTI START POINT OF MAP LOCATION VIEW
+        <Map
+          className="thegooglemap"
+          google={this.props.google}
+          onClick={() => this.handleOnMapClicked()}
+          zoom={10}
+          style={this.state.style}
+          initialCenter={{ lat: 32.7773293, lng: -96.7963455 }} // <- INTI START POINT OF MAP LOCATION VIEW
+        >
+          {this.markerMap()}
+
+          <InfoWindow
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}
           >
-            {this.markerMap()}
-
-            <InfoWindow
-              marker={this.state.activeMarker}
-              visible={this.state.showingInfoWindow}
-            >
-              <div>
-                <h2>{this.state.selectedPlace.name}</h2>
-                {this.findMyStats(this.state.selectedPlace.name)}
-              </div>
-            </InfoWindow>
-
-            <br />
-          </Map>
+            <div>
+              <h2>{this.state.selectedPlace.name}</h2>
+              {this.findMyStats(this.state.selectedPlace.name)}
+            </div>
+          </InfoWindow>
+          <AutoCompleteMap />
+          <br />
           <div>
             {this.displayChosenHospital(
               this.state.selectedPlace,
               this.addButton,
               this.deleteButton
             )}
-            </div>
-            
-        <div className="findlocation-box">
-          <AutoCompleteMap />
-        </div>
-            {this.displayHospitals()}
-      </div>
+          </div>
+        </Map>
       </div>
     );
   }
@@ -194,3 +187,40 @@ export default connect(
   mapStateToProps,
   { getHospitals }
 )(GoogleApiWrapper({ apiKey: `${GOOGLE_MAP_KEY}` })(MapContainer));
+
+/* <div className="mapDisplay">
+<div className="mapdisplayinner">
+  <Map
+    className="thegooglemap"
+    google={this.props.google}
+    onClick={() => this.handleOnMapClicked()}
+    zoom={10}
+    style={this.state.style}
+    initialCenter={{ lat: 32.7773293, lng: -96.7963455 }} // <- INTI START POINT OF MAP LOCATION VIEW
+  >
+    {this.markerMap()}
+
+    <InfoWindow
+      marker={this.state.activeMarker}
+      visible={this.state.showingInfoWindow}
+    >
+      <div>
+        <h2>{this.state.selectedPlace.name}</h2>
+        {this.findMyStats(this.state.selectedPlace.name)}
+      </div>
+    </InfoWindow>
+
+    <br />
+  </Map>
+  <div>
+    {this.displayChosenHospital(
+      this.state.selectedPlace,
+      this.addButton,
+      this.deleteButton
+    )}
+  </div>
+</div>
+<div className="findlocation-box">
+  <AutoCompleteMap />
+</div>
+</div> */
