@@ -1,1 +1,1 @@
-DELETE FROM hospitals WHERE hospital_id = $1;
+DELETE FROM hospital WHERE hospital_id = $1;

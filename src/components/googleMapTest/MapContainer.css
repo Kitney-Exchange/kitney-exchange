@@ -39,6 +39,23 @@
   margin-top: -15px;
 }
 
+.displayHospitalContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 10px 10px 0px 0px;
+}
+.displayHospital {
+  background-color: white;
+  border-radius: 5px;
+  width: 25%;
+  border: 2px solid rgb(193, 193, 193);
+  padding: 15px;
+  margin-left: 0px;
+  font-family: "Lato", sans-serif;
+  color: gray;
+  margin-top: -15px;
+}
+
 #hospital-titlebox {
   font-family: "Lato", sans-serif;
   font-size: 18px;
