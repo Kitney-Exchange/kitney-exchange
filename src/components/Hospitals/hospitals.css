@@ -71,7 +71,8 @@
 .addhospital-button {
   display: flex;
   justify-content: center;
-  padding-top: 120px;
+  padding-top: 10px;
+  /* border-bottom: 20px solid rgb(217, 157, 148); */
   /* color: white; */
   /* margin: auto; */
 }
