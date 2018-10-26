@@ -20,10 +20,10 @@
   /* display: flex; */
 
   /* display: inline; */
-  position: fixed;
+  /* position: fixed; */
   /* margin: 10px 10px 10px 10px; */
-  height: 500px;
-  width: 400px;
+  /* height: 500px; */
+  /* width: 400px; */
   padding: none;
   margin: none;
 }
@@ -32,11 +32,11 @@
   background-color: white;
   border-radius: 5px;
   border: 2px solid rgb(193, 193, 193);
-
   padding: 15px;
   margin-left: 516px;
   font-family: "Lato", sans-serif;
   color: gray;
+  margin-top: -15px;
 }
 
 #hospital-titlebox {
@@ -78,10 +78,10 @@
 
 .findlocation-box {
   /* display: flex; */
-  margin-top: 300px;
-  padding: 70px;
-  position: relative;
-
+  margin-top: 350px;
+  /* padding: 70px;
+  width: 300px;  */
+  /* position: relative; */
   /* padding-top: 400px; */
 }
 
