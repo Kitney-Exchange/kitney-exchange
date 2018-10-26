@@ -75,7 +75,7 @@ class MapContainer extends Component {
       if (place.name === hospitals[i].hospital_name) {
         console.log(place);
         return (
-          <div class="displayChosenHospital">
+          <div className="displayChosenHospital">
             <p id="hospital-titlebox">{hospitals[i].hospital_name}</p>
             <br />
             <p id="address">{hospitals[i].hospital_address}</p>
@@ -83,14 +83,10 @@ class MapContainer extends Component {
             <p id="address">{hospitals[i].hospital_phone}</p>
 
             <div className="mapcontainer-buttons">
-              <button onClick={() => addButton(hospitals[i].hospital_id)}>
+              <button onClick={()=> addButton(hospitals[i].hospital_id)}>
                 Add
               </button>
               <br />
-
-              <button onClick={() => deleteButton(hospitals[i].hospital_id)}>
-                Delete
-              </button>
             </div>
           </div>
         );
@@ -100,7 +96,26 @@ class MapContainer extends Component {
 
   displayHospitals = () => {
     const newArr = this.state.hospitalChoice;
-    return <div />;
+    let displayMe = []
+    const {hospitals} = this.props
+    for (let i = 0; i < newArr.length; i++) {
+      for (let j = 0; j < hospitals.length; j++) {
+      if ( newArr[i] === hospitals[j].hospital_id) {
+        console.log(newArr[i]);
+          displayMe.push(<div className="displayChosenHospital">
+            <p id="hospital-titlebox">{hospitals[j].hospital_name}</p>
+            {/* <br />
+            <p id="address">{hospitals[j].hospital_address}</p>
+
+            <p id="address">{hospitals[j].hospital_phone}</p> */}
+              <button onClick={() => {this.deleteButton(hospitals[j].hospital_id)}}>
+                Delete
+              </button>
+            </div>)
+            }
+          }
+        }
+        return displayMe[0]
   };
 
   findMyStats = place => {
@@ -159,15 +174,17 @@ class MapContainer extends Component {
               this.addButton,
               this.deleteButton
             )}
-          </div>
-        </div>
+            </div>
+            
         <div className="findlocation-box">
           <AutoCompleteMap />
         </div>
+            {this.displayHospitals()}
+      </div>
       </div>
     );
   }
-}
+  }
 
 const mapStateToProps = state => ({
   ...state

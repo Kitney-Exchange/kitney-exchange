@@ -43,30 +43,7 @@ class LastForm extends Component {
     }
   };
 
-  hospitalDisplay = () => {
-    const {hospital1, hospital2, hospital3} = this.state;
-    if (hospital3) {
-      return (<div>
-      <div>Choice 1: {hospital1.hospital_name}</div>
-      <div>Choice 2: {hospital2.hospital_name}</div>
-      <div>Choice 3: {hospital3.hospital_name}</div>
-      </div>)}
-    else if (hospital2) {
-      return <div>
-        <div>Choice 1: {hospital1.hospital_name}</div>
-    <div>Choice 2: {hospital2.hospital_name}</div> 
-        </div>}
-    else if (hospital1) {
-      return <div>
-        <div>Choice 1: {hospital1.hospital_name}</div>
-      </div>
-    }
-    else return null;
-    }
-
-  saveHospital = () => {
-
-  }
+  
 
 
   render() {
