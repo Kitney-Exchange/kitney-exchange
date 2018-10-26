@@ -3,8 +3,8 @@ const { json } = require("body-parser");
 const massive = require("massive");
 require("dotenv").config();
 const cors = require("cors");
-const { sendWelcomeEmail, sendConfirmation, sendHospitalInfo } = require('./nodeMailerTests/NodeMailer');
-const { getProfiles, newProfile, modifyProfile, deleteProfile, confirmMatch, updateBatched, getUnmatchedProfiles } = require("./controllers/profileController");
+const { sendWelcomeEmail, sendConfirmation, sendHospitalInfo} = require('./nodeMailerTests/NodeMailer');
+const { getProfiles, newProfile, modifyProfile, deleteProfile, confirmMatch, updateBatched, getUnmatchedProfiles, hospitalUpdater } = require("./controllers/profileController");
 const { getFiles, newFile } = require("./controllers/fileController");
 const { getMatched, newMatched, deleteMatched, setFinished, getUnfinishedMatched} = require("./controllers/matchedController");
 const { getHospitals, newHospital, modifyHospital, deleteHospital } = require("./controllers/hospitalController");
@@ -32,6 +32,7 @@ app.put("/api/profile", modifyProfile);
 app.delete("/api/profile/:pair_id", deleteProfile);
 app.put("/api/confirm", confirmMatch);
 app.put("/api/updateBatched", updateBatched);
+app.put('/api/hospitalUpdater', hospitalUpdater);
 
 // files //
 app.get("/api/files", getFiles);

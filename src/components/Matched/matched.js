@@ -32,6 +32,10 @@ class MatchedPage extends Component {
     );
   }
 
+  componentDidUpdate(preProps, preState) {
+    console.log()
+  }
+
   matchedProfiles = idsArr => {
     var newArr = [];
     var newStr = idsArr.split(",");
@@ -65,6 +69,7 @@ class MatchedPage extends Component {
   }
 
   render() {
+    console.log('PROP::', this.props)
     // setTimeout(()=> console.log(this.matchedProfiles(this.state.profile)), 2000)
     if (this.props.unfinishedMatched) var data = this.props.unfinishedMatched;
     return (
