@@ -3,7 +3,7 @@ const { json } = require("body-parser");
 const massive = require("massive");
 require("dotenv").config();
 const cors = require("cors");
-const { sendWelcomeEmail, sendConfirmation} = require('./nodeMailerTests/NodeMailer');
+const { sendWelcomeEmail, sendConfirmation, sendHospitalInfo } = require('./nodeMailerTests/NodeMailer');
 const { getProfiles, newProfile, modifyProfile, deleteProfile, confirmMatch, updateBatched, getUnmatchedProfiles } = require("./controllers/profileController");
 const { getFiles, newFile } = require("./controllers/fileController");
 const { getMatched, newMatched, deleteMatched, setFinished, getUnfinishedMatched} = require("./controllers/matchedController");
@@ -22,6 +22,7 @@ massive({ connectionString: process.env.CONNECTION_STRING })
 //// endpoint nodemailer ////
 app.post("/api/welcome", sendWelcomeEmail)
 app.post("/api/confirmation", sendConfirmation)
+app.post("/api/patientInfo", sendHospitalInfo)
 
 // profile //
 app.get("/api/profile", getProfiles);
