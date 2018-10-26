@@ -14,7 +14,7 @@ class Hospitals extends Component {
   handleDelete = info => {
     console.log(`Deleted: ${info.hospital_id}`);
     axios
-      .delete(`/api/hospital/${info.hospital_id}`)
+      .delete(`/api/hospitals/${info.hospital_id}`)
       .then(response => alert("Hospital deleted"))
       .catch(err => alert(err));
   };

@@ -4,6 +4,7 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import AutoCompleteMap from "./AutoCompleteMap";
 import { getHospitals } from "../../dux/reducer";
 import "./MapContainer.css";
+import axios from 'axios';
 
 const GOOGLE_MAP_KEY = process.env.REACT_APP_GOOGLE_MAP_KEY;
 
@@ -22,6 +23,15 @@ class MapContainer extends Component {
 
   componentDidMount() {
     this.props.getHospitals();
+  }
+
+  componentDidUpdate(prevprops, prevstate, snapshot) {
+    if (this.state.hospitalChoice){
+    if (this.state.hospitalChoice !== prevstate.hospitalChoice) {
+      this.updateHospitals();
+    }
+    }
+
   }
 
   handleOnMarkerClick(props, marker, e) {
@@ -94,15 +104,15 @@ class MapContainer extends Component {
     }
   };
 
-  displayHospitals = () => {
-    const newArr = this.state.hospitalChoice;
-    let displayMe = []
+
+  hospitalsMapped = () => {
+    return this.state.hospitalChoice.map(hospital => this.displayHospitals(hospital))
+  }
+  displayHospitals = (id) => {
     const {hospitals} = this.props
-    for (let i = 0; i < newArr.length; i++) {
       for (let j = 0; j < hospitals.length; j++) {
-      if ( newArr[i] === hospitals[j].hospital_id) {
-        console.log(newArr[i]);
-          displayMe.push(<div className="displayChosenHospital">
+      if ( id === hospitals[j].hospital_id) {
+          return <div className="displayHospital">
             <p id="hospital-titlebox">{hospitals[j].hospital_name}</p>
             {/* <br />
             <p id="address">{hospitals[j].hospital_address}</p>
@@ -111,12 +121,20 @@ class MapContainer extends Component {
               <button onClick={() => {this.deleteButton(hospitals[j].hospital_id)}}>
                 Delete
               </button>
-            </div>)
+            </div>
             }
           }
-        }
-        return displayMe[0]
   };
+
+  
+  updateHospitals = () => {
+    const {hospitalChoice} = this.state
+    if (hospitalChoice.length >= 3);
+    console.log('Hospitals Updated')
+    axios.put('/api/hospitalUpdater', {hospital_1: hospitalChoice[0], hospital_2: hospitalChoice[1], hospital_3: hospitalChoice[2], pair_id: this.props.pair_id})
+    .then(response => console.log(response))
+    .catch(response => alert(response))
+  }
 
   findMyStats = place => {
     const { hospitals } = this.props;
@@ -143,6 +161,7 @@ class MapContainer extends Component {
 
   render() {
     console.log(this.state.hospitalChoice);
+    console.log(this.props)
     return (
       <div className="mapDisplay">
         <Map
@@ -172,6 +191,9 @@ class MapContainer extends Component {
               this.addButton,
               this.deleteButton
             )}
+          </div>
+          <div className="displayHospitalContainer">
+          {this.hospitalsMapped()}
           </div>
         </Map>
       </div>

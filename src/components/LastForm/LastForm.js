@@ -43,9 +43,6 @@ class LastForm extends Component {
     }
   };
 
-  
-
-
   render() {
     console.log(this.state);
     return (
@@ -61,7 +58,7 @@ class LastForm extends Component {
             </div>
             <div className="hospital-mapbox">
               <p>Please choose 3 potential hospitals for the procedure.</p>
-              <MapContainer />
+              <MapContainer pair_id={this.state.pair_id}/>
             </div>
             <div className="submit-button">
               <Link to={{
