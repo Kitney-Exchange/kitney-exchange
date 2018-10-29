@@ -13,15 +13,19 @@ class MatchedPostComponent extends Component {
       hospital_id: "",
       potential_matches: "",
       date: "",
-      emailProfilesData: []
+      emailProfilesData: [],
+      subject: 'Kitney Exchange Confirmation Email' 
     };
   }
 
   componentDidMount() {
     this.props.getMatched();
-    setTimeout(() => {
+    
+  }
+  componentDidUpdate() {
+    
       this.sendConfirmMatchesEmail()
-    }, )
+ 
   }
 
   handleChange = e => {
@@ -78,13 +82,26 @@ class MatchedPostComponent extends Component {
   };
 
   sendConfirmMatchesEmail() {
-    let { emailProfilesData } = this.state
+    let { emailProfilesData, subject } = this.state
+    let to = []
+    let pair_id = []
+    let name = []
     console.log('emailProfilesData: ', emailProfilesData);
-    if(emailProfilesData === null) {
-      console.log('empley')
-    } else {
-      console.log('hit')
+    for(let i = 0; i < emailProfilesData.length; i++) {
+      console.log('emailProfilesData:', emailProfilesData[i])
+      console.log(emailProfilesData[i].pair_id, emailProfilesData[i].donor_name);
+      pair_id.push(emailProfilesData[i].pair_id)
+      name.push(emailProfilesData[i].donor_name)
+      to.push(emailProfilesData[i].donor_email)
     }
+    
+    axios.post('/api/confirmation', { to, pair_id, name, subject } )
+    .then((response) => {
+      console.log(response)
+    })
+    .catch((error) => {
+      console.log('Danger!', error)
+    })
 
   };
 
