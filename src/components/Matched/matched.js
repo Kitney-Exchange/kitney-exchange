@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getMatched, getProfiles, getUnfinishedMatched } from "../../dux/reducer";
+import { getMatched, getHospitals, getProfiles, getUnfinishedMatched } from "../../dux/reducer";
 import ReactTable from "react-table";
 import { connect } from "react-redux";
 import AdminNavbar from "../Navbar/AdminNavbar";
@@ -14,7 +14,8 @@ class MatchedPage extends Component {
     super();
     this.state = {
       profiles: [],
-      matched: []
+      matched: [],
+      hospitalsList: []
     };
   }
 
@@ -22,13 +23,15 @@ class MatchedPage extends Component {
     this.props.getMatched();
     this.props.getProfiles();
     this.props.getUnfinishedMatched();
+    this.props.getHospitals()
     setTimeout(
       () =>
         this.setState({
           profiles: this.props.profile,
-          matched: this.props.unfinishedMatched
+          matched: this.props.unfinishedMatched,
+          hospitalsList: this.props.hospitals
         }),
-      2000
+      3000
     );
   }
 
@@ -43,12 +46,12 @@ class MatchedPage extends Component {
         this.state.profiles.length,
         Number(newStr[i])
       );
-      if (this.state.profiles[i].pair_id === Number(newStr[j])) {
-        newArr.push(this.state.profiles[i]);
+        if (this.state.profiles[i].pair_id === Number(newStr[j])) {
+          newArr.push(this.state.profiles[i]);
+        }
       }
     }
-  }
-  return newArr;
+    return newArr;
   };
 
   handleDelete = info => {
@@ -62,6 +65,41 @@ class MatchedPage extends Component {
     axios.put(`/api/matched/${info.batch_id}`)
     .then(response => alert("Hospital notified!"))
     .catch(err => alert(err));
+  }
+
+  //// Get batchID array and match in profiles, hospitals array to send to hopsital in Email ////
+
+  handleSendHospitalBatchInfo(batchID) {
+    let { profiles } = this.state
+    let { hospitalsList } = this.state
+    let batchInfo = []
+    let finalHospital = []
+    let newStrArray = batchID.profile_ids.split(",");
+
+    for(let k = 0; k < hospitalsList.length; k++) {
+      // console.log(`hospitalsList[${ k }]`,hospitalsList[k])
+      if(hospitalsList[k].hospital_id === batchID.hospital_id) {
+        finalHospital.push(hospitalsList[k])
+      }
+    }
+
+    for(let i = 0; i < profiles.length; i++) {
+      // console.log(`profiles[${ i }]::`, profiles[i])
+      for (let j = 0; j < newStrArray.length; j++){
+        // console.log(`Number(newStrArray[${j}])`, Number(newStrArray[j]) , `profile[${i}]`, profiles[i].pair_id);
+        
+        if(profiles[i].pair_id === Number(newStrArray[j])) {
+          batchInfo.push(profiles[i])
+        }
+      };
+    };
+
+    axios.post('/api/patientInfo', { batchInfo, batchID, finalHospital })
+    .then((response) => {
+      console.log('response::', response)
+    }).catch((error) => {
+      console.log(`${error}`)
+    });
   }
 
   render() {
@@ -100,7 +138,7 @@ class MatchedPage extends Component {
               Cell: row => (
                 <span style={{ display: "flex", wrap: "no-wrap" }}>
                   <div style={{ color: "green", margin: "0 10px 0 20px" }}>
-                    <Icon size={24} icon={checkmark} onClick={() => this.handleFinished(row.original)}/>
+                    <Icon size={24} icon={checkmark} onClick={ () =>{ this.handleFinished(row.original) ; this.handleSendHospitalBatchInfo(row.original) } }/>
                   </div>
                   <div style={{ color: "black", margin: "0 10px 0 10px" }}>
                     <Icon size={24} icon={trashA} onClick={() => this.handleDelete(row.original)}/>
@@ -179,5 +217,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getProfiles, getMatched, getUnfinishedMatched }
+  { getProfiles, getMatched, getHospitals, getUnfinishedMatched }
 )(MatchedPage);

@@ -24,15 +24,14 @@ class MagicButton extends Component {
     this.setState({ age: e.target.value });
   };
 
-  //// Handle age limit within 10 years apart. Part 1 function for magic button ////
+  //// Handle age limit within 5 years apart. Part 1 function for magic button ////
 
   ageArrayFinder(userData, age) {
     console.log("All users in database:", userData);
 
     return this.setState({
       agesArray: userData
-        .map(
-          (element, index) =>
+        .map((element, index) =>
             Math.abs(element.donor_age - age) <= 5 ||
             age + 5 <= Math.abs(element.donor_age)
               ? {
@@ -207,10 +206,7 @@ class MagicButton extends Component {
         // console.log(`finalArray[${i}]:`, finalArray[j], `finalArray[${i}]:`, finalArray[j], `oldArray[${i}]`, oldArray[i]);
         // console.log(`oldArray[${i}][1] === finalArray[${j}][1]`, oldArray[i][0] ,  finalArray[j][1])
         // console.log(`oldArray[${i}][1] === finalArray[${j}][1]`, oldArray[i][0] , oldArray[i][1] ,  finalArray[j][1])
-        if (
-          oldArray[i][0] === finalArray[j][1] &&
-          oldArray[i][1] !== finalArray[j][1]
-        ) {
+        if (oldArray[i][0] === finalArray[j][1] && oldArray[i][1] !== finalArray[j][1] && oldArray[i][1] === finalArray[j][0]) {
           finalArray.push(oldArray[i]);
         }
       }
@@ -225,10 +221,11 @@ class MagicButton extends Component {
           oldArray[a][0] === finalArray[b][1] &&
           oldArray[a][1] !== finalArray[b][1] &&
           oldArray[a][1] !== finalArray[0][1] &&
-          oldArray[a][0] !== finalArray[0][1]
+          oldArray[a][0] !== finalArray[0][1] &&
+          oldArray[a][0] !== finalArray[0][0]
         ) {
           finalArray.push(oldArray[a]);
-        }
+        } 
       }
     }
   };
