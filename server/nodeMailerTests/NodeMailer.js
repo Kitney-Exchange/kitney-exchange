@@ -417,10 +417,6 @@ let sendConfirmation = (req, res, next) => {
   });
 
   for (let i = 0; i < to.length; i++) {
-    console.log('TO:',to[i])
-		console.log('pair_id:', pair_id[i]);
-		console.log('name:', name[i]);
-
 
     let mailOptions = {
       from: '"kitneyExchangeEmail" kitneyExchangeEmail', // sender address
@@ -900,7 +896,7 @@ let sendConfirmation = (req, res, next) => {
 
 </html>`
     };
-    console.log("");
+
     // console.log("mailOptions: ", mailOptions);
 
     transporter.sendMail(mailOptions, (error, info) => {
@@ -914,7 +910,8 @@ let sendConfirmation = (req, res, next) => {
 };
 
 let sendHospitalInfo = (req, res, next) => {
-	console.log('req.body: ', req.body)
+	let { batchID, finalHospital, batchInfo }  = req.body
+	let subject = 'Final Batch Info'
 
 	let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -926,27 +923,92 @@ let sendHospitalInfo = (req, res, next) => {
     }
 	});
 
+	let diplayInfo = batchInfo.map((value, index) => {
+		// console.log(value)
+		return (
+			`
+			<!DOCTYPE html>
+			<html lang="en">
+			<head>
+				<meta charset="UTF-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<meta http-equiv="X-UA-Compatible" content="ie=edge">
+				<title>HospitalInfo</title>
+			</head>
+				<body>
+					<div>
+						<table>
+							<tr>
+								<th>Donor_name</th>
+								<th>Donor_dod</th>
+								<th>Donor_age</th>
+								<th>Donor_weight</th>
+								<th>Donor_height</th>
+								<th>Donor_blood type</th>
+								<th>Donor_email</th>
+							</tr>
+							<tr>
+								<td>${ value.donor_name }</td>
+								<td>${ value.donor_dob }</td>
+								<td>${ value.donor_age }</td>
+								<td>${ value.donor_weight }</td>
+								<td>${ value.donor_height }</td>
+								<td>${ value.donor_blood_type }</td>
+								<td>${ value.donor_email }</td>
+							</tr>
+						</table>
 
-	let mailOptions = {
-		from: '"kitneyExchangeEmail" kitneyExchangeEmail', // sender address
-		to: 'Test', // list of receivers
-		subject: req.body.subject, // Subject line
-		text: "Test1?", // plain text body
-		forceEmbeddedImages: true,
-		html: `To hospital info`
-	
-	}
+						<table>
+						<tr>
+							<th>Recipient_name</th>
+							<th>Recipient_dod</th>
+							<th>Recipient_age</th>
+							<th>Recipient_weight</th>
+							<th>Recipient_height</th>
+							<th>Recipient_blood type</th>
+							<th>Recipient_email</th>
+						</tr>
+						<tr>
+							<td>${ value.recipient_name }</td>
+							<td>${ value.recipient_dob }</td>
+							<td>${ value.recipient_age }</td>
+							<td>${ value.recipient_weight }</td>
+							<td>${ value.recipient_height }</td>
+							<td>${ value.recipient_blood_type }</td>
+							<td>${ value.recipient_email }</td>
+						</tr>
+					</table>
 
-	transporter.sendMail(mailOptions, (error, info) => {
-		if (error) {
-			return console.log(error);
-		}
-		console.log("Message %s sent: %s", info.messageId, info.response);
-		res.render("index");
+					<p> Match pair as followed: </p>
+
+					</div>
+				</body>
+			</html>
+			`
+		)
 	});
 	
+	let mailOptions = {
+		from: '"kitneyExchangeEmail" kitneyExchangeEmail', // sender address
+		to: 'vutran6853@gmail.com', // list of receivers
+		subject: subject, // Subject line
+		text: "Test1?", // plain text body
+		forceEmbeddedImages: true,
+		html: 
+					`
+						${ diplayInfo }
+					`
+	
+	}
+	// console.log(mailOptions)
 
-
+	// transporter.sendMail(mailOptions, (error, info) => {
+	// 	if (error) {
+	// 		return console.log(error);
+	// 	}
+	// 	console.log("Message %s sent: %s", info.messageId, info.response);
+	// 	res.render("index");
+	// });
 }
 
 module.exports = {
