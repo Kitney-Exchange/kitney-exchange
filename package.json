@@ -22,6 +22,8 @@
     "react-responsive-carousel": "^3.1.43",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.4",
+    "react-scrollspy-nav": "^1.2.1",
+    "react-sticky-header": "^0.2.0",
     "react-table": "^6.8.6",
     "reactstrap": "^6.5.0",
     "redux": "^4.0.1",

@@ -6,6 +6,7 @@ import Navbar from "../Navbar/Navbar";
 import { Parallax, Background } from "react-parallax";
 import ivy from "../../images/ivy.jpeg";
 import { Link } from "react-router-dom";
+import "./confirmation.css";
 
 class Confirmation extends Component {
   constructor(props) {
@@ -152,11 +153,13 @@ class Confirmation extends Component {
           </div>
           {/* <p id="confirmation title">Confirmation </p> */}
           <div className="formbox-questions">
-            <p>
-              Congratulations! You have been selected to take part in a matched
-              set. Please review the information below and confirm or decline
-              this match. Please review <b>all</b> of the information below and
-              confirm that it is correct before submitting.
+            <p id="confirmation-text">
+              Congratulations!
+              <br />
+              You have been selected to take part in a matched set. Please
+              review the information below and confirm or decline this match.
+              Please review <b>all</b> of the information below and confirm that
+              it is correct before submitting.
             </p>
             {this.displayInfo()}
             <div className="confirmation-buttons">

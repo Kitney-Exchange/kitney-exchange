@@ -89,7 +89,7 @@ class Register extends Component {
                         this.handleChange(e.target.value, false);
                         this.isAccepted();
                       }}
-                    />{" "}
+                    />
                     Yes
                   </Label>
                 </FormGroup>
@@ -103,7 +103,7 @@ class Register extends Component {
                         this.handleChange(e.target.value, true);
                         this.isAccepted();
                       }}
-                    />{" "}
+                    />
                     No
                   </Label>
                 </FormGroup>
