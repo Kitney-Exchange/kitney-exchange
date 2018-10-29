@@ -9,18 +9,46 @@ import { Parallax, Background } from "react-parallax";
 import { Carousel } from "react-responsive-carousel";
 import styles from "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Link } from "react-router-dom";
+import StickyHeader from "react-sticky-header";
+import "react-sticky-header/styles.css";
+import ScrollspyNav from "react-scrollspy-nav";
 
 class Home extends Component {
   render() {
     return (
       <div>
         <div className="homepage">
-          <div className="banner-top">
-            <div className="nav-link">How It Works</div>
-            <div className="nav-link">About</div>
-            <div className="nav-link">Success Stories</div>
-            <div className="nav-link">Sign Up</div>
-          </div>
+          <StickyHeader
+            header={
+              <div className="banner-top" id="navbar">
+                {/* <ScrollspyNav
+                  className="navbar-main"
+                  scrollTargetIDs={["howitworks", "aboutus", "success"]}
+                  activeNavClass="is-active"
+                  scrollDuration="200"
+                > */}
+                <div className="nav-linkbar">
+                  <a href="#howitworks" className="nav-link">
+                    How It Works
+                  </a>
+
+                  <a href="#aboutus" className="nav-link">
+                    About
+                  </a>
+                  <a href="#success" className="nav-link">
+                    Success Stories
+                  </a>
+                  <a href="/" className="nav-link">
+                    Sign Up
+                  </a>
+                </div>
+                {/* </ScrollspyNav> */}
+              </div>
+            }
+          >
+            {/* <section>
+            </section> */}
+          </StickyHeader>
           <div className="banner">
             <div className="banner-img">
               <img
@@ -28,7 +56,7 @@ class Home extends Component {
                 src="https://images.unsplash.com/photo-1432838598623-de06c44610e1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=492392ff81bd03d455b058c093bc3eba&auto=format&fit=crop&w=1500&q=80"
                 alt="banner img"
                 style={{
-                  height: "80vh",
+                  height: "100vh",
                   width: "100vw",
                   objectFit: "cover"
                 }}
@@ -47,6 +75,8 @@ class Home extends Component {
                 <div className="banner-texttitle">Connect</div>
                 <div className="banner-text">
                   A Local, Safe, and Refined Platform
+                  <br />
+                  For Kidney Pairing
                 </div>
                 <div className="mid-icon">
                   <img
@@ -64,7 +94,8 @@ class Home extends Component {
               </div>
             </div>
           </div>
-          <div className="aboutus">
+
+          <div className="aboutus" id="howitworks">
             <div className="aboutus-title">How It Works</div>
             <div className="aboutus-img">
               <img
@@ -76,6 +107,7 @@ class Home extends Component {
                 }}
               />
             </div>
+
             <div className="aboutus-text">
               <p id="aboutus-text">
                 Carrots soybeans, owls duck raising or, cheep in plows. Turkey
@@ -87,7 +119,7 @@ class Home extends Component {
               </p>
             </div>
           </div>
-          <div className="stories">
+          <div className="stories" id="aboutus">
             <div className="box-right">
               <div className="stories-img">
                 <img
@@ -114,7 +146,7 @@ class Home extends Component {
               </div>
             </div>
           </div>
-          <div className="aboutus">
+          <div className="aboutus" id="success">
             <div className="aboutus-title">Success</div>
             <div className="sun-img">
               <img
