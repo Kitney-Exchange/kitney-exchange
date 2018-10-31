@@ -17,8 +17,7 @@ let sendWelcomeEmail = (req, res, next) => {
   console.log("req.body: ", req.body);
   let { to } = req.body;
   let { name } = req.body;
-	let { bcc } = req.body;
-
+  let { bcc } = req.body;
 
   let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -31,7 +30,6 @@ let sendWelcomeEmail = (req, res, next) => {
   });
 
   for (let i = 0; i < to.length; i++) {
-
     let mailOptions = {
       from: '"kitneyExchangeEmail" kitneyExchangeEmail', // sender address
       to: to[i], // list of receivers
@@ -246,7 +244,7 @@ let sendWelcomeEmail = (req, res, next) => {
                             <tr>
                               <td data-color="title" data-size="size title" data-min="25" data-max="45" data-link-color="link title color" data-link-style="text-decoration:none; color:#292c34;"
                                class="title" align="center" style="font:35px/38px Arial, Helvetica, sans-serif; color:#292c34; padding:0 0 24px;">
-                                Hello ${ name[i] }, </td>
+                                Hello ${name[i]}, </td>
                             </tr>
                             <tr>
                               <td data-color="text" data-size="size text" data-min="10" data-max="26" data-link-color="link text color" data-link-style="font-weight:bold; text-decoration:underline; color:#40aceb;"
@@ -401,10 +399,10 @@ let sendWelcomeEmail = (req, res, next) => {
 
 let sendConfirmation = (req, res, next) => {
   console.log("req.body", req.body);
-  let { pair_id } = req.body
-	let { name } = req.body
-	let { to } = req.body
-	let url = 'http://localhost:3000/#'
+  let { pair_id } = req.body;
+  let { name } = req.body;
+  let { to } = req.body;
+  let url = process.env.REACT_APP_NODEMAILER;
 
   let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -417,7 +415,6 @@ let sendConfirmation = (req, res, next) => {
   });
 
   for (let i = 0; i < to.length; i++) {
-
     let mailOptions = {
       from: '"kitneyExchangeEmail" kitneyExchangeEmail', // sender address
       to: to[i], // list of receivers
@@ -588,7 +585,7 @@ let sendConfirmation = (req, res, next) => {
 													<table class="center" cellpadding="0" cellspacing="0">
 														<tr>
 															<td style="font:bold 18px/18px Arial, Helvetica, sans-serif; color:#888;">
-																<a target="_blank" style="text-decoration:none; color:#888;" href="${ url }">Kitney Exchange</a>
+																<a target="_blank" style="text-decoration:none; color:#888;" href="${url}">Kitney Exchange</a>
 															</td>
 														</tr>
 													</table>
@@ -628,7 +625,7 @@ let sendConfirmation = (req, res, next) => {
 											<tr>
 												<td data-color="title" data-size="size title" data-min="25" data-max="45" data-link-color="link title color" data-link-style="text-decoration:none; color:#292c34;"
 												 class="title" align="center" style="font:35px/38px Arial, Helvetica, sans-serif; color:#292c34; padding:0 0 24px;">
-													Hello ${ name[i] },
+													Hello ${name[i]},
 												</td>
 											</tr>
 											<tr>
@@ -643,7 +640,9 @@ let sendConfirmation = (req, res, next) => {
 														<tr>
 															<td data-bgcolor="bg-button" data-size="size button" data-min="10" data-max="16" class="btn" align="center" style="font:12px/14px Arial, Helvetica, sans-serif; color:#f8f9fb; text-transform:uppercase; mso-padding-alt:12px 10px 10px; border-radius:2px;"
 															 bgcolor="#96c7bf">
-																<a target="_blank" style="text-decoration:none; color:#f8f9fb; display:block; padding:12px 10px 10px;" href="${ url }/confirmation/${ pair_id[i] }">Confirm Your Match</a>
+																<a target="_blank" style="text-decoration:none; color:#f8f9fb; display:block; padding:12px 10px 10px;" href="${url}/confirmation/${
+        pair_id[i]
+      }">Confirm Your Match</a>
 															</td>
 														</tr>
 													</table>
@@ -836,7 +835,9 @@ let sendConfirmation = (req, res, next) => {
 														<tr>
 															<td data-bgcolor="bg-button" data-size="size button" data-min="10" data-max="16" class="btn" align="center" style="font:12px/14px Arial, Helvetica, sans-serif; color:#f8f9fb; text-transform:uppercase; mso-padding-alt:12px 10px 10px; border-radius:2px;"
 															 bgcolor="#96c7bf">
-																<a target="_blank" style="text-decoration:none; color:#f8f9fb; display:block; padding:12px 10px 10px;" href="${ url }/confirmation/${ pair_id[i] }">Confirm Your Match</a>
+																<a target="_blank" style="text-decoration:none; color:#f8f9fb; display:block; padding:12px 10px 10px;" href="${url}/confirmation/${
+        pair_id[i]
+      }">Confirm Your Match</a>
 															</td>
 														</tr>
 													</table>
@@ -910,10 +911,10 @@ let sendConfirmation = (req, res, next) => {
 };
 
 let sendHospitalInfo = (req, res, next) => {
-	let { batchID, finalHospital, batchInfo }  = req.body
-	let subject = 'Final Batch Info'
+  let { batchID, finalHospital, batchInfo } = req.body;
+  let subject = "Final Batch Info";
 
-	let transporter = nodemailer.createTransport({
+  let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
     secure: true,
@@ -921,12 +922,11 @@ let sendHospitalInfo = (req, res, next) => {
       user: AUTH_USER,
       pass: AUTH_PASSWORD
     }
-	});
+  });
 
-	let diplayInfo = batchInfo.map((value, index) => {
-		// console.log(value)
-		return (
-			`
+  let diplayInfo = batchInfo.map((value, index) => {
+    // console.log(value)
+    return `
 			<!DOCTYPE html>
 			<html lang="en">
 			<head>
@@ -948,13 +948,13 @@ let sendHospitalInfo = (req, res, next) => {
 								<th>Donor_email</th>
 							</tr>
 							<tr>
-								<td>${ value.donor_name }</td>
-								<td>${ value.donor_dob }</td>
-								<td>${ value.donor_age }</td>
-								<td>${ value.donor_weight }</td>
-								<td>${ value.donor_height }</td>
-								<td>${ value.donor_blood_type }</td>
-								<td>${ value.donor_email }</td>
+								<td>${value.donor_name}</td>
+								<td>${value.donor_dob}</td>
+								<td>${value.donor_age}</td>
+								<td>${value.donor_weight}</td>
+								<td>${value.donor_height}</td>
+								<td>${value.donor_blood_type}</td>
+								<td>${value.donor_email}</td>
 							</tr>
 						</table>
 
@@ -969,13 +969,13 @@ let sendHospitalInfo = (req, res, next) => {
 							<th>Recipient_email</th>
 						</tr>
 						<tr>
-							<td>${ value.recipient_name }</td>
-							<td>${ value.recipient_dob }</td>
-							<td>${ value.recipient_age }</td>
-							<td>${ value.recipient_weight }</td>
-							<td>${ value.recipient_height }</td>
-							<td>${ value.recipient_blood_type }</td>
-							<td>${ value.recipient_email }</td>
+							<td>${value.recipient_name}</td>
+							<td>${value.recipient_dob}</td>
+							<td>${value.recipient_age}</td>
+							<td>${value.recipient_weight}</td>
+							<td>${value.recipient_height}</td>
+							<td>${value.recipient_blood_type}</td>
+							<td>${value.recipient_email}</td>
 						</tr>
 					</table>
 
@@ -984,35 +984,32 @@ let sendHospitalInfo = (req, res, next) => {
 					</div>
 				</body>
 			</html>
-			`
-		)
-	});
-	
-	let mailOptions = {
-		from: '"kitneyExchangeEmail" kitneyExchangeEmail', // sender address
-		to: 'vutran6853@gmail.com', // list of receivers
-		subject: subject, // Subject line
-		text: "Test1?", // plain text body
-		forceEmbeddedImages: true,
-		html: 
-					`
-						${ diplayInfo }
-					`
-	
-	}
-	// console.log(mailOptions)
+			`;
+  });
 
-	// transporter.sendMail(mailOptions, (error, info) => {
-	// 	if (error) {
-	// 		return console.log(error);
-	// 	}
-	// 	console.log("Message %s sent: %s", info.messageId, info.response);
-	// 	res.render("index");
-	// });
-}
+  let mailOptions = {
+    from: '"kitneyExchangeEmail" kitneyExchangeEmail', // sender address
+    to: "vutran6853@gmail.com", // list of receivers
+    subject: subject, // Subject line
+    text: "Test1?", // plain text body
+    forceEmbeddedImages: true,
+    html: `
+						${diplayInfo}
+					`
+  };
+  // console.log(mailOptions)
+
+  // transporter.sendMail(mailOptions, (error, info) => {
+  // 	if (error) {
+  // 		return console.log(error);
+  // 	}
+  // 	console.log("Message %s sent: %s", info.messageId, info.response);
+  // 	res.render("index");
+  // });
+};
 
 module.exports = {
   sendWelcomeEmail,
-	sendConfirmation,
-	sendHospitalInfo
+  sendConfirmation,
+  sendHospitalInfo
 };
