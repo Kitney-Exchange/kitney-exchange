@@ -3,13 +3,14 @@ import axios from "axios";
 import { getMatched } from "../../dux/reducer";
 import { connect } from "react-redux";
 import "./matchedPostComponent.css";
+import MagicButton from './magicButton';
 
 class MatchedPostComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
       batch_id: "",
-      profiles: "7,17,20",
+      profiles: "",
       hospital_id: "",
       potential_matches: "",
       date: "",
@@ -23,9 +24,7 @@ class MatchedPostComponent extends Component {
     
   }
   componentDidUpdate() {
-    
-      this.sendConfirmMatchesEmail()
- 
+     
   }
 
   handleChange = e => {
@@ -39,7 +38,8 @@ class MatchedPostComponent extends Component {
       .post("/api/matched", {
         profiles: this.state.profiles,
         hospital: this.state.hospital_id,
-        date: this.state.date
+        date: this.state.date,
+        potential_matches: this.state.potential_matches
       })
       .then(alert("Pair added!"))
       .catch(err => console.log(err));
@@ -128,8 +128,10 @@ class MatchedPostComponent extends Component {
 
   render() {
     console.log(this.state);
+    console.log(this.props)
     return (
       <div className="matched-page">
+                <MagicButton data={this.props.data} />
         <p id="unmatched-top-title"> Match Confirmation</p>
 
         <div className="matched-inputboxes">
@@ -167,7 +169,8 @@ class MatchedPostComponent extends Component {
               }}
             >
               Confirm
-            </button>{" "}
+            </button></div>
+            <div className="matched-button">
             <button id="matched-button" onClick={this.resetForm}>
               Decline
             </button>

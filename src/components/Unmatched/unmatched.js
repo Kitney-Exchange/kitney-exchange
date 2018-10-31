@@ -75,8 +75,8 @@ class UnmatchedPage extends Component {
         <AdminNavbar />
         <div className="magicbutton-top">
           <p id="unmatched-top-title"> Create Matches</p>
-          <MagicButton data={data} />
-        <MatchedPostComponent/>
+          {/* <MagicButton data={data} /> */}
+        <MatchedPostComponent data={data}/>
         </div>
         <p id="matched-bottom-title">Unmatched Table</p>
         
