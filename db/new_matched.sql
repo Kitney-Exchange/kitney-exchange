@@ -1,6 +1,7 @@
 INSERT INTO matched 
 (profile_ids,
 hospital_id,
-date
+date,
+potential_matches
 )
-VALUES ($1, $2, $3);
+VALUES ($1, $2, $3, $4);

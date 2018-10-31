@@ -14,7 +14,7 @@ module.exports = {
     newMatched: (req, res, next) => {
         console.log(req.body)
         const db = req.app.get('db')
-        db.new_matched([req.body.profiles, req.body.hospital, req.body.date])
+        db.new_matched([req.body.profiles, req.body.hospital, req.body.date, req.body.potential_matches])
         .then(response => res.status(200).send(response))
         .catch(response => res.status(500).send(response))
     },

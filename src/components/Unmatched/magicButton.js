@@ -265,15 +265,17 @@ class MagicButton extends Component {
           <option value="38">38</option>
           <option value="48">48</option>
         </select>
-        <button
+        {/* <button
           id="matched-button"
           onClick={() => this.ageArrayFinder(profileList.data, this.state.age)}
         >
           Possible Matches Generator
-        </button>
+        </button> */}
         <button
           id="matched-button"
-          onClick={() => this.finalMatch(this.state.possibleMatchPair)}
+          onClick={() => {
+            this.ageArrayFinder(profileList.data, this.state.age);
+            this.finalMatch(this.state.possibleMatchPair)}}
         >
           Create Matches
         </button>
