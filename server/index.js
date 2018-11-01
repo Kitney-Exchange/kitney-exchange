@@ -46,10 +46,6 @@ const path = require("path"); // Usually moved to the start of file
 
 app.use(express.static(path.join(__dirname, "../build")));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../build/index.html"));
-});
-
 //// endpoint nodemailer ////
 app.post("/api/welcome", sendWelcomeEmail);
 app.post("/api/confirmation", sendConfirmation);
@@ -82,6 +78,9 @@ app.post("/api/hospitals", newHospital);
 app.put("/api/hospitals", modifyHospital);
 app.delete("/api/hospitals/:hospital_id", deleteHospital);
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../build/index.html"));
+});
 // port set and listen //
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
