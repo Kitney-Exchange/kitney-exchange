@@ -110,12 +110,20 @@ class Home extends Component {
 
             <div className="aboutus-text">
               <p id="aboutus-text">
-                Carrots soybeans, owls duck raising or, cheep in plows. Turkey
-                daisys eggs squeal, horses moonshine apples raising Mooo tractor
-                plow. Feed in a woof, a farmers market. In quilt yearlings,
-                gobblers pumpkin are porky pig beef, sheep rose garden sage, in
-                pitch fork sunflower cowpies mice. bull bowels cat chicken cow,
-                calf donkey duck.
+                Kidney paired donation is a resourceful option for candidates
+                who have a living donor who is medically able, but cannot donate
+                a kidney to their intended candidate because they are
+                incompatible.
+                <br />
+                <br />
+                Kitney Exchange is a platform for recipient and donor pairs that
+                would like to be matched with other incompatible pairs in their
+                local area. We developed a system where multiple pairs can be
+                matched in a chain.
+                <br />
+                <br />
+                We give the ability to those who are trying to help their loved
+                ones with kidney failure and get the help they need.
               </p>
             </div>
           </div>
@@ -126,7 +134,7 @@ class Home extends Component {
                   src="https://images.unsplash.com/photo-1531966662811-c6501e46eda6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ee1a4ae3348e7f71fd3810cbcdec92a3&auto=format&fit=crop&w=716&q=80"
                   alt="tree"
                   style={{
-                    width: "700px",
+                    width: "600px",
                     height: "850px"
                   }}
                 />
@@ -136,12 +144,16 @@ class Home extends Component {
               <div className="stories-title">About Us</div>
               <div className="stories-text">
                 <p id="stories-text">
-                  Carrots soybeans, owls duck raising or, cheep in plows. Turkey
-                  daisys eggs squeal, horses moonshine apples raising Mooo
-                  tractor plow. Feed in a woof, a farmers market. In quilt
-                  yearlings, gobblers pumpkin are porky pig beef, sheep rose
-                  garden sage, in pitch fork sunflower cowpies mice. bull bowels
-                  cat chicken cow, calf donkey duck.
+                  The Kitney Exchange is making a difference by addressing the
+                  challenges both the U.S and the world are facing. There are
+                  enough donor/recipient pairs in the country that can be
+                  matched and created into a donor chain, ultimately benefiting
+                  all participants.
+                  <br />
+                  <br /> As we continue to partner with your local hospitals, we
+                  can bring our vision to life and give the ability to the
+                  donors helping their loved ones with kidney failure and get
+                  the transplant they need.
                 </p>
               </div>
             </div>
@@ -160,12 +172,12 @@ class Home extends Component {
             </div>
             <div className="success-text">
               <p id="aboutus-text">
-                Carrots soybeans, owls duck raising or, cheep in plows. Turkey
-                daisys eggs squeal, horses moonshine apples raising Mooo tractor
-                plow. Feed in a woof, a farmers market. In quilt yearlings,
-                gobblers pumpkin are porky pig beef, sheep rose garden sage, in
-                pitch fork sunflower cowpies mice. bull bowels cat chicken cow,
-                calf donkey duck.
+                Through Kitney Exchange, we have had the honor to help a unique
+                group of heroes - those courageous enough to give the gift of
+                life and those courageous enough to accept this gift and carry
+                on. Throughout our experience, we have worked with numerous
+                donor families and recipients. This is just a sampling of our
+                powerful stories of hope.
               </p>
             </div>
             <div className="carousel">
@@ -179,30 +191,24 @@ class Home extends Component {
                 <div>
                   <img src="https://images.unsplash.com/photo-1531573241436-069768aa6b81?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d85acfd5e5a690e1b9fb9b9cb1ac114f&auto=format&fit=crop&w=1350&q=80" />
                   <p className="legend">
-                    Carrots soybeans, owls duck raising or, cheep in plows.
-                    Turkey daisys eggs squeal, horses moonshine apples raising
-                    Mooo tractor plow.
+                    Read About Recipient Sabrina Cantey's Life Changing Story
                   </p>
                 </div>
                 <div>
                   <img src="https://images.unsplash.com/photo-1536551739350-d473d0f5d66a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=008122b00ce6617ca065ffff90c78e11&auto=format&fit=crop&w=1350&q=80" />
                   <p className="legend">
-                    Carrots soybeans, owls duck raising or, cheep in plows.
-                    Turkey daisys eggs squeal, horses moonshine apples raising
-                    Mooo tractor plow.
+                    Read About Recipient Sarah Finley's Life Changing Story
                   </p>
                 </div>
                 <div>
                   <img src="https://images.unsplash.com/photo-1498568715259-5c1dc96aa8e7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ad416811db9057a089db51b5b7f97794&auto=format&fit=crop&w=1350&q=80" />
                   <p className="legend">
-                    Carrots soybeans, owls duck raising or, cheep in plows.
-                    Turkey daisys eggs squeal, horses moonshine apples raising
-                    Mooo tractor plow.
+                    Read About Recipient Terry Kavern's Life Changing Story
                   </p>
                 </div>
               </Carousel>
             </div>
-            <footer id="footer-home">
+            <footer className="footer-home" id="footer-home">
               <ul>
                 <li>Kitney Exchange</li>
                 <li>Home</li>
